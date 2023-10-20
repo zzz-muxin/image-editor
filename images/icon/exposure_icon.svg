@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<svg class="icon icon-tabler icon-tabler-exposure" fill="none" height="24" stroke="#FFF" stroke-linecap="round"
+     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+    <rect height="16" rx="2" width="16" x="4" y="4"/>
+    <line x1="4.6" x2="19.4" y1="19.4" y2="4.6"/>
+    <path d="M7 9h4m-2 -2v4"/>
+    <line x1="13" x2="17" y1="16" y2="16"/>
+</svg>

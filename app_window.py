@@ -1,9 +1,10 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QColor, QEnterEvent, QPixmap
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QGraphicsScene, QGraphicsPixmapItem
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QGraphicsScene, QGraphicsPixmapItem, QWidget, QPushButton
 
 from mainwindow import Ui_MainWindow
+from upload_image import UploadImage
 
 
 class AppWindow(QMainWindow, Ui_MainWindow):
@@ -63,11 +64,21 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 初始化所有组件的事件
     def _init_all_widget(self):
-        self.widget_upload.setAcceptDrops(True)  # 上传图片widget开启接受拖拽
-        self.widget_upload.mousePressEvent = self.show_image  # 上传图片
         self.pushButton_crop.clicked.connect(self._init_button_crop)
         self.pushButton_rotate.clicked.connect(self._init_button_rotate)
         self.pushButton_adjust.clicked.connect(self._init_button_adjust)
+        uploader = UploadImage()
+        self.horizontalLayout_11.addWidget(uploader)  # 添加自定义的上传图片widget类
+        uploader.image.connect(self.show_image)
+
+    def show_image(self, pixmap):
+        scene = QGraphicsScene()
+        self.graphicsView.setScene(scene)
+        self.graphicsView_2.setScene(scene)
+        self.graphicsView_3.setScene(scene)
+        scene.addPixmap(pixmap)
+        self.main_stacked_widget.setCurrentIndex(2)
+        pass
 
     def _init_button_adjust(self):
         # 检查graphicsView_3视图内是否存在图片
@@ -96,26 +107,6 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         if isinstance(event, QEnterEvent):
             self.setCursor(Qt.ArrowCursor)
         return super(AppWindow, self).eventFilter(obj, event)
-
-    def show_image(self, event):
-        if event.button() == Qt.LeftButton:
-            options = QFileDialog.Options()
-            options |= QFileDialog.ReadOnly
-            file_name, _ = QFileDialog.getOpenFileName(self, "选择图片文件", "",
-                                                       "Image Files (*.png *.jpg *.jpeg *.bmp *.svg);;All Files (*)",
-                                                       options=options)
-            if file_name:
-                try:
-                    pixmap = QPixmap(file_name)
-                    print("image size:", pixmap.width(), pixmap.height())
-                    scene = QGraphicsScene()
-                    self.graphicsView.setScene(scene)
-                    self.graphicsView_2.setScene(scene)
-                    self.graphicsView_3.setScene(scene)
-                    scene.addPixmap(pixmap)
-                    self.main_stacked_widget.setCurrentIndex(1)
-                except Exception as e:
-                    print("Error:", e)
 
     # 计算窗口边界
     def resizeEvent(self, event):
@@ -201,7 +192,6 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             event.accept()
         elif (event.button() == Qt.LeftButton) and (event.y() < self.frame_menu.height()):
             # 鼠标左键点击标题栏区域
-            print("标题栏")
             self._move_drag = True
             self.move_DragPosition = event.globalPos() - self.pos()
             event.accept()

@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
 "border-radius:4px;\n"
 "}\n"
 "QScrollBar::handle:horizontal:hover{\n"
-"    background:rgba(255,255,255,50%);\n"
+"    background:rgba(255,255,255,100%);\n"
 "    min-width:0;\n"
 "}\n"
 "QScrollBar::add-line:horizontal{\n"
@@ -286,73 +286,6 @@ class Ui_MainWindow(object):
         self.page_upload.setObjectName("page_upload")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.page_upload)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        self.widget_upload = QtWidgets.QWidget(self.page_upload)
-        self.widget_upload.setMinimumSize(QtCore.QSize(550, 300))
-        self.widget_upload.setMaximumSize(QtCore.QSize(550, 300))
-        self.widget_upload.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.widget_upload.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.widget_upload.setStyleSheet(".QWidget#widget_upload{\n"
-"    border: 5px dashed #ccc;\n"
-"    border-radius:10px;\n"
-"    background-color:transparent;\n"
-"}\n"
-".QWidget#widget_upload:hover{\n"
-"    background-color: rgba(0, 170, 255, 50);\n"
-"}")
-        self.widget_upload.setObjectName("widget_upload")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_upload)
-        self.verticalLayout_2.setContentsMargins(10, 10, 10, 10)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem2)
-        self.widget_cloud = QtWidgets.QWidget(self.widget_upload)
-        self.widget_cloud.setMinimumSize(QtCore.QSize(161, 141))
-        self.widget_cloud.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.widget_cloud.setStyleSheet("QWidget{\n"
-"    image:url(:/images/icon/download_cloud_multimedia_icon.svg);\n"
-"    background-color: transparent;\n"
-"}")
-        self.widget_cloud.setObjectName("widget_cloud")
-        self.verticalLayout_2.addWidget(self.widget_cloud)
-        self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_9.addItem(spacerItem3)
-        self.label_drag = QtWidgets.QLabel(self.widget_upload)
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(15)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(50)
-        font.setStrikeOut(False)
-        font.setKerning(True)
-        self.label_drag.setFont(font)
-        self.label_drag.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_drag.setStyleSheet("QLabel{\n"
-"    background-color:transparent;\n"
-"    color: rgb(255, 255, 255);\n"
-"}")
-        self.label_drag.setObjectName("label_drag")
-        self.horizontalLayout_9.addWidget(self.label_drag)
-        self.label_upload = QtWidgets.QLabel(self.widget_upload)
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(15)
-        self.label_upload.setFont(font)
-        self.label_upload.setStyleSheet("QLabel{\n"
-"    background-color:transparent;\n"
-"    color: rgb(64, 158, 255);\n"
-"}")
-        self.label_upload.setObjectName("label_upload")
-        self.horizontalLayout_9.addWidget(self.label_upload)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_9.addItem(spacerItem4)
-        self.verticalLayout_2.addLayout(self.horizontalLayout_9)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem5)
-        self.horizontalLayout_11.addWidget(self.widget_upload)
         self.main_stacked_widget.addWidget(self.page_upload)
         self.page_image_view = QtWidgets.QWidget()
         self.page_image_view.setObjectName("page_image_view")
@@ -379,8 +312,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.page_crop)
         self.horizontalLayout_13.setContentsMargins(11, 11, 11, 11)
         self.horizontalLayout_13.setObjectName("horizontalLayout_13")
-        spacerItem6 = QtWidgets.QSpacerItem(404, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_13.addItem(spacerItem6)
+        spacerItem2 = QtWidgets.QSpacerItem(404, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem2)
         self.widget_2 = QtWidgets.QWidget(self.page_crop)
         self.widget_2.setMinimumSize(QtCore.QSize(150, 0))
         self.widget_2.setStyleSheet("QWidget{\n"
@@ -431,8 +364,8 @@ class Ui_MainWindow(object):
         self.pushButton_min_5.setObjectName("pushButton_min_5")
         self.horizontalLayout_15.addWidget(self.pushButton_min_5)
         self.horizontalLayout_13.addWidget(self.widget_2)
-        spacerItem7 = QtWidgets.QSpacerItem(404, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_13.addItem(spacerItem7)
+        spacerItem3 = QtWidgets.QSpacerItem(404, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem3)
         self.horizontalLayout_13.setStretch(0, 1)
         self.horizontalLayout_13.setStretch(2, 1)
         self.basic_function_stack.addWidget(self.page_crop)
@@ -440,8 +373,8 @@ class Ui_MainWindow(object):
         self.page_rotate.setObjectName("page_rotate")
         self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.page_rotate)
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem8)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem4)
         self.widget_4 = QtWidgets.QWidget(self.page_rotate)
         self.widget_4.setMinimumSize(QtCore.QSize(150, 0))
         self.widget_4.setStyleSheet("QWidget{\n"
@@ -526,8 +459,8 @@ class Ui_MainWindow(object):
         self.pushButton_flip_x.setObjectName("pushButton_flip_x")
         self.horizontalLayout_14.addWidget(self.pushButton_flip_x)
         self.horizontalLayout_16.addWidget(self.widget_4)
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem9)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem5)
         self.basic_function_stack.addWidget(self.page_rotate)
         self.verticalLayout_3.addWidget(self.basic_function_stack)
         self.verticalLayout_3.setStretch(0, 1)
@@ -556,7 +489,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 301, 1060))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 230, 1060))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
@@ -1216,8 +1149,8 @@ class Ui_MainWindow(object):
         self.pushButton_undo.setFlat(True)
         self.pushButton_undo.setObjectName("pushButton_undo")
         self.horizontalLayout_4.addWidget(self.pushButton_undo)
-        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem10)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem6)
         self.pushButton_redo = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_redo.setMinimumSize(QtCore.QSize(61, 61))
         self.pushButton_redo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1234,8 +1167,8 @@ class Ui_MainWindow(object):
         self.pushButton_redo.setFlat(True)
         self.pushButton_redo.setObjectName("pushButton_redo")
         self.horizontalLayout_4.addWidget(self.pushButton_redo)
-        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem11)
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem7)
         self.pushButton_reset = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_reset.setMinimumSize(QtCore.QSize(61, 61))
         self.pushButton_reset.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1277,8 +1210,8 @@ class Ui_MainWindow(object):
         self.pushButton_crop.setFlat(True)
         self.pushButton_crop.setObjectName("pushButton_crop")
         self.horizontalLayout_6.addWidget(self.pushButton_crop)
-        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem12)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem8)
         self.pushButton_rotate = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_rotate.setMinimumSize(QtCore.QSize(61, 57))
         self.pushButton_rotate.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1295,8 +1228,8 @@ class Ui_MainWindow(object):
         self.pushButton_rotate.setFlat(True)
         self.pushButton_rotate.setObjectName("pushButton_rotate")
         self.horizontalLayout_6.addWidget(self.pushButton_rotate)
-        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem13)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem9)
         self.pushButton_curve = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_curve.setMinimumSize(QtCore.QSize(61, 57))
         self.pushButton_curve.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1313,8 +1246,8 @@ class Ui_MainWindow(object):
         self.pushButton_curve.setFlat(True)
         self.pushButton_curve.setObjectName("pushButton_curve")
         self.horizontalLayout_6.addWidget(self.pushButton_curve)
-        spacerItem14 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem14)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem10)
         self.pushButton_face = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_face.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_face.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1331,8 +1264,8 @@ class Ui_MainWindow(object):
         self.pushButton_face.setFlat(True)
         self.pushButton_face.setObjectName("pushButton_face")
         self.horizontalLayout_6.addWidget(self.pushButton_face)
-        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem15)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem11)
         self.pushButton_text = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_text.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1349,8 +1282,8 @@ class Ui_MainWindow(object):
         self.pushButton_text.setFlat(True)
         self.pushButton_text.setObjectName("pushButton_text")
         self.horizontalLayout_6.addWidget(self.pushButton_text)
-        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem16)
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem12)
         self.pushButton_adjust = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_adjust.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_adjust.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -1380,7 +1313,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.main_stacked_widget.setCurrentIndex(0)
-        self.basic_function_stack.setCurrentIndex(1)
+        self.basic_function_stack.setCurrentIndex(0)
         self.horizontalSlider_light_perception.valueChanged['int'].connect(self.label_light_perception.setNum) # type: ignore
         self.horizontalSlider_brightness.valueChanged['int'].connect(self.label_brightness.setNum) # type: ignore
         self.horizontalSlider_exposure.valueChanged['int'].connect(self.label_exposure.setNum) # type: ignore
@@ -1401,8 +1334,6 @@ class Ui_MainWindow(object):
         self.pushButton_min.setToolTip(_translate("MainWindow", "最小化"))
         self.pushButton_max.setToolTip(_translate("MainWindow", "最大化"))
         self.pushButton_close.setToolTip(_translate("MainWindow", "关闭"))
-        self.label_drag.setText(_translate("MainWindow", "将图片拖拽到此处，或"))
-        self.label_upload.setText(_translate("MainWindow", "点击上传"))
         self.pushButton_min_4.setToolTip(_translate("MainWindow", "应用"))
         self.pushButton_min_5.setToolTip(_translate("MainWindow", "取消"))
         self.pushButton_left_90.setToolTip(_translate("MainWindow", "逆时针旋转90°"))

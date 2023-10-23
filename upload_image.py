@@ -5,8 +5,8 @@ from PyQt5.QtWidgets import QWidget, QFileDialog
 from widget_upload_image import Ui_Form
 
 
-class UploadImage(QWidget, Ui_Form):
-    image = pyqtSignal(QPixmap)  # 上传图片时传递信号
+class UploadImageWidget(QWidget, Ui_Form):
+    imageExist = pyqtSignal(QPixmap)  # 上传图片时传递信号
 
     def __init__(self):
         super().__init__()
@@ -25,7 +25,7 @@ class UploadImage(QWidget, Ui_Form):
             if file_name:
                 try:
                     self.pixmap = QPixmap(file_name)
-                    self.image.emit(self.pixmap)  # 发射信号，传递加载的图片
+                    self.imageExist.emit(self.pixmap)  # 发射信号，传递加载的图片
                     print("image size:", self.pixmap.width(), self.pixmap.height())
                 except Exception as e:
                     print("Error:", e)
@@ -34,9 +34,24 @@ class UploadImage(QWidget, Ui_Form):
     def dragEnterEvent(self, event):
         mime_data = event.mimeData()
         if mime_data.hasUrls() and len(mime_data.urls()) == 1:  # 仅接受拖拽一个文件
-            url = mime_data.urls()[0]
+            url = mime_data.urls()[0]  # 获取拖拽的第一个URL
             if url.isLocalFile() and url.toLocalFile().lower().endswith((".png", ".jpg", ".jpeg", ".bmp")):
+                # 改变样式
+                self.widget_upload.setStyleSheet(".QWidget#widget_upload{\n"
+                                                 "    border: 5px dashed #ccc;\n"
+                                                 "    border-radius:10px;\n"
+                                                 "    background-color:rgba(0, 170, 255, 50);\n"
+                                                 "}\n")
                 event.acceptProposedAction()
+
+    # 重写拖拽离开事件处理函数
+    def dragLeaveEvent(self, event):
+        # 恢复样式
+        self.widget_upload.setStyleSheet(".QWidget#widget_upload{\n"
+                                         "    border: 5px dashed #ccc;\n"
+                                         "    border-radius:10px;\n"
+                                         "    background-color:transparent;\n"
+                                         "}\n")
 
     # 重写拖放事件处理函数
     def dropEvent(self, event):
@@ -47,7 +62,7 @@ class UploadImage(QWidget, Ui_Form):
             try:
                 pixmap = QPixmap(file_name)
                 self.pixmap = pixmap
-                self.image.emit(pixmap)  # 发射信号，传递加载的图片
+                self.imageExist.emit(pixmap)  # 发射信号，传递加载的图片
                 print("image size:", pixmap.width(), pixmap.height())
             except Exception as e:
                 print("Error:", e)

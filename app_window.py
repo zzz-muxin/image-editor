@@ -4,12 +4,17 @@ from PyQt5.QtGui import QColor, QEnterEvent, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QFileDialog, QGraphicsScene, QGraphicsPixmapItem, QWidget, QPushButton
 
 from mainwindow import Ui_MainWindow
-from upload_image import UploadImage
-
+from upload_image import UploadImageWidget
+from graphics_view import GraphicsView
+from function_stack import FunctionStack
+from adjust_area import AdjustArea
 
 class AppWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.graphicsView = None
+        self.graphicsView_2 = None
+        self.graphicsView_3 = None
         self.setupUi(self)  # 设置ui
 
         # 定义窗口的八个边界范围，用来调整窗口大小
@@ -57,7 +62,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.effect_shadow_style(self.frame_menu)  # 设置菜单栏阴影
         self.effect_shadow_style(self.frame_function)  # 设置功能栏阴影
         self.pushButton_close.clicked.connect(self.close)  # 关闭按钮
-        self.pushButton_max.clicked.connect(self.toggle_maximize)  # 最大化（还原）按钮
+        self.pushButton_max_and_reduction.clicked.connect(self.toggle_maximize)  # 最大化（还原）按钮
         self.pushButton_min.clicked.connect(self.showMinimized)  # 最小化按钮
 
         self._init_all_widget()  # 初始化所有组件的事件
@@ -67,39 +72,75 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_crop.clicked.connect(self._init_button_crop)
         self.pushButton_rotate.clicked.connect(self._init_button_rotate)
         self.pushButton_adjust.clicked.connect(self._init_button_adjust)
-        uploader = UploadImage()
-        self.horizontalLayout_11.addWidget(uploader)  # 添加自定义的上传图片widget类
-        uploader.image.connect(self.show_image)
+
+        uploader = UploadImageWidget()
+        self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片widget类
+        uploader.imageExist.connect(self.show_image)
+
+        self.graphicsView = None
+        self.graphicsView_2 = None
+        self.graphicsView_3 = None
+        self.function_stack = FunctionStack()
+        self.adjust_area = AdjustArea()
 
     def show_image(self, pixmap):
-        scene = QGraphicsScene()
-        self.graphicsView.setScene(scene)
-        self.graphicsView_2.setScene(scene)
-        self.graphicsView_3.setScene(scene)
-        scene.addPixmap(pixmap)
-        self.main_stacked_widget.setCurrentIndex(2)
-        pass
+        self.graphicsView = GraphicsView(pixmap, self)  # 查看图片的GraphicsView
+        self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
+        self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
+        self.horizontalLayout_image_view.addWidget(self.graphicsView)
+
+        self.graphicsView_2 = GraphicsView(pixmap, self)  # 进行基本修改功能的GraphicsView
+        self.graphicsView_2.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
+        self.graphicsView_2.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
+        self.verticalLayout_basic_function.addWidget(self.graphicsView_2)
+        self.verticalLayout_basic_function.addWidget(self.function_stack)
+        # self.verticalLayout_basic_function.setStretch(0, 5)  # 设置graphicsView_2的Stretch为5
+        # self.verticalLayout_basic_function.setStretch(1, 1)  # 设置function_stack的Stretch为1
+
+        self.graphicsView_3 = GraphicsView(pixmap, self)  # 进行调整功能的GraphicsView
+        self.graphicsView_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
+        self.graphicsView_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
+        self.horizontalLayout_adjust_function.addWidget(self.graphicsView_3)
+        self.horizontalLayout_adjust_function.addWidget(self.adjust_area)
+        self.horizontalLayout_adjust_function.setStretch(0, 2)
+        self.horizontalLayout_adjust_function.setStretch(1, 1)
+        # self.verticalLayout_basic_function.setStretch(0, 0)
+        # self.verticalLayout_basic_function.setStretch(1, 1)
+        # self.graphicsView.setScene(scene)
+        # self.graphicsView_2.setScene(scene)
+        # self.graphicsView_3.setScene(scene)
+        # scene.addPixmap(pixmap)
+        self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
 
     def _init_button_adjust(self):
         # 检查graphicsView_3视图内是否存在图片
-        for item in self.graphicsView_3.items():
-            if isinstance(item, QGraphicsPixmapItem):
-                # 存在图片才跳转
-                self.main_stacked_widget.setCurrentIndex(3)
+        if self.graphicsView_3 is not None:
+            for item in self.graphicsView.items():
+                if isinstance(item, QGraphicsPixmapItem):
+                    # 存在图片才跳转
+                    self.main_stacked_widget.setCurrentIndex(3)
 
     def _init_button_rotate(self):
         # 检查graphicsView_2视图内是否存在图片
-        for item in self.graphicsView_2.items():
-            if isinstance(item, QGraphicsPixmapItem):
-                self.main_stacked_widget.setCurrentIndex(2)
-                self.basic_function_stack.setCurrentIndex(1)
+        if self.graphicsView_2 is not None:
+            for item in self.graphicsView.items():
+                if isinstance(item, QGraphicsPixmapItem):
+                    self.main_stacked_widget.setCurrentIndex(2)
+                    # self.basic_function_stack.setCurrentIndex(1)
 
     def _init_button_crop(self):
         # 检查graphicsView_2视图内是否存在图片
-        for item in self.graphicsView_2.items():
-            if isinstance(item, QGraphicsPixmapItem):
-                self.main_stacked_widget.setCurrentIndex(2)
-                self.basic_function_stack.setCurrentIndex(0)
+        if self.graphicsView_2 is not None:
+            for item in self.graphicsView.items():
+                if isinstance(item, QGraphicsPixmapItem):
+                    self.main_stacked_widget.setCurrentIndex(2)
+                    # self.basic_function_stack.setCurrentIndex(0)
+                    # if self.graphicsView_2.image_item.is_start_cut:
+                    #     self.graphicsView_2.image_item.is_start_cut = False
+                    #     self.graphicsView_2.image_item.setCursor(Qt.ArrowCursor)  # 箭头光标
+                    # else:
+                    #     self.graphicsView_2.image_item.is_start_cut = True
+                    #     self.graphicsView_2.image_item.setCursor(Qt.CrossCursor)  # 十字光标
 
     # 事件过滤器
     def eventFilter(self, obj, event):
@@ -140,18 +181,18 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def toggle_maximize(self):
         if self.isMaximized():
             self.showNormal()
-            self.pushButton_max.setMinimumSize(48, 44)
-            self.pushButton_max.setToolTip("最大化")
+            self.pushButton_max_and_reduction.setMinimumSize(48, 44)
+            self.pushButton_max_and_reduction.setToolTip("最大化")
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(":/images/icon/maximize_expand_icon.svg"))
-            self.pushButton_max.setIcon(icon)
+            self.pushButton_max_and_reduction.setIcon(icon)
         else:
             self.showMaximized()
-            self.pushButton_max.setMinimumSize(48, 44)
-            self.pushButton_max.setToolTip("恢复")
+            self.pushButton_max_and_reduction.setMinimumSize(48, 44)
+            self.pushButton_max_and_reduction.setToolTip("恢复")
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap(":/images/icon/minimize_2_reduce_icon.svg"))
-            self.pushButton_max.setIcon(icon)
+            self.pushButton_max_and_reduction.setIcon(icon)
 
     '''以下三个方法用于实现鼠标拖动窗口和改变窗口大小'''
 

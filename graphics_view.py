@@ -13,10 +13,11 @@ class GraphicsView(QGraphicsView):
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
         self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)
 
+        # 设置scene
         self.scene = QGraphicsScene()
         self.setScene(self.scene)
 
-        self.image_item = GraphicsPixmapItem(picture)
+        self.image_item = GraphicsPixmapItem(QPixmap(picture))
         self.image_item.setFlag(QGraphicsItem.ItemIsMovable)
         self.scene.addItem(self.image_item)
 
@@ -25,8 +26,8 @@ class GraphicsView(QGraphicsView):
         self.image_item.setPos(-size.width() / 2, -size.height() / 2)
         self.scale(0.1, 0.1)
 
+    # 滚轮事件
     def wheelEvent(self, event):
-        '''滚轮事件'''
         zoomInFactor = 1.25
         zoomOutFactor = 1 / zoomInFactor
 
@@ -37,8 +38,8 @@ class GraphicsView(QGraphicsView):
 
         self.scale(zoomFactor, zoomFactor)
 
+    # 鼠标释放事件
     def mouseReleaseEvent(self, event):
-        '''鼠标释放事件'''
         # print(self.image_item.is_finish_cut, self.image_item.is_start_cut)
         if self.image_item.is_finish_cut:
             self.save_signal.emit(True)
@@ -59,7 +60,7 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
 
     # 鼠标移动事件
     def mouseMoveEvent(self, event):
-        #self.setCursor(Qt.OpenHandCursor)
+        # self.setCursor(Qt.OpenHandCursor)
         self.current_point = event.pos()
         if not self.is_start_cut or self.is_midbutton:
             self.moveBy(self.current_point.x() - self.start_point.x(),
@@ -82,19 +83,22 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
             self.update()
 
     # def mouseReleaseEvent(self, event):
-        # self.setCursor(Qt.ArrowCursor)
+    # self.setCursor(Qt.ArrowCursor)
 
     def paint(self, painter, QStyleOptionGraphicsItem, QWidget):
-        super(GraphicsPixmapItem, self).paint(painter, QStyleOptionGraphicsItem, QWidget)
-        if self.is_start_cut and not self.is_midbutton:
-            # print(self.start_point, self.current_point)
-            pen = QPen(Qt.DashLine)
-            pen.setColor(QColor(0, 150, 0, 70))
-            pen.setWidth(3)
-            painter.setPen(pen)
-            painter.setBrush(QColor(0, 0, 255, 70))
-            if not self.current_point:
-                return
-            painter.drawRect(QRectF(self.start_point, self.current_point))
-            self.end_point = self.current_point
-            self.is_finish_cut = True
+        try:
+            super(GraphicsPixmapItem, self).paint(painter, QStyleOptionGraphicsItem, QWidget)
+            if self.is_start_cut:  # and not self.is_midbutton
+                # print(self.start_point, self.current_point)
+                pen = QPen(Qt.DashLine)
+                pen.setColor(QColor(0, 150, 0, 70))
+                pen.setWidth(3)
+                painter.setPen(pen)
+                painter.setBrush(QColor(255, 255, 255, 70))
+                if not self.current_point:
+                    return
+                painter.drawRect(QRectF(self.start_point, self.current_point))
+                self.end_point = self.current_point
+                self.is_finish_cut = True
+        except Exception as e:
+            print("Error:", e)

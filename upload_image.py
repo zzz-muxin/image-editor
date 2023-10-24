@@ -51,7 +51,10 @@ class UploadImageWidget(QWidget, Ui_Form):
                                          "    border: 5px dashed #ccc;\n"
                                          "    border-radius:10px;\n"
                                          "    background-color:transparent;\n"
-                                         "}\n")
+                                         "}\n"
+                                         ".QWidget#widget_upload:hover{\n"
+                                         "    background-color: rgba(0, 170, 255, 50);\n"
+                                         "}")
 
     # 重写拖放事件处理函数
     def dropEvent(self, event):

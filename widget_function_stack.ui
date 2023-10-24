@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>647</width>
     <height>86</height>
    </rect>
   </property>
@@ -28,12 +28,6 @@
    </property>
    <item>
     <widget class="QStackedWidget" name="basic_function_stack">
-     <property name="minimumSize">
-      <size>
-       <width>650</width>
-       <height>86</height>
-      </size>
-     </property>
      <property name="styleSheet">
       <string notr="true">QStackedWidget{
 	background-color:transparent;

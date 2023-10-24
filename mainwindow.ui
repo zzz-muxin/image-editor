@@ -500,54 +500,7 @@ QSlider::handle:horizontal {
               </property>
              </layout>
             </widget>
-            <widget class="QWidget" name="page_image_view">
-             <layout class="QHBoxLayout" name="horizontalLayout_image_view">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="page_basic_function">
-             <layout class="QVBoxLayout" name="verticalLayout_basic_function">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="page_adjust_function">
-             <layout class="QHBoxLayout" name="horizontalLayout_adjust_function">
-              <property name="leftMargin">
-               <number>0</number>
-              </property>
-              <property name="topMargin">
-               <number>0</number>
-              </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-             </layout>
-            </widget>
+            <widget class="QWidget" name="page_image_view"/>
            </widget>
           </item>
          </layout>

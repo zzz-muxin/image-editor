@@ -1,20 +1,20 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtCore import Qt, QPoint, QRect
 from PyQt5.QtGui import QColor, QEnterEvent, QPixmap
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QGraphicsScene, QGraphicsPixmapItem, QWidget, QPushButton
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QGraphicsScene, QGraphicsPixmapItem, QWidget, QPushButton, \
+    QVBoxLayout
 
 from mainwindow import Ui_MainWindow
 from upload_image import UploadImageWidget
-from graphics_view import GraphicsView
+from graphics_view import GraphicsView, GraphicsPixmapItem
 from function_stack import FunctionStack
 from adjust_area import AdjustArea
+
 
 class AppWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.graphicsView = None
-        self.graphicsView_2 = None
-        self.graphicsView_3 = None
         self.setupUi(self)  # 设置ui
 
         # 定义窗口的八个边界范围，用来调整窗口大小
@@ -69,6 +69,8 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 初始化所有组件的事件
     def _init_all_widget(self):
+        self.function_stack = FunctionStack()
+        self.adjust_area = AdjustArea()
         self.pushButton_crop.clicked.connect(self._init_button_crop)
         self.pushButton_rotate.clicked.connect(self._init_button_rotate)
         self.pushButton_adjust.clicked.connect(self._init_button_adjust)
@@ -77,70 +79,91 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片widget类
         uploader.imageExist.connect(self.show_image)
 
+        # 一个垂直布局套一个水平布局
+        self.horizontalLayout_adjust_view = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_adjust_view.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_adjust_view.setObjectName("horizontalLayout_adjust_view")
+        self.verticalLayout_image_view = QtWidgets.QVBoxLayout()
+        self.verticalLayout_image_view.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_image_view.setObjectName("verticalLayout_image_view")
+        self.verticalLayout_image_view.addLayout(self.horizontalLayout_adjust_view)
+        self.verticalLayout_image_view.setStretch(0, 1)
+        self.verticalLayout_image_view.addWidget(self.function_stack)
+        self.function_stack.hide()
+
         self.graphicsView = None
         self.graphicsView_2 = None
         self.graphicsView_3 = None
-        self.function_stack = FunctionStack()
-        self.adjust_area = AdjustArea()
+
 
     def show_image(self, pixmap):
         self.graphicsView = GraphicsView(pixmap, self)  # 查看图片的GraphicsView
         self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
         self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
-        self.horizontalLayout_image_view.addWidget(self.graphicsView)
+        self.page_image_view.setLayout(self.verticalLayout_image_view)  # 设置垂直布局
+        try:
+            self.horizontalLayout_adjust_view.addWidget(self.graphicsView)
+            self.horizontalLayout_adjust_view.setStretch(0, 2)
+        except Exception as e:
+            print("Error:", e)
 
-        self.graphicsView_2 = GraphicsView(pixmap, self)  # 进行基本修改功能的GraphicsView
-        self.graphicsView_2.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
-        self.graphicsView_2.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
-        self.verticalLayout_basic_function.addWidget(self.graphicsView_2)
-        self.verticalLayout_basic_function.addWidget(self.function_stack)
-        # self.verticalLayout_basic_function.setStretch(0, 5)  # 设置graphicsView_2的Stretch为5
-        # self.verticalLayout_basic_function.setStretch(1, 1)  # 设置function_stack的Stretch为1
+        #self.horizontalLayout_image_view.addWidget(self.adjust_area)
+        # self.adjust_area.hide()
+        # self.graphicsView_2 = GraphicsView(pixmap, self)  # 进行基本修改功能的GraphicsView
+        # self.graphicsView_2.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
+        # self.graphicsView_2.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
+        # self.verticalLayout_basic_function.addWidget(self.graphicsView_2)
+        # self.verticalLayout_basic_function.addWidget(self.function_stack)
+        # self.verticalLayout_basic_function.setStretch(0, 1)  # 设置垂直布局比例1:0
+        # self.verticalLayout_basic_function.setStretch(1, 0)
+        #
+        # self.graphicsView_3 = GraphicsView(pixmap, self)  # 进行调整功能的GraphicsView
+        # self.graphicsView_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
+        # self.graphicsView_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
+        # self.horizontalLayout_adjust_function.addWidget(self.graphicsView_3)
+        # self.horizontalLayout_adjust_function.addWidget(self.adjust_area)
+        # self.horizontalLayout_adjust_function.setStretch(0, 2)  # 设置水平布局比例2:1
+        # self.horizontalLayout_adjust_function.setStretch(1, 1)
 
-        self.graphicsView_3 = GraphicsView(pixmap, self)  # 进行调整功能的GraphicsView
-        self.graphicsView_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
-        self.graphicsView_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
-        self.horizontalLayout_adjust_function.addWidget(self.graphicsView_3)
-        self.horizontalLayout_adjust_function.addWidget(self.adjust_area)
-        self.horizontalLayout_adjust_function.setStretch(0, 2)
-        self.horizontalLayout_adjust_function.setStretch(1, 1)
-        # self.verticalLayout_basic_function.setStretch(0, 0)
-        # self.verticalLayout_basic_function.setStretch(1, 1)
-        # self.graphicsView.setScene(scene)
-        # self.graphicsView_2.setScene(scene)
-        # self.graphicsView_3.setScene(scene)
-        # scene.addPixmap(pixmap)
         self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
 
     def _init_button_adjust(self):
-        # 检查graphicsView_3视图内是否存在图片
-        if self.graphicsView_3 is not None:
+        # 检查graphicsView视图内是否存在图片
+        if self.graphicsView is not None:
             for item in self.graphicsView.items():
                 if isinstance(item, QGraphicsPixmapItem):
-                    # 存在图片才跳转
-                    self.main_stacked_widget.setCurrentIndex(3)
+                    # 存在图片才显示adjust_area
+                    self.main_stacked_widget.setCurrentIndex(1)
+                    self.horizontalLayout_adjust_view.addWidget(self.adjust_area)
+                    self.horizontalLayout_adjust_view.setStretch(1, 1)
+                    self.adjust_area.show()
+                    self.function_stack.hide()
 
     def _init_button_rotate(self):
-        # 检查graphicsView_2视图内是否存在图片
-        if self.graphicsView_2 is not None:
+        # 检查graphicsView视图内是否存在图片
+        if self.graphicsView is not None:
             for item in self.graphicsView.items():
                 if isinstance(item, QGraphicsPixmapItem):
-                    self.main_stacked_widget.setCurrentIndex(2)
-                    # self.basic_function_stack.setCurrentIndex(1)
+                    self.main_stacked_widget.setCurrentIndex(1)
+                    self.function_stack.basic_function_stack.setCurrentIndex(1)
+                    self.adjust_area.hide()
+                    self.function_stack.show()
 
     def _init_button_crop(self):
-        # 检查graphicsView_2视图内是否存在图片
-        if self.graphicsView_2 is not None:
+        # 检查graphicsView视图内是否存在图片
+        if self.graphicsView is not None:
             for item in self.graphicsView.items():
                 if isinstance(item, QGraphicsPixmapItem):
-                    self.main_stacked_widget.setCurrentIndex(2)
-                    # self.basic_function_stack.setCurrentIndex(0)
-                    # if self.graphicsView_2.image_item.is_start_cut:
-                    #     self.graphicsView_2.image_item.is_start_cut = False
-                    #     self.graphicsView_2.image_item.setCursor(Qt.ArrowCursor)  # 箭头光标
-                    # else:
-                    #     self.graphicsView_2.image_item.is_start_cut = True
-                    #     self.graphicsView_2.image_item.setCursor(Qt.CrossCursor)  # 十字光标
+                    self.main_stacked_widget.setCurrentIndex(1)
+                    self.function_stack.basic_function_stack.setCurrentIndex(0)
+                    if self.graphicsView.image_item.is_start_cut:
+                        self.graphicsView.image_item.is_start_cut = False
+                        self.graphicsView.image_item.setCursor(Qt.ArrowCursor)  # 箭头光标
+                    else:
+                        self.graphicsView.image_item.is_start_cut = True
+                        self.graphicsView.image_item.setCursor(Qt.CrossCursor)  # 十字光标
+                    self.adjust_area.hide()
+                    self.function_stack.show()
 
     # 事件过滤器
     def eventFilter(self, obj, event):
@@ -320,7 +343,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
                 self.setGeometry(event.globalPos().x(), self.y(), new_width, new_height)
             event.accept()
-        # 仅对于右下角的方向，可以用resize实现，更平滑
+        # 仅对于右下的方向，可以用resize实现，更平滑
         elif Qt.LeftButton and self._right_drag:
             # 右侧调整窗口宽度
             self.resize(event.pos().x(), self.height())

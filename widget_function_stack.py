@@ -14,12 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(650, 86)
+        Form.resize(647, 86)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Form)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.basic_function_stack = QtWidgets.QStackedWidget(Form)
-        self.basic_function_stack.setMinimumSize(QtCore.QSize(650, 86))
         self.basic_function_stack.setStyleSheet("QStackedWidget{\n"
 "    background-color:transparent;\n"
 "}")

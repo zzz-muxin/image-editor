@@ -69,30 +69,3 @@ class UploadImageWidget(QWidget, Ui_Form):
                 print("image size:", pixmap.width(), pixmap.height())
             except Exception as e:
                 print("Error:", e)
-
-    # # 重写拖拽文件方法
-    # def dragEnterEvent(self, event):
-    #     # 当拖拽的文件拥有url则接受拖拽调用dropEvent
-    #     if event.mineData().hasUrls():
-    #         event.acceptProposedAction()
-    #
-    # def dropEvent(self, event):
-    #     image_url = event.mimeData().urls()[0]  # 获取拖拽的第一个URL
-    #     self.pixmap = QPixmap(image_url.toLocalFile())
-    #     self.update()  # 重新绘制Widget以显示图片
-
-    # def dragEnterEvent(self, event):
-    #     if event.mimeData().hasUrls():
-    #         event.acceptProposedAction()
-    #
-    # def dropEvent(self, event):
-    #     image_url = event.mimeData().urls()[0]  # 获取拖拽的第一个URL
-    #     pixmap = QPixmap(image_url.toLocalFile())
-    #     if not pixmap.isNull():
-    #         self.image = pixmap
-    #         self.update()  # 重新绘制Widget以显示图片
-    #
-    # def paintEvent(self, event):
-    #     if self.image:
-    #         painter = QPainter(self)
-    #         painter.drawPixmap(0, 0, self.image)

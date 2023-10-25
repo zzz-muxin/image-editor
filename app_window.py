@@ -14,7 +14,6 @@ from adjust_area import AdjustArea
 class AppWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.graphicsView = None
         self.setupUi(self)  # 设置ui
 
         # 定义窗口的八个边界范围，用来调整窗口大小
@@ -65,6 +64,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_max_and_reduction.clicked.connect(self.toggle_maximize)  # 最大化（还原）按钮
         self.pushButton_min.clicked.connect(self.showMinimized)  # 最小化按钮
 
+        self.graphicsView = None  # 初始化图像显示视图
         self._init_all_widget()  # 初始化所有组件的事件
 
     # 初始化所有组件的事件
@@ -76,7 +76,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_adjust.clicked.connect(self._init_button_adjust)
 
         uploader = UploadImageWidget()
-        self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片widget类
+        self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片UploadImageWidget类
         uploader.imageExist.connect(self.show_image)
 
         # 一个垂直布局套一个水平布局
@@ -91,39 +91,13 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.verticalLayout_image_view.addWidget(self.function_stack)
         self.function_stack.hide()
 
-        self.graphicsView = None
-        self.graphicsView_2 = None
-        self.graphicsView_3 = None
-
-
     def show_image(self, pixmap):
         self.graphicsView = GraphicsView(pixmap, self)  # 查看图片的GraphicsView
         self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
         self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
         self.page_image_view.setLayout(self.verticalLayout_image_view)  # 设置垂直布局
-        try:
-            self.horizontalLayout_adjust_view.addWidget(self.graphicsView)
-            self.horizontalLayout_adjust_view.setStretch(0, 2)
-        except Exception as e:
-            print("Error:", e)
-
-        #self.horizontalLayout_image_view.addWidget(self.adjust_area)
-        # self.adjust_area.hide()
-        # self.graphicsView_2 = GraphicsView(pixmap, self)  # 进行基本修改功能的GraphicsView
-        # self.graphicsView_2.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
-        # self.graphicsView_2.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
-        # self.verticalLayout_basic_function.addWidget(self.graphicsView_2)
-        # self.verticalLayout_basic_function.addWidget(self.function_stack)
-        # self.verticalLayout_basic_function.setStretch(0, 1)  # 设置垂直布局比例1:0
-        # self.verticalLayout_basic_function.setStretch(1, 0)
-        #
-        # self.graphicsView_3 = GraphicsView(pixmap, self)  # 进行调整功能的GraphicsView
-        # self.graphicsView_3.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
-        # self.graphicsView_3.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
-        # self.horizontalLayout_adjust_function.addWidget(self.graphicsView_3)
-        # self.horizontalLayout_adjust_function.addWidget(self.adjust_area)
-        # self.horizontalLayout_adjust_function.setStretch(0, 2)  # 设置水平布局比例2:1
-        # self.horizontalLayout_adjust_function.setStretch(1, 1)
+        self.horizontalLayout_adjust_view.addWidget(self.graphicsView)  # 添加graphicsView到布局
+        self.horizontalLayout_adjust_view.setStretch(0, 2)
 
         self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
 
@@ -140,7 +114,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                     self.function_stack.hide()
 
     def _init_button_rotate(self):
-        # 检查graphicsView视图内是否存在图片
+        # 检查graphicsView视图内是否存在图元
         if self.graphicsView is not None:
             for item in self.graphicsView.items():
                 if isinstance(item, QGraphicsPixmapItem):

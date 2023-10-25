@@ -158,7 +158,7 @@ QSlider::handle:horizontal {
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
+           <y>-378</y>
            <width>301</width>
            <height>870</height>
           </rect>
@@ -180,7 +180,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_light" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_light" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_light">
                  <property name="minimumSize">
@@ -290,7 +290,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_5">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_brightness" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_brightness" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_brightness">
                  <property name="minimumSize">
@@ -394,7 +394,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_14">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_exposure" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_exposure" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_exposure">
                  <property name="minimumSize">
@@ -498,7 +498,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_contrast" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_contrast" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_contrast">
                  <property name="minimumSize">
@@ -602,7 +602,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_12">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_saturation" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_saturation" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_saturation">
                  <property name="minimumSize">
@@ -706,7 +706,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_11">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_sharp" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_sharp" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_sharp">
                  <property name="minimumSize">
@@ -810,7 +810,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_10">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_smooth" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_smooth" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_smooth">
                  <property name="minimumSize">
@@ -914,7 +914,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_9">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_temperature" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_temperature" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_temperature">
                  <property name="minimumSize">
@@ -1018,7 +1018,7 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_8">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_tone" stretch="1,5,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_tone" stretch="1,4,1">
                <item>
                 <widget class="QLabel" name="label_image_tone">
                  <property name="minimumSize">

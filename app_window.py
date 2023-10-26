@@ -38,6 +38,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
         self.move_DragPosition = None  # 鼠标拖拽坐标
         self._move_drag = False  # 鼠标拖拽窗口移动扳机
+        self.left_button_clicked = False  # 鼠标左键点击标志
 
         self._padding = 8  # 主窗口可拖拽调整大小区域宽度8px
 
@@ -49,11 +50,11 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.widget_view.setMouseTracking(True)
         self.main_stacked_widget.setMouseTracking(True)
         # 初始化事件过滤器
-        self.frame.installEventFilter(self)
-        self.frame_menu.installEventFilter(self)
-        self.frame_function.installEventFilter(self)
-        self.widget_view.installEventFilter(self)
-        self.main_stacked_widget.installEventFilter(self)
+        # self.frame.installEventFilter(self)
+        # self.frame_menu.installEventFilter(self)
+        # self.frame_function.installEventFilter(self)
+        # self.widget_view.installEventFilter(self)
+        # self.main_stacked_widget.installEventFilter(self)
         print("main window size:", self.width(), self.height())
 
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)  # 透明背景
@@ -195,6 +196,8 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 鼠标点击事件
     def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.left_button_clicked = True  # 开启鼠标左键点击标志
         # 重写鼠标点击的事件
         if (event.button() == Qt.LeftButton) and (event.pos() in self._top_rect):
             # 鼠标左键点击上侧边界区域
@@ -236,7 +239,11 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 鼠标点击释放事件
     def mouseReleaseEvent(self, event):
+        # 恢复为箭头鼠标样式
+        self.setCursor(Qt.ArrowCursor)
         # 鼠标释放后，各扳机复位
+        self.left_button_clicked = False
+
         self._top_drag = False
         self._bottom_drag = False
         self._left_drag = False
@@ -245,6 +252,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self._right_top_drag = False
         self._left_bottom_drag = False
         self._right_bottom_drag = False
+
         self._move_drag = False
 
     # 鼠标移动事件
@@ -255,34 +263,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         #     print("No child widget at ({}, {})".format(x, y))
         # else:
         #     print("Child widget at ({}, {}): {}".format(x, y, child_widget))
-        # 判断鼠标位置切换鼠标手势
-        if event.pos() in self._left_rect:
-            # 左侧边界
-            self.setCursor(Qt.SizeHorCursor)
-        elif event.pos() in self._right_rect:
-            # 右侧边界
-            self.setCursor(Qt.SizeHorCursor)
-        elif event.pos() in self._bottom_rect:
-            # 底下边界
-            self.setCursor(Qt.SizeVerCursor)
-        elif event.pos() in self._top_rect:
-            # 顶部边界
-            self.setCursor(Qt.SizeVerCursor)
-        elif event.pos() in self._left_top_rect:
-            # 左上角边界
-            self.setCursor(Qt.SizeFDiagCursor)
-        elif event.pos() in self._left_bottom_rect:
-            # 左下角边界
-            self.setCursor(Qt.SizeBDiagCursor)
-        elif event.pos() in self._right_top_rect:
-            # 右上角边界
-            self.setCursor(Qt.SizeBDiagCursor)
-        elif event.pos() in self._right_bottom_rect:
-            # 右下角边界
-            self.setCursor(Qt.SizeFDiagCursor)
-        else:
-            self.setCursor(Qt.ArrowCursor)
-
+        # 鼠标没点击时，根据光标位置设置光标样式
+        if not self.left_button_clicked:
+            self.set_cursor(event.pos())
         # 调整窗口大小
         if Qt.LeftButton and self._left_drag:
             # 左侧调整窗口宽度
@@ -334,3 +317,32 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             # 标题栏拖动窗口
             self.move(event.globalPos() - self.move_DragPosition)
             event.accept()
+
+    # 根据光标位置设置光标形状
+    def set_cursor(self, point):
+        if point in self._left_rect:
+            # 左侧边界
+            self.setCursor(Qt.SizeHorCursor)
+        elif point in self._right_rect:
+            # 右侧边界
+            self.setCursor(Qt.SizeHorCursor)
+        elif point in self._bottom_rect:
+            # 底下边界
+            self.setCursor(Qt.SizeVerCursor)
+        elif point in self._top_rect:
+            # 顶部边界
+            self.setCursor(Qt.SizeVerCursor)
+        elif point in self._left_top_rect:
+            # 左上角边界
+            self.setCursor(Qt.SizeFDiagCursor)
+        elif point in self._left_bottom_rect:
+            # 左下角边界
+            self.setCursor(Qt.SizeBDiagCursor)
+        elif point in self._right_top_rect:
+            # 右上角边界
+            self.setCursor(Qt.SizeBDiagCursor)
+        elif point in self._right_bottom_rect:
+            # 右下角边界
+            self.setCursor(Qt.SizeFDiagCursor)
+        else:
+            self.setCursor(Qt.ArrowCursor)

@@ -1,14 +1,13 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtCore import Qt, QPoint, QRect
-from PyQt5.QtGui import QColor, QEnterEvent, QPixmap
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QGraphicsScene, QGraphicsPixmapItem, QWidget, QPushButton, \
-    QVBoxLayout
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QColor, QEnterEvent
+from PyQt5.QtWidgets import QMainWindow, QGraphicsPixmapItem
 
+from adjust_area import AdjustArea
+from function_stack import FunctionStack
+from graphics_view import GraphicsView
 from mainwindow import Ui_MainWindow
 from upload_image import UploadImageWidget
-from graphics_view import GraphicsView, GraphicsPixmapItem
-from function_stack import FunctionStack
-from adjust_area import AdjustArea
 
 
 class AppWindow(QMainWindow, Ui_MainWindow):
@@ -50,11 +49,11 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.widget_view.setMouseTracking(True)
         self.main_stacked_widget.setMouseTracking(True)
         # 初始化事件过滤器
-        # self.frame.installEventFilter(self)
-        # self.frame_menu.installEventFilter(self)
-        # self.frame_function.installEventFilter(self)
-        # self.widget_view.installEventFilter(self)
-        # self.main_stacked_widget.installEventFilter(self)
+        self.frame.installEventFilter(self)
+        self.frame_menu.installEventFilter(self)
+        self.frame_function.installEventFilter(self)
+        self.widget_view.installEventFilter(self)
+        self.main_stacked_widget.installEventFilter(self)
         print("main window size:", self.width(), self.height())
 
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)  # 透明背景
@@ -78,7 +77,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
         uploader = UploadImageWidget()
         self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片UploadImageWidget类
-        uploader.imageExist.connect(self.show_image)
+        uploader.image_exist.connect(self.show_image)  # 连接到图片显示方法
 
         # 一个垂直布局套一个水平布局
         self.horizontalLayout_adjust_view = QtWidgets.QHBoxLayout()
@@ -92,6 +91,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.verticalLayout_image_view.addWidget(self.function_stack)
         self.function_stack.hide()
 
+    # 图片显示方法
     def show_image(self, pixmap):
         self.graphicsView = GraphicsView(pixmap, self)  # 查看图片的GraphicsView
         self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
@@ -100,7 +100,14 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.horizontalLayout_adjust_view.addWidget(self.graphicsView)  # 添加graphicsView到布局
         self.horizontalLayout_adjust_view.setStretch(0, 2)
 
+        self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
+
         self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
+
+    # 图片缩放比例显示方法
+    def show_label_scale(self, scale):
+        show_scale = int(scale * 100)  # 转为int
+        self.label_scale.setText(f"{show_scale: .0f}%")  # 用f-string格式化输出
 
     def _init_button_adjust(self):
         # 检查graphicsView视图内是否存在图片
@@ -131,12 +138,12 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                 if isinstance(item, QGraphicsPixmapItem):
                     self.main_stacked_widget.setCurrentIndex(1)
                     self.function_stack.basic_function_stack.setCurrentIndex(0)
-                    if self.graphicsView.image_item.is_start_cut:
-                        self.graphicsView.image_item.is_start_cut = False
-                        self.graphicsView.image_item.setCursor(Qt.ArrowCursor)  # 箭头光标
+                    if self.graphicsView.pixmap_item.is_start_cut:
+                        self.graphicsView.pixmap_item.is_start_cut = False
+                        self.graphicsView.pixmap_item.setCursor(Qt.ArrowCursor)  # 箭头光标
                     else:
-                        self.graphicsView.image_item.is_start_cut = True
-                        self.graphicsView.image_item.setCursor(Qt.CrossCursor)  # 十字光标
+                        self.graphicsView.pixmap_item.is_start_cut = True
+                        self.graphicsView.pixmap_item.setCursor(Qt.CrossCursor)  # 十字光标
                     self.adjust_area.hide()
                     self.function_stack.show()
 
@@ -194,66 +201,67 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     '''以下三个方法用于实现鼠标拖动窗口和改变窗口大小'''
 
-    # 鼠标点击事件
+    # 重写鼠标点击事件
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             self.left_button_clicked = True  # 开启鼠标左键点击标志
-        # 重写鼠标点击的事件
-        if (event.button() == Qt.LeftButton) and (event.pos() in self._top_rect):
-            # 鼠标左键点击上侧边界区域
-            self._top_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._bottom_rect):
-            # 鼠标左键点击下侧边界区域
-            self._bottom_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._left_rect):
-            # 鼠标左键点击左侧边界区域
-            self._left_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._right_rect):
-            # 鼠标左键点击右侧边界区域
-            self._right_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._left_top_rect):
-            # 鼠标左键点击左上角边界区域
-            self._left_top_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._right_bottom_rect):
-            # 鼠标左键点击右下角边界区域
-            self._right_bottom_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._right_top_rect):
-            # 鼠标左键点击右上角边界区域
-            self._right_top_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.pos() in self._left_bottom_rect):
-            # 鼠标左键点击左下角边界区域
-            self._left_bottom_drag = True
-            event.accept()
-        elif (event.button() == Qt.LeftButton) and (event.y() < self.frame_menu.height()):
-            # 鼠标左键点击标题栏区域
-            self._move_drag = True
-            self.move_DragPosition = event.globalPos() - self.pos()
-            event.accept()
+            if event.pos() in self._top_rect:
+                # 鼠标左键点击上侧边界区域
+                self._top_drag = True
+                event.accept()
+            elif event.pos() in self._bottom_rect:
+                # 鼠标左键点击下侧边界区域
+                self._bottom_drag = True
+                event.accept()
+            elif event.pos() in self._left_rect:
+                # 鼠标左键点击左侧边界区域
+                self._left_drag = True
+                event.accept()
+            elif event.pos() in self._right_rect:
+                # 鼠标左键点击右侧边界区域
+                self._right_drag = True
+                event.accept()
+            elif event.pos() in self._left_top_rect:
+                # 鼠标左键点击左上角边界区域
+                self._left_top_drag = True
+                event.accept()
+            elif event.pos() in self._right_bottom_rect:
+                # 鼠标左键点击右下角边界区域
+                self._right_bottom_drag = True
+                event.accept()
+            elif event.pos() in self._right_top_rect:
+                # 鼠标左键点击右上角边界区域
+                self._right_top_drag = True
+                event.accept()
+            elif event.pos() in self._left_bottom_rect:
+                # 鼠标左键点击左下角边界区域
+                self._left_bottom_drag = True
+                event.accept()
+            elif event.y() < self.frame_menu.height():
+                # 鼠标左键点击标题栏区域
+                self._move_drag = True
+                self.move_DragPosition = event.globalPos() - self.pos()
+                event.accept()
 
     # 鼠标点击释放事件
     def mouseReleaseEvent(self, event):
         # 恢复为箭头鼠标样式
         self.setCursor(Qt.ArrowCursor)
-        # 鼠标释放后，各扳机复位
-        self.left_button_clicked = False
+        if event.button() == Qt.LeftButton:
+            # 鼠标释放后各扳机复位
+            self.left_button_clicked = False
 
-        self._top_drag = False
-        self._bottom_drag = False
-        self._left_drag = False
-        self._right_drag = False
-        self._left_top_drag = False
-        self._right_top_drag = False
-        self._left_bottom_drag = False
-        self._right_bottom_drag = False
+            self._top_drag = False
+            self._bottom_drag = False
+            self._left_drag = False
+            self._right_drag = False
+            self._left_top_drag = False
+            self._right_top_drag = False
+            self._left_bottom_drag = False
+            self._right_bottom_drag = False
 
-        self._move_drag = False
+            self._move_drag = False
+        event.accept()
 
     # 鼠标移动事件
     def mouseMoveEvent(self, event):
@@ -265,61 +273,62 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         #     print("Child widget at ({}, {}): {}".format(x, y, child_widget))
         # 鼠标没点击时，根据光标位置设置光标样式
         if not self.left_button_clicked:
-            self.set_cursor(event.pos())
+            self._set_cursor(event.pos())
         # 调整窗口大小
-        if Qt.LeftButton and self._left_drag:
-            # 左侧调整窗口宽度
-            new_width = self.width() + (self.x() - event.globalPos().x())
-            if new_width >= self.minimumWidth():
-                self.setGeometry(event.globalPos().x(), self.y(), new_width, self.height())
-            event.accept()
-        elif Qt.LeftButton and self._top_drag:
-            # 顶部调整窗口高度
-            new_height = self.height() + (self.y() - event.globalPos().y())
-            if new_height >= self.minimumHeight():
-                self.setGeometry(self.x(), event.globalPos().y(), self.width(), new_height)
-            event.accept()
-        elif Qt.LeftButton and self._left_top_drag:
-            # 左上角调整窗口大小
-            new_width = self.width() + (self.x() - event.globalPos().x())
-            new_height = self.height() + (self.y() - event.globalPos().y())
-            if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
-                self.setGeometry(event.globalPos().x(), event.globalPos().y(), new_width, new_height)
-            event.accept()
-        elif Qt.LeftButton and self._right_top_drag:
-            # 右上角调整窗口大小
-            new_width = event.globalPos().x() - self.x()
-            new_height = self.height() + (self.y() - event.globalPos().y())
-            if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
-                self.setGeometry(self.x(), event.globalPos().y(), new_width, new_height)
-            event.accept()
-        elif Qt.LeftButton and self._left_bottom_drag:
-            # 左下角调整窗口大小
-            new_width = self.width() + (self.x() - event.globalPos().x())
-            new_height = event.globalPos().y() - self.y()
-            if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
-                self.setGeometry(event.globalPos().x(), self.y(), new_width, new_height)
-            event.accept()
-        # 仅对于右下的方向，可以用resize实现，更平滑
-        elif Qt.LeftButton and self._right_drag:
-            # 右侧调整窗口宽度
-            self.resize(event.pos().x(), self.height())
-            event.accept()
-        elif Qt.LeftButton and self._bottom_drag:
-            # 底部调整窗口高度
-            self.resize(self.width(), event.pos().y())
-            event.accept()
-        elif Qt.LeftButton and self._right_bottom_drag:
-            # 右下角同时调整高度和宽度
-            self.resize(event.pos().x(), event.pos().y())
-            event.accept()
-        elif Qt.LeftButton and self._move_drag:
-            # 标题栏拖动窗口
-            self.move(event.globalPos() - self.move_DragPosition)
-            event.accept()
+        if Qt.LeftButton:
+            if self._left_drag:
+                # 左侧调整窗口宽度
+                new_width = self.width() + (self.x() - event.globalPos().x())
+                if new_width >= self.minimumWidth():
+                    self.setGeometry(event.globalPos().x(), self.y(), new_width, self.height())
+                event.accept()
+            elif self._top_drag:
+                # 顶部调整窗口高度
+                new_height = self.height() + (self.y() - event.globalPos().y())
+                if new_height >= self.minimumHeight():
+                    self.setGeometry(self.x(), event.globalPos().y(), self.width(), new_height)
+                event.accept()
+            elif self._left_top_drag:
+                # 左上角调整窗口大小
+                new_width = self.width() + (self.x() - event.globalPos().x())
+                new_height = self.height() + (self.y() - event.globalPos().y())
+                if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
+                    self.setGeometry(event.globalPos().x(), event.globalPos().y(), new_width, new_height)
+                event.accept()
+            elif self._right_top_drag:
+                # 右上角调整窗口大小
+                new_width = event.globalPos().x() - self.x()
+                new_height = self.height() + (self.y() - event.globalPos().y())
+                if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
+                    self.setGeometry(self.x(), event.globalPos().y(), new_width, new_height)
+                event.accept()
+            elif self._left_bottom_drag:
+                # 左下角调整窗口大小
+                new_width = self.width() + (self.x() - event.globalPos().x())
+                new_height = event.globalPos().y() - self.y()
+                if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
+                    self.setGeometry(event.globalPos().x(), self.y(), new_width, new_height)
+                event.accept()
+            # 仅对于右下的方向，可以用resize实现，更平滑
+            elif self._right_drag:
+                # 右侧调整窗口宽度
+                self.resize(event.pos().x(), self.height())
+                event.accept()
+            elif self._bottom_drag:
+                # 底部调整窗口高度
+                self.resize(self.width(), event.pos().y())
+                event.accept()
+            elif self._right_bottom_drag:
+                # 右下角同时调整高度和宽度
+                self.resize(event.pos().x(), event.pos().y())
+                event.accept()
+            elif self._move_drag:
+                # 标题栏拖动窗口
+                self.move(event.globalPos() - self.move_DragPosition)
+                event.accept()
 
     # 根据光标位置设置光标形状
-    def set_cursor(self, point):
+    def _set_cursor(self, point):
         if point in self._left_rect:
             # 左侧边界
             self.setCursor(Qt.SizeHorCursor)

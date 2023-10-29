@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'widget_upload_image.ui'
+# Form implementation generated from reading ui file 'ui_xml/widget_upload_image.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #

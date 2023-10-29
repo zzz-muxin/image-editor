@@ -266,7 +266,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/zoom_in_icon.svg</normaloff>:/images/icon/zoom_in_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -301,7 +301,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/zoom_out_icon.svg</normaloff>:/images/icon/zoom_out_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -312,6 +312,22 @@ QSlider::handle:horizontal {
               </property>
               <property name="flat">
                <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_scale">
+              <property name="font">
+               <font>
+                <family>Microsoft YaHei</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel{
+	background-color:transparent;
+	color:rgb(255, 255, 255);
+}</string>
               </property>
              </widget>
             </item>
@@ -358,7 +374,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/minus_delete_remove_icon.svg</normaloff>:/images/icon/minus_delete_remove_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -397,7 +413,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/maximize_expand_icon.svg</normaloff>
                 <normalon>:/images/icon/minimize_2_reduce_icon.svg</normalon>:/images/icon/maximize_expand_icon.svg</iconset>
               </property>
@@ -440,7 +456,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/close_icon.svg</normaloff>:/images/icon/close_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -558,7 +574,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/undo_line_icon.svg</normaloff>:/images/icon/undo_line_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -612,7 +628,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/redo_line_icon.svg</normaloff>:/images/icon/redo_line_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -666,7 +682,7 @@ QSlider::handle:horizontal {
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/circulate_icon.svg</normaloff>:/images/icon/circulate_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -725,7 +741,7 @@ background-color: transparent;</string>
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/crop_icon.svg</normaloff>:/images/icon/crop_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -779,7 +795,7 @@ background-color: transparent;</string>
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/rotate_cw_icon.svg</normaloff>:/images/icon/rotate_cw_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -833,7 +849,7 @@ background-color: transparent;</string>
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/curve_adjustment_icon.svg</normaloff>:/images/icon/curve_adjustment_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -887,7 +903,7 @@ background-color: transparent;</string>
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/face_smile_icon.svg</normaloff>:/images/icon/face_smile_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -941,7 +957,7 @@ background-color: transparent;</string>
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/type_text_icon.svg</normaloff>:/images/icon/type_text_icon.svg</iconset>
               </property>
               <property name="iconSize">
@@ -995,7 +1011,7 @@ background-color: transparent;</string>
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="resources.qrc">
+               <iconset resource="../resources.qrc">
                 <normaloff>:/images/icon/adjust_control_con.svg</normaloff>:/images/icon/adjust_control_con.svg</iconset>
               </property>
               <property name="iconSize">
@@ -1021,7 +1037,7 @@ background-color: transparent;</string>
   </widget>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'widget_adjust_area.ui'
+# Form implementation generated from reading ui file 'ui_xml/widget_adjust_area.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -138,7 +138,7 @@ class Ui_Form(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -378, 301, 870))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 301, 870))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_15.setObjectName("verticalLayout_15")

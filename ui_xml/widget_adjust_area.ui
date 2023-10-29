@@ -158,7 +158,7 @@ QSlider::handle:horizontal {
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-378</y>
+           <y>0</y>
            <width>301</width>
            <height>870</height>
           </rect>
@@ -1116,7 +1116,7 @@ QSlider::handle:horizontal {
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections>
   <connection>

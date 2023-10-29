@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mainwindow.ui'
+# Form implementation generated from reading ui file 'ui_xml/main_window.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -204,6 +204,17 @@ class Ui_MainWindow(object):
         self.pushButton_zoom_out.setFlat(True)
         self.pushButton_zoom_out.setObjectName("pushButton_zoom_out")
         self.horizontalLayout_scale.addWidget(self.pushButton_zoom_out)
+        self.label_scale = QtWidgets.QLabel(self.frame_menu)
+        font = QtGui.QFont()
+        font.setFamily("Microsoft YaHei")
+        font.setPointSize(9)
+        self.label_scale.setFont(font)
+        self.label_scale.setStyleSheet("QLabel{\n"
+"    background-color:transparent;\n"
+"    color:rgb(255, 255, 255);\n"
+"}")
+        self.label_scale.setObjectName("label_scale")
+        self.horizontalLayout_scale.addWidget(self.label_scale)
         self.horizontalLayout_10.addLayout(self.horizontalLayout_scale)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_10.addItem(spacerItem1)

@@ -2,11 +2,11 @@ from PyQt5.QtCore import Qt, pyqtSignal
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QWidget, QFileDialog
 
-from widget_upload_image import Ui_Form
+from ui_py.widget_upload_image import Ui_Form
 
 
 class UploadImageWidget(QWidget, Ui_Form):
-    imageExist = pyqtSignal(QPixmap)  # 上传图片时传递信号
+    image_exist = pyqtSignal(QPixmap)  # 上传图片时传递信号
 
     def __init__(self):
         super().__init__()
@@ -25,7 +25,7 @@ class UploadImageWidget(QWidget, Ui_Form):
             if file_name:
                 try:
                     self.pixmap = QPixmap(file_name)
-                    self.imageExist.emit(self.pixmap)  # 发射信号，传递加载的图片
+                    self.image_exist.emit(self.pixmap)  # 发射信号，传递加载的图片
                     print("image size:", self.pixmap.width(), self.pixmap.height())
                 except Exception as e:
                     print("Error:", e)
@@ -65,7 +65,7 @@ class UploadImageWidget(QWidget, Ui_Form):
             try:
                 pixmap = QPixmap(file_name)
                 self.pixmap = pixmap
-                self.imageExist.emit(pixmap)  # 发射信号，传递加载的图片
+                self.image_exist.emit(pixmap)  # 发射信号，传递加载的图片
                 print("image size:", pixmap.width(), pixmap.height())
             except Exception as e:
                 print("Error:", e)

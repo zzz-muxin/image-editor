@@ -5,30 +5,33 @@ from PyQt5.QtWidgets import QGraphicsItem
 
 # 裁剪框类
 class CropBox(QGraphicsItem):
-    def __init__(self, pos, size, limit_rect, parent):
+    def __init__(self, size, limit_rect, parent):
         try:
             super().__init__()
-            self.setParentItem(parent)
-            self.size = QSizeF(size)
-            self.centerPen = QPen(Qt.gray, 2)
-            self.centerBrush = QBrush(QColor(10, 10, 10, 100))
-            self.cornerPen = QPen(Qt.black, 2)
-            self.cornerSize = QSizeF(10, 10)  # 顶点尺寸
+            self.setParentItem(parent)  # 设置父QGraphicsPixmapItem
+            self.size = QSizeF(size)  # 设置size为父Item中pixmap的大小
+            self.minSize = QSizeF(50, 50)  # 裁剪框最小尺寸
+            self.limitRect = limit_rect  # 限制大小在pixmap中
+            self.PEN_RATIO = 1 / 100
+            self.pen_size = int(max(self.size.width(), self.size.height()) * self.PEN_RATIO)
+
+            self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
+            self.cornerPen = QPen(Qt.black, self.pen_size)  # 四个顶点的笔
+            self.cornerSize = QSizeF(self.pen_size * 5, self.pen_size * 5)  # 顶点尺寸
             self.cornerFix = None
             self.refreshCornerFix()
             self.cornerBrush = QBrush(Qt.white)
 
-            self.dragFlag = None
-            self.dragDiff = None
-            self.minSize = QSizeF(30, 30)  # 裁剪框最小尺寸30 * 30
-            self.limitRect = limit_rect  # 限制大小在pixmap_item中
+            self.dragFlag = None  # 拖拽的方向标志
+            self.dragDiff = None  # 拖拽的坐标
 
-            self.setPos(pos)
+            #self.setPos(self.mapToParent(self.itemTopRight()))
+            #print(self.pos.x(), self.pos.y())
             self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
         except Exception as e:
             print("Error:", e)
 
-    # four corner rect in item
+    # 四个corner的rect
     def centerRect(self):
         return QRectF(self.itemTopLeft(), QSizeF(self.size))
 
@@ -44,7 +47,7 @@ class CropBox(QGraphicsItem):
     def bottomRightCornerRect(self):
         return QRectF(self.itemBottomRight() - self.cornerFix, self.cornerSize)
 
-    # four corner point position in item
+    # 矩形的四个顶点坐标
     def itemTopLeft(self):
         return QPointF(0, 0)
 
@@ -57,10 +60,8 @@ class CropBox(QGraphicsItem):
     def itemBottomRight(self):
         return QPointF(self.size.width(), self.size.height())
 
-    # four corner point position in scene
+    # 四个顶点的坐标映射到父坐标系中
     def parentTopLeft(self):
-        # todo
-        #print(self.mapToScene(self.itemTopLeft()).x(), (self.mapToScene(self.itemTopLeft()).y()))
         return self.mapToParent(self.itemTopLeft())
 
     def parentTopRight(self):
@@ -72,8 +73,6 @@ class CropBox(QGraphicsItem):
     def parentBottomRight(self):
         return self.mapToParent(self.itemBottomRight())
 
-    #def parentItem(self):
-
     def refreshCornerFix(self):
         self.cornerFix = QPointF(self.cornerSize.width() / 2, self.cornerSize.height() / 2)
 
@@ -84,19 +83,34 @@ class CropBox(QGraphicsItem):
         except Exception as e:
             print("Error:", e)
 
+    # 绘制裁剪框
     def paint(self, painter, option, widget=None):
         try:
-            # draw center rect
+            # 绘制中心的矩形
             painter.setPen(self.centerPen)
-            painter.setBrush(self.centerBrush)
             painter.drawRect(self.centerRect())
 
-            # draw all four corner rect
+            # 绘制裁剪框内部虚线
+            pen = QPen(QColor(255, 255, 255), self.pen_size, Qt.DashLine)  # 白色，笔宽1，虚线
+            painter.setPen(pen)
+            # 绘制2条垂直虚线
+            for i in range(1, 3):
+                width = self.getWidth() // 3
+                height = self.getHeight()
+                painter.drawLine(int(i * width), 0, int(i * width), int(height))
+            # 绘制2条水平虚线
+            for i in range(1, 3):
+                width = self.getWidth()
+                height = self.getHeight() // 3
+                painter.drawLine(0, int(i * height), int(width), int(i * height))
+
+            # 绘制四个顶点的矩形
             painter.setPen(self.cornerPen)
             painter.setBrush(self.cornerBrush)
             cornerXRadius = self.cornerFix.x()
             cornerYRadius = self.cornerFix.y()
 
+            # 使用圆角矩形绘制
             painter.drawRoundedRect(self.topLeftCornerRect(), cornerXRadius, cornerYRadius)  # top left
             painter.drawRoundedRect(self.topRightCornerRect(), cornerXRadius, cornerYRadius)  # top right
             painter.drawRoundedRect(self.bottomLeftCornerRect(), cornerXRadius, cornerYRadius)  # bottom left
@@ -127,23 +141,19 @@ class CropBox(QGraphicsItem):
             if self.topLeftCornerRect().contains(mousePressPos):
                 self.dragFlag = "TOP_LEFT"
                 self.dragDiff = event.scenePos() - self.parentTopLeft()
-                return
-            if self.topRightCornerRect().contains(mousePressPos):
+            elif self.topRightCornerRect().contains(mousePressPos):
                 self.dragFlag = "TOP_RIGHT"
                 self.dragDiff = event.scenePos() - self.parentTopRight()
-                return
-            if self.bottomLeftCornerRect().contains(mousePressPos):
+            elif self.bottomLeftCornerRect().contains(mousePressPos):
                 self.dragFlag = "BOTTOM_LEFT"
                 self.dragDiff = event.scenePos() - self.parentBottomLeft()
-                return
-            if self.bottomRightCornerRect().contains(mousePressPos):
+            elif self.bottomRightCornerRect().contains(mousePressPos):
                 self.dragFlag = "BOTTOM_RIGHT"
                 self.dragDiff = event.scenePos() - self.parentBottomRight()
-                return
-            if self.centerRect().contains(mousePressPos):
+            elif self.centerRect().contains(mousePressPos):
                 self.dragFlag = "CENTER"
                 self.dragDiff = event.scenePos() - self.parentTopLeft()
-                return
+            #event.accept()
         except Exception as e:
             print("Error:", e)
 
@@ -157,9 +167,10 @@ class CropBox(QGraphicsItem):
             yMaxLimit = yMinLimit + self.limitRect.height()
             minWidth = self.minSize.width()
             minHeight = self.minSize.height()
-            self.prepareGeometryChange()
+            self.prepareGeometryChange()  # 预备重新绘制裁剪框
             match self.dragFlag:
                 case "TOP_LEFT":
+                    # 左上角拖拽
                     parentTopLeft = mouseMovePos - self.dragDiff
                     parentBottomRight = self.parentBottomRight()
 
@@ -173,6 +184,7 @@ class CropBox(QGraphicsItem):
                     self.size = QSizeF(parentBottomRight.x() - curTLX, parentBottomRight.y() - curTLY)
 
                 case "TOP_RIGHT":
+                    # 右上角拖拽
                     parentTopRight = mouseMovePos - self.dragDiff
                     parentBottomLeft = self.parentBottomLeft()
 
@@ -186,6 +198,7 @@ class CropBox(QGraphicsItem):
                     self.size = QSizeF(curTRX - parentBottomLeft.x(), parentBottomLeft.y() - curTRY)
 
                 case "BOTTOM_LEFT":
+                    # 左下角拖拽
                     parentBottomLeft = mouseMovePos - self.dragDiff
                     parentTopRight = self.parentTopRight()
 
@@ -199,6 +212,7 @@ class CropBox(QGraphicsItem):
                     self.size = QSizeF(parentTopRight.x() - curBLX, curBLY - parentTopRight.y())
 
                 case "BOTTOM_RIGHT":
+                    # 右下角拖拽
                     parentBottomRight = mouseMovePos - self.dragDiff
                     parentTopLeft = self.parentTopLeft()
 
@@ -212,6 +226,7 @@ class CropBox(QGraphicsItem):
                     self.size = QSizeF(curBRX - parentTopLeft.x(), curBRY - parentTopLeft.y())
 
                 case "CENTER":
+                    # 中心区域进行移动
                     parentTopLeft = mouseMovePos - self.dragDiff
 
                     curTLX = parentTopLeft.x() if parentTopLeft.x() > xMinLimit else xMinLimit
@@ -220,7 +235,8 @@ class CropBox(QGraphicsItem):
                     curTLY = curTLY if curTLY + self.size.height() < yMaxLimit else yMaxLimit - self.size.height()
 
                     self.setPos(QPointF(curTLX, curTLY))
-            self.update()
+            self.update()  # 更新绘制
+            event.accept()
         except Exception as e:
             print("Error:", e)
 
@@ -231,6 +247,7 @@ class CropBox(QGraphicsItem):
             if event.button() == Qt.LeftButton:
                 print("鼠标在SelectionBox里松开了！")
                 self.dragFlag = None
+                event.accept()
         except Exception as e:
             print("Error:", e)
 
@@ -279,31 +296,7 @@ class CropBox(QGraphicsItem):
     #         self.draw_border()
     #         #self.setParentItem(parent)
     #
-    #         # 定义窗口的八个边界范围，用来调整窗口大小
-    #         self._top_rect = None  # 顶部
-    #         self._bottom_rect = None  # 底部
-    #         self._left_rect = None  # 左侧
-    #         self._right_rect = None  # 右侧
-    #         self._left_top_rect = None  # 左上角
-    #         self._right_top_rect = None  # 右上角
-    #         self._left_bottom_rect = None  # 左下角
-    #         self._right_bottom_rect = None  # 右下角
-    #
-    #         # 设置八个方向的鼠标拖拽放缩判断扳机默认值
-    #         self._top_drag = False
-    #         self._bottom_drag = False
-    #         self._left_drag = False
-    #         self._right_drag = False
-    #         self._left_top_drag = False
-    #         self._right_top_drag = False
-    #         self._left_bottom_drag = False
-    #         self._right_bottom_drag = False
-    #         self._move_drag = False  # 鼠标拖拽移动扳机
-    #         self.move_DragPosition = None  # 裁剪框拖拽坐标
-    #
-    #         self._padding = 8  # widget可拖拽调整大小区域宽度8px
-    #     except Exception as e:
-    #         print("Error:", e)
+
     #
     # # 绘制事件
     # # def paintEvent(self, event):
@@ -317,179 +310,9 @@ class CropBox(QGraphicsItem):
     # #     except Exception as e:
     # #         print("Error:paintEvent", e)
     #
-    # def resizeEvent(self, event):
-    #     # 重新调整边界范围以备实现鼠标拖放缩放窗口大小，采用八个列表生成式生成八个坐标范围
-    #     self._left_rect = [QPoint(x, y) for x in range(1, self._padding + 1)
-    #                        for y in range(self._padding + 1, self.height() - self._padding)]
-    #     self._right_rect = [QPoint(x, y) for x in range(self.width() - self._padding, self.width() + 1)
-    #                         for y in range(self._padding + 1, self.height() - self._padding)]
-    #     self._top_rect = [QPoint(x, y) for x in range(self._padding + 1, self.width() - self._padding)
-    #                       for y in range(1, self._padding + 1)]
-    #     self._bottom_rect = [QPoint(x, y) for x in range(self._padding + 1, self.width() - self._padding)
-    #                          for y in range(self.height() - self._padding, self.height() + 1)]
-    #     self._right_bottom_rect = [QPoint(x, y) for x in range(self.width() - self._padding, self.width() + 1)
-    #                                for y in range(self.height() - self._padding, self.height() + 1)]
-    #     self._left_bottom_rect = [QPoint(x, y) for x in range(1, self._padding + 1)
-    #                               for y in range(self.height() - self._padding, self.height() + 1)]
-    #     self._right_top_rect = [QPoint(x, y) for x in range(self.width() - self._padding, self.width() + 1)
-    #                             for y in range(1, self._padding + 1)]
-    #     self._left_top_rect = [QPoint(x, y) for x in range(1, self._padding + 1)
-    #                            for y in range(1, self._padding + 1)]
     #
-    # # 重写鼠标点击事件
-    # def mousePressEvent(self, event):
-    #     # 鼠标左键按下
-    #     if event.button() == Qt.LeftButton:
-    #         self.left_button_clicked = True  # 开启鼠标左键点击标志
-    #         if event.pos() in self._top_rect:
-    #             # 鼠标左键点击上侧边界区域
-    #             self._top_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._bottom_rect:
-    #             # 鼠标左键点击下侧边界区域
-    #             self._bottom_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._left_rect:
-    #             # 鼠标左键点击左侧边界区域
-    #             self._left_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._right_rect:
-    #             # 鼠标左键点击右侧边界区域
-    #             self._right_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._left_top_rect:
-    #             # 鼠标左键点击左上角边界区域
-    #             self._left_top_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._right_bottom_rect:
-    #             # 鼠标左键点击右下角边界区域
-    #             self._right_bottom_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._right_top_rect:
-    #             # 鼠标左键点击右上角边界区域
-    #             self._right_top_drag = True
-    #             event.accept()
-    #         elif event.pos() in self._left_bottom_rect:
-    #             # 鼠标左键点击左下角边界区域
-    #             self._left_bottom_drag = True
-    #             event.accept()
-    #         else:
-    #             # 鼠标点击中间区域，进行移动
-    #             self._move_drag = True  # 开启移动拖拽标志
-    #             # 鼠标点击时的全局坐标 - 裁切框的左上角坐标 = 裁剪框的初始拖拽坐标
-    #             self.move_DragPosition = event.globalPos() - self.pos()
-    #             self.setCursor(Qt.ClosedHandCursor)
-    #             event.accept()
     #
-    # # 重写鼠标释放事件
-    # def mouseReleaseEvent(self, event):
-    #     if event.button() == Qt.LeftButton:
-    #         if self.cursor() == Qt.ClosedHandCursor:
-    #             self.setCursor(Qt.OpenHandCursor)
-    #         # 鼠标释放后各扳机复位
-    #         self.left_button_clicked = False  # 关闭裁剪框被点击标志
-    #
-    #         self._top_drag = False
-    #         self._bottom_drag = False
-    #         self._left_drag = False
-    #         self._right_drag = False
-    #         self._left_top_drag = False
-    #         self._right_top_drag = False
-    #         self._left_bottom_drag = False
-    #         self._right_bottom_drag = False
-    #
-    #         self._move_drag = False
-    #     event.accept()
-    #
-    # # 重写鼠标移动事件
-    # def mouseMoveEvent(self, event):
-    #     point = event.pos()  # 获取鼠标相对于裁切框的坐标
-    #     parent_point = self.mapToParent(point)  # 将鼠标事件的局部坐标映射到父级坐标系中的坐标
-    #     # 鼠标没点击时，根据光标位置设置光标样式
-    #     if not self.left_button_clicked:
-    #         self._set_cursor(event.pos())
-    #     # 调整窗口大小
-    #     if Qt.LeftButton:
-    #         if self._left_drag:
-    #             # 左侧调整窗口宽度
-    #             new_width = self.width() + (self.x() - event.globalPos().x())
-    #             if new_width >= self.minimumWidth():
-    #                 self.setGeometry(event.globalPos().x(), self.y(), new_width, self.height())
-    #             event.accept()
-    #         elif self._top_drag:
-    #             # 顶部调整窗口高度
-    #             new_height = self.height() + (self.y() - event.globalPos().y())
-    #             if new_height >= self.minimumHeight():
-    #                 self.setGeometry(self.x(), event.globalPos().y(), self.width(), new_height)
-    #             event.accept()
-    #         elif self._left_top_drag:
-    #             # 左上角调整窗口大小
-    #             new_width = self.width() + (self.x() - event.globalPos().x())
-    #             new_height = self.height() + (self.y() - event.globalPos().y())
-    #             if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
-    #                 self.setGeometry(event.globalPos().x(), event.globalPos().y(), new_width, new_height)
-    #             event.accept()
-    #         elif self._right_top_drag:
-    #             # 右上角调整窗口大小
-    #             new_width = event.globalPos().x() - self.x()
-    #             new_height = self.height() + (self.y() - event.globalPos().y())
-    #             if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
-    #                 self.setGeometry(self.x(), event.globalPos().y(), new_width, new_height)
-    #             event.accept()
-    #         elif self._left_bottom_drag:
-    #             # 左下角调整窗口大小
-    #             new_width = self.width() + (self.x() - event.globalPos().x())
-    #             new_height = event.globalPos().y() - self.y()
-    #             if new_width >= self.minimumWidth() and new_height >= self.minimumHeight():
-    #                 self.setGeometry(event.globalPos().x(), self.y(), new_width, new_height)
-    #             event.accept()
-    #         # 仅对于右下的方向，可以用resize实现，更平滑
-    #         elif self._right_drag:
-    #             # 右侧调整窗口宽度
-    #             self.resize(event.pos().x(), self.height())
-    #             event.accept()
-    #         elif self._bottom_drag:
-    #             # 底部调整窗口高度
-    #             self.resize(self.width(), event.pos().y())
-    #             event.accept()
-    #         elif self._right_bottom_drag:
-    #             # 右下角同时调整高度和宽度
-    #             self.resize(event.pos().x(), event.pos().y())
-    #             event.accept()
-    #         elif self._move_drag:
-    #             # 拖动窗口
-    #             self.move(event.globalPos() - self.move_DragPosition)
-    #             event.accept()
-    #
-    # # 根据光标位置设置光标样式
-    # def _set_cursor(self, point):
-    #     if point in self._left_rect:
-    #         # 左侧边界
-    #         self.setCursor(Qt.SizeHorCursor)
-    #     elif point in self._right_rect:
-    #         # 右侧边界
-    #         self.setCursor(Qt.SizeHorCursor)
-    #     elif point in self._bottom_rect:
-    #         # 底下边界
-    #         self.setCursor(Qt.SizeVerCursor)
-    #     elif point in self._top_rect:
-    #         # 顶部边界
-    #         self.setCursor(Qt.SizeVerCursor)
-    #     elif point in self._left_top_rect:
-    #         # 左上角边界
-    #         self.setCursor(Qt.SizeFDiagCursor)
-    #     elif point in self._left_bottom_rect:
-    #         # 左下角边界
-    #         self.setCursor(Qt.SizeBDiagCursor)
-    #     elif point in self._right_top_rect:
-    #         # 右上角边界
-    #         self.setCursor(Qt.SizeBDiagCursor)
-    #     elif point in self._right_bottom_rect:
-    #         # 右下角边界
-    #         self.setCursor(Qt.SizeFDiagCursor)
-    #     else:
-    #         self.setCursor(Qt.OpenHandCursor)
-    #
+
     # # 绘制裁剪框边框实线
     # def draw_border(self):
     #     try:

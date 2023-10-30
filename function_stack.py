@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 
-from widget_function_stack import Ui_Form
+from ui_py.widget_function_stack import Ui_Form
 
 
 class FunctionStack(QWidget, Ui_Form):

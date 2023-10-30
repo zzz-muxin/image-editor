@@ -1,12 +1,13 @@
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QColor, QEnterEvent
-from PyQt5.QtWidgets import QMainWindow, QGraphicsPixmapItem
+from PyQt5.QtGui import QColor, QEnterEvent, QTransform
+from PyQt5.QtWidgets import QMainWindow, QGraphicsPixmapItem, QGraphicsItem
 
 from adjust_area import AdjustArea
+from crop_box import CropBox
 from function_stack import FunctionStack
-from graphics_view import GraphicsView
-from mainwindow import Ui_MainWindow
+from graphics_view import GraphicsView, GraphicsPixmapItem
+from ui_py.main_window import Ui_MainWindow
 from upload_image import UploadImageWidget
 
 
@@ -106,8 +107,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 图片缩放比例显示方法
     def show_label_scale(self, scale):
-        show_scale = int(scale * 100)  # 转为int
-        self.label_scale.setText(f"{show_scale: .0f}%")  # 用f-string格式化输出
+        self.label_scale.setText(f"{scale * 100: .1f}%")  # 用f-string格式化输出
 
     def _init_button_adjust(self):
         # 检查graphicsView视图内是否存在图片
@@ -126,26 +126,48 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         if self.graphicsView is not None:
             for item in self.graphicsView.items():
                 if isinstance(item, QGraphicsPixmapItem):
+                    # try:
+                    #     self.function_stack.slider_rotate.valueChanged.connect(self.rotate)
+                    # except Exception as e:
+                    #     print("Error:", e)
                     self.main_stacked_widget.setCurrentIndex(1)
                     self.function_stack.basic_function_stack.setCurrentIndex(1)
                     self.adjust_area.hide()
                     self.function_stack.show()
 
+    # def rotate(self, value):
+    #     try:
+    #         pixmap = self.graphicsView.pixmap_item.pixmap()
+    #         transform = QTransform().rotate(value)
+    #         transformed_pixmap = pixmap.transformed(transform)
+    #         self.graphicsView.pixmap_item.setPixmap(transformed_pixmap)
+    #     except Exception as e:
+    #         print("Error:", e)
+
     def _init_button_crop(self):
-        # 检查graphicsView视图内是否存在图片
+        crop_box_exist = False
+        # 检查graphicsView是否初始化
         if self.graphicsView is not None:
             for item in self.graphicsView.items():
-                if isinstance(item, QGraphicsPixmapItem):
-                    self.main_stacked_widget.setCurrentIndex(1)
-                    self.function_stack.basic_function_stack.setCurrentIndex(0)
-                    if self.graphicsView.pixmap_item.is_start_cut:
-                        self.graphicsView.pixmap_item.is_start_cut = False
-                        self.graphicsView.pixmap_item.setCursor(Qt.ArrowCursor)  # 箭头光标
-                    else:
-                        self.graphicsView.pixmap_item.is_start_cut = True
-                        self.graphicsView.pixmap_item.setCursor(Qt.CrossCursor)  # 十字光标
+                # 检查graphicsView内是否存在图元
+                if isinstance(item, GraphicsPixmapItem):
+                    self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图page
+                    self.function_stack.basic_function_stack.setCurrentIndex(0)  # 跳转到裁剪功能page
                     self.adjust_area.hide()
                     self.function_stack.show()
+                # 检查graphicsView内是否已存在裁剪框
+                if isinstance(item, CropBox):
+                    crop_box_exist = True
+            # 不存在裁剪框则新建
+            if not crop_box_exist:
+                self.graphicsView.add_crop_box()
+                # if self.graphicsView.pixmap_item.is_start_cut:
+                #     self.graphicsView.pixmap_item.is_start_cut = False
+                #     self.graphicsView.pixmap_item.setCursor(Qt.ArrowCursor)  # 箭头光标
+                # else:
+                #     self.graphicsView.pixmap_item.is_start_cut = True
+                #     self.graphicsView.pixmap_item.setCursor(Qt.CrossCursor)  # 十字光标
+
 
     # 事件过滤器
     def eventFilter(self, obj, event):

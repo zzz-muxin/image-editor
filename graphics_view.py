@@ -1,4 +1,4 @@
-from PyQt5.QtCore import QRectF, Qt, pyqtSignal, QRect
+from PyQt5.QtCore import QRectF, Qt, pyqtSignal, QRect, QPointF, QSizeF
 from PyQt5.QtGui import QColor, QPixmap, QPen, QPainterPath, QPainter, QTransform
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsPixmapItem, QGraphicsScene, QGraphicsItem
 
@@ -11,8 +11,8 @@ class GraphicsView(QGraphicsView):
 
     def __init__(self, pixmap, parent=None):
         super(GraphicsView, self).__init__(parent)
-        self.setTransformationAnchor(QGraphicsView.AnchorViewCenter)  # 设置缩放或旋转基于视图中心调整
-        self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)  # 设置视图放大缩小时基于鼠标点调整
+        # self.setTransformationAnchor(QGraphicsView.AnchorViewCenter)  # 设置缩放或旋转基于视图中心调整
+        # self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)  # 设置视图放大缩小时基于鼠标点调整
 
         # 设置scene
         self.scene = QGraphicsScene()
@@ -21,7 +21,7 @@ class GraphicsView(QGraphicsView):
         self.pixmap_item = GraphicsPixmapItem(pixmap)  # 设置图元内图像
         self.pixmap_item.setFlag(QGraphicsItem.ItemIsMovable)  # 设置允许拖动图元改变位置
         self.scene.addItem(self.pixmap_item)  # 添加图元到场景
-        self.min_ratio = None  # 最小缩放倍数（动态设置）
+        self.min_ratio = None  # 最小缩放倍数（根据图片大小动态设置）
         self.max_ratio = 50.00  # 最大缩放倍数5000倍
         self.cur_scale_ratio = None  # 当前缩放倍数
 
@@ -32,15 +32,15 @@ class GraphicsView(QGraphicsView):
         # self.image_item.setPos(size.width() / 2, size.height() / 2)
         # self.scale(0.1, 0.1)
 
-        self.add_new_crop_box()
+        # self.add_new_crop_box()
 
-    def add_new_crop_box(self):
+    def add_crop_box(self):
         try:
             self.scene.addItem(
                 CropBox(
-                    pos=self.pixmap_item.pos(),
                     size=self.pixmap_item.pixmap().rect().size(),
-                    limit_rect=QRectF(self.pixmap_item.pixmap().rect())
+                    limit_rect=QRectF(self.pixmap_item.pixmap().rect()),
+                    parent=self.pixmap_item
                 )
             )
         except Exception as e:
@@ -61,7 +61,6 @@ class GraphicsView(QGraphicsView):
             if self.cur_scale_ratio * zoom_in_factor < self.max_ratio:
                 zoom_factor = zoom_in_factor
                 self.cur_scale_ratio *= zoom_in_factor
-                self.cur_scale_ratio = round(self.cur_scale_ratio, 2)  # 保留两位小数
             else:
                 zoom_factor = self.max_ratio / self.cur_scale_ratio
                 self.cur_scale_ratio = self.max_ratio
@@ -71,7 +70,6 @@ class GraphicsView(QGraphicsView):
             if self.cur_scale_ratio * zoom_out_factor > self.min_ratio:
                 zoom_factor = zoom_out_factor
                 self.cur_scale_ratio *= zoom_out_factor
-                self.cur_scale_ratio = round(self.cur_scale_ratio, 2)  # 保留两位小数
             else:
                 zoom_factor = self.min_ratio / self.cur_scale_ratio
                 self.cur_scale_ratio = self.min_ratio
@@ -93,7 +91,7 @@ class GraphicsView(QGraphicsView):
         x_ratio = pixmap_size.width() / parent_widget_size.width()
         y_ratio = pixmap_size.height() / parent_widget_size.height()
 
-        target_ratio = 2 / 3  # 目标比例为2/3，即图片占整个窗口2/3大小
+        target_ratio = 2 / 5  # 缩放目标比例
         # 计算缩放比例，根据不同情况缩小视图
         if x_ratio > target_ratio or y_ratio > target_ratio:
             scale_ratio = target_ratio / max(x_ratio, y_ratio)
@@ -122,17 +120,30 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
     # 鼠标移动事件
     def mouseMoveEvent(self, event):
         self.current_point = event.pos()
-        if not self.is_start_cut:
-            #self.setCursor(Qt.ClosedHandCursor)
-            self.moveBy(self.current_point.x() - self.start_point.x(),
-                        self.current_point.y() - self.start_point.y())
-            self.is_finish_cut = False
+        # if not self.is_start_cut:
+        #     # self.setCursor(Qt.ClosedHandCursor)
+        self.moveBy(self.current_point.x() - self.start_point.x(),
+                    self.current_point.y() - self.start_point.y())
+        # 移动图元时更新裁剪框位置和状态
+        # for item in self.scene().items():
+        #     if isinstance(item, CropBox):
+        #         try:
+        #             # 重新设置裁剪框大小和位置
+        #             box_point = QPointF(self.pos())
+        #             box_size = QSizeF(item.getWidth(), item.getHeight())
+        #             item.setState(box_point, box_size)
+        #             # 重新设置裁剪框限制大小的矩形位置
+        #             limit_box = QRectF(self.pixmap().rect())
+        #             item.setLimit(self.mapRectToScene(limit_box))
+        #         except Exception as e:
+        #             print("Error:", e)
+        # self.is_finish_cut = False
         self.update()
 
     # 鼠标按压事件
     def mousePressEvent(self, event):
         super(GraphicsPixmapItem, self).mousePressEvent(event)
-        #self.setCursor(Qt.OpenHandCursor)
+        # self.setCursor(Qt.OpenHandCursor)
         self.start_point = event.pos()
         self.current_point = None
         self.is_finish_cut = False
@@ -153,7 +164,6 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
                 self.setCursor(Qt.OpenHandCursor)
         except Exception as e:
             print("Error:", e)
-
 
     # def paint(self, painter, option, widget):
     #     try:

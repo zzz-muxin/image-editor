@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget
 
-from widget_adjust_area import Ui_Form
+from ui_py.widget_adjust_area import Ui_Form
 
 
 class AdjustArea(QWidget, Ui_Form):

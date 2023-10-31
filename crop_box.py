@@ -14,6 +14,7 @@ class CropBox(QGraphicsItem):
             self.limitRect = limit_rect  # 限制大小在pixmap中
             self.PEN_RATIO = 1 / 100
             self.pen_size = int(max(self.size.width(), self.size.height()) * self.PEN_RATIO)
+            print("pen size:", self.pen_size)
 
             self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
             self.cornerPen = QPen(Qt.black, self.pen_size)  # 四个顶点的笔
@@ -76,7 +77,7 @@ class CropBox(QGraphicsItem):
     def refreshCornerFix(self):
         self.cornerFix = QPointF(self.cornerSize.width() / 2, self.cornerSize.height() / 2)
 
-    # 可调整大小区域
+    # 可调整大小区域圆点
     def boundingRect(self):
         try:
             return QRectF(-self.cornerFix, QSizeF(self.size) + self.cornerSize)
@@ -88,6 +89,7 @@ class CropBox(QGraphicsItem):
         try:
             # 绘制中心的矩形
             painter.setPen(self.centerPen)
+            painter.setBrush(QBrush(QColor(10, 10, 10, 100)))
             painter.drawRect(self.centerRect())
 
             # 绘制裁剪框内部虚线
@@ -104,7 +106,7 @@ class CropBox(QGraphicsItem):
                 height = self.getHeight() // 3
                 painter.drawLine(0, int(i * height), int(width), int(i * height))
 
-            # 绘制四个顶点的矩形
+            # 绘制四个顶点
             painter.setPen(self.cornerPen)
             painter.setBrush(self.cornerBrush)
             cornerXRadius = self.cornerFix.x()

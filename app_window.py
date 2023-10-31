@@ -139,7 +139,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     #     try:
     #         pixmap = self.graphicsView.pixmap_item.pixmap()
     #         transform = QTransform().rotate(value)
-    #         transformed_pixmap = pixmap.transformed(transform)
+    #         transformed_pixmap = pixmap.transformed(transform, mode=Qt.SmoothTransformation)
     #         self.graphicsView.pixmap_item.setPixmap(transformed_pixmap)
     #     except Exception as e:
     #         print("Error:", e)

@@ -11,7 +11,7 @@ class GraphicsView(QGraphicsView):
 
     def __init__(self, pixmap, parent=None):
         super(GraphicsView, self).__init__(parent)
-        # self.setTransformationAnchor(QGraphicsView.AnchorViewCenter)  # 设置缩放或旋转基于视图中心调整
+        self.setTransformationAnchor(QGraphicsView.NoAnchor)  # 设置缩放或旋转基于视图中心调整
         # self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)  # 设置视图放大缩小时基于鼠标点调整
 
         # 设置scene
@@ -74,6 +74,7 @@ class GraphicsView(QGraphicsView):
                 zoom_factor = self.min_ratio / self.cur_scale_ratio
                 self.cur_scale_ratio = self.min_ratio
         self.scale(zoom_factor, zoom_factor)
+        print(self.cur_scale_ratio)
         self.scale_signal.emit(self.cur_scale_ratio)  # 发射图片缩放信号
 
     # 鼠标释放事件
@@ -91,10 +92,10 @@ class GraphicsView(QGraphicsView):
         x_ratio = pixmap_size.width() / parent_widget_size.width()
         y_ratio = pixmap_size.height() / parent_widget_size.height()
 
-        target_ratio = 2 / 5  # 缩放目标比例
+        TARGET_RATIO = 2 / 5  # 缩放目标比例
         # 计算缩放比例，根据不同情况缩小视图
-        if x_ratio > target_ratio or y_ratio > target_ratio:
-            scale_ratio = target_ratio / max(x_ratio, y_ratio)
+        if x_ratio > TARGET_RATIO or y_ratio > TARGET_RATIO:
+            scale_ratio = TARGET_RATIO / max(x_ratio, y_ratio)
         else:
             scale_ratio = 1.0  # 不需要缩放
         self.scale(scale_ratio, scale_ratio)

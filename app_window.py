@@ -1,3 +1,5 @@
+import functools
+
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QColor, QEnterEvent, QTransform
@@ -9,7 +11,7 @@ from function_stack import FunctionStack
 from graphics_view import GraphicsView, GraphicsPixmapItem
 from ui_py.main_window import Ui_MainWindow
 from upload_image import UploadImageWidget
-
+from tools.crop import Crop
 
 class AppWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -126,23 +128,11 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         if self.graphicsView is not None:
             for item in self.graphicsView.items():
                 if isinstance(item, QGraphicsPixmapItem):
-                    # try:
-                    #     self.function_stack.slider_rotate.valueChanged.connect(self.rotate)
-                    # except Exception as e:
-                    #     print("Error:", e)
                     self.main_stacked_widget.setCurrentIndex(1)
                     self.function_stack.basic_function_stack.setCurrentIndex(1)
                     self.adjust_area.hide()
                     self.function_stack.show()
 
-    # def rotate(self, value):
-    #     try:
-    #         pixmap = self.graphicsView.pixmap_item.pixmap()
-    #         transform = QTransform().rotate(value)
-    #         transformed_pixmap = pixmap.transformed(transform, mode=Qt.SmoothTransformation)
-    #         self.graphicsView.pixmap_item.setPixmap(transformed_pixmap)
-    #     except Exception as e:
-    #         print("Error:", e)
 
     def _init_button_crop(self):
         crop_box_exist = False
@@ -161,13 +151,16 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             # 不存在裁剪框则新建
             if not crop_box_exist:
                 self.graphicsView.add_crop_box()
-                # if self.graphicsView.pixmap_item.is_start_cut:
-                #     self.graphicsView.pixmap_item.is_start_cut = False
-                #     self.graphicsView.pixmap_item.setCursor(Qt.ArrowCursor)  # 箭头光标
-                # else:
-                #     self.graphicsView.pixmap_item.is_start_cut = True
-                #     self.graphicsView.pixmap_item.setCursor(Qt.CrossCursor)  # 十字光标
+                self.function_stack.pushButton_apply.clicked.connect(self.crop_image)  # 裁剪完成按钮
+                self.function_stack.pushButton_cancel.clicked.connect(self.graphicsView.delete_crop_box)  # 取消裁剪按钮
 
+
+    def crop_image(self):
+        pixmap = self.graphicsView.pixmap_item.pixmap()
+        rect = self.graphicsView.crop_box.parentRect()
+        pixmap_cropped = Crop.crop_image(pixmap, rect)
+        self.graphicsView.pixmap_item.setPixmap(pixmap_cropped)
+        self.graphicsView.crop_box.updateState()
 
     # 事件过滤器
     def eventFilter(self, obj, event):

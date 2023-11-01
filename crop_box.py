@@ -1,18 +1,19 @@
 from PyQt5.QtCore import Qt, QSizeF, QRectF, QPointF
 from PyQt5.QtGui import QPen, QColor, QBrush
-from PyQt5.QtWidgets import QGraphicsItem
+from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPixmapItem
 
 
 # 裁剪框类
 class CropBox(QGraphicsItem):
-    def __init__(self, size, limit_rect, parent):
+    def __init__(self, parent: QGraphicsPixmapItem):
         try:
             super().__init__()
+            self.parent = parent
             self.setParentItem(parent)  # 设置父QGraphicsPixmapItem
-            self.size = QSizeF(size)  # 设置size为父Item中pixmap的大小
+            self.size = QSizeF(parent.pixmap().size())  # 设置size为父Item中pixmap的大小
             self.minSize = QSizeF(50, 50)  # 裁剪框最小尺寸
-            self.limitRect = limit_rect  # 限制大小在pixmap中
-            self.PEN_RATIO = 1 / 100
+            self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在pixmap中
+            self.PEN_RATIO = 1 / 100  # 设置裁剪框笔的大小为图片大小的1/100
             self.pen_size = int(max(self.size.width(), self.size.height()) * self.PEN_RATIO)
             print("pen size:", self.pen_size)
 
@@ -25,9 +26,8 @@ class CropBox(QGraphicsItem):
 
             self.dragFlag = None  # 拖拽的方向标志
             self.dragDiff = None  # 拖拽的坐标
+            self.scale_original = 0
 
-            #self.setPos(self.mapToParent(self.itemTopRight()))
-            #print(self.pos.x(), self.pos.y())
             self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
         except Exception as e:
             print("Error:", e)
@@ -74,6 +74,10 @@ class CropBox(QGraphicsItem):
     def parentBottomRight(self):
         return self.mapToParent(self.itemBottomRight())
 
+    # 获取裁剪区域在parentItem中的矩形
+    def parentRect(self):
+        return self.mapRectToParent(self.centerRect())
+
     def refreshCornerFix(self):
         self.cornerFix = QPointF(self.cornerSize.width() / 2, self.cornerSize.height() / 2)
 
@@ -89,7 +93,6 @@ class CropBox(QGraphicsItem):
         try:
             # 绘制中心的矩形
             painter.setPen(self.centerPen)
-            painter.setBrush(QBrush(QColor(10, 10, 10, 100)))
             painter.drawRect(self.centerRect())
 
             # 绘制裁剪框内部虚线
@@ -111,7 +114,6 @@ class CropBox(QGraphicsItem):
             painter.setBrush(self.cornerBrush)
             cornerXRadius = self.cornerFix.x()
             cornerYRadius = self.cornerFix.y()
-
             # 使用圆角矩形绘制
             painter.drawRoundedRect(self.topLeftCornerRect(), cornerXRadius, cornerYRadius)  # top left
             painter.drawRoundedRect(self.topRightCornerRect(), cornerXRadius, cornerYRadius)  # top right
@@ -138,120 +140,108 @@ class CropBox(QGraphicsItem):
 
     # 重写鼠标点击事件
     def mousePressEvent(self, event):
-        try:
-            mousePressPos = event.pos()
-            if self.topLeftCornerRect().contains(mousePressPos):
-                self.dragFlag = "TOP_LEFT"
-                self.dragDiff = event.scenePos() - self.parentTopLeft()
-            elif self.topRightCornerRect().contains(mousePressPos):
-                self.dragFlag = "TOP_RIGHT"
-                self.dragDiff = event.scenePos() - self.parentTopRight()
-            elif self.bottomLeftCornerRect().contains(mousePressPos):
-                self.dragFlag = "BOTTOM_LEFT"
-                self.dragDiff = event.scenePos() - self.parentBottomLeft()
-            elif self.bottomRightCornerRect().contains(mousePressPos):
-                self.dragFlag = "BOTTOM_RIGHT"
-                self.dragDiff = event.scenePos() - self.parentBottomRight()
-            elif self.centerRect().contains(mousePressPos):
-                self.dragFlag = "CENTER"
-                self.dragDiff = event.scenePos() - self.parentTopLeft()
-            #event.accept()
-        except Exception as e:
-            print("Error:", e)
+        mousePressPos = event.pos()
+        if self.topLeftCornerRect().contains(mousePressPos):
+            self.dragFlag = "TOP_LEFT"
+            self.dragDiff = event.scenePos() - self.parentTopLeft()
+        elif self.topRightCornerRect().contains(mousePressPos):
+            self.dragFlag = "TOP_RIGHT"
+            self.dragDiff = event.scenePos() - self.parentTopRight()
+        elif self.bottomLeftCornerRect().contains(mousePressPos):
+            self.dragFlag = "BOTTOM_LEFT"
+            self.dragDiff = event.scenePos() - self.parentBottomLeft()
+        elif self.bottomRightCornerRect().contains(mousePressPos):
+            self.dragFlag = "BOTTOM_RIGHT"
+            self.dragDiff = event.scenePos() - self.parentBottomRight()
+        elif self.centerRect().contains(mousePressPos):
+            self.dragFlag = "CENTER"
+            self.dragDiff = event.scenePos() - self.parentTopLeft()
+        event.accept()
 
     # 重写鼠标移动事件
     def mouseMoveEvent(self, event):
-        try:
-            mouseMovePos = event.scenePos()
-            xMinLimit = self.limitRect.x()
-            xMaxLimit = xMinLimit + self.limitRect.width()
-            yMinLimit = self.limitRect.y()
-            yMaxLimit = yMinLimit + self.limitRect.height()
-            minWidth = self.minSize.width()
-            minHeight = self.minSize.height()
-            self.prepareGeometryChange()  # 预备重新绘制裁剪框
-            match self.dragFlag:
-                case "TOP_LEFT":
-                    # 左上角拖拽
-                    parentTopLeft = mouseMovePos - self.dragDiff
-                    parentBottomRight = self.parentBottomRight()
+        mouseMovePos = event.scenePos()
+        xMinLimit = self.limitRect.x()
+        xMaxLimit = xMinLimit + self.limitRect.width()
+        yMinLimit = self.limitRect.y()
+        yMaxLimit = yMinLimit + self.limitRect.height()
+        minWidth = self.minSize.width()
+        minHeight = self.minSize.height()
+        self.prepareGeometryChange()  # 预备重新绘制裁剪框
+        match self.dragFlag:
+            case "TOP_LEFT":
+                # 左上角拖拽
+                parentTopLeft = mouseMovePos - self.dragDiff
+                parentBottomRight = self.parentBottomRight()
 
-                    curTLX = parentTopLeft.x() if parentTopLeft.x() > xMinLimit else xMinLimit
-                    curTLX = curTLX if parentBottomRight.x() - curTLX > minWidth else parentBottomRight.x() - minWidth
+                curTLX = parentTopLeft.x() if parentTopLeft.x() > xMinLimit else xMinLimit
+                curTLX = curTLX if parentBottomRight.x() - curTLX > minWidth else parentBottomRight.x() - minWidth
 
-                    curTLY = parentTopLeft.y() if parentTopLeft.y() > yMinLimit else yMinLimit
-                    curTLY = curTLY if parentBottomRight.y() - curTLY > minHeight else parentBottomRight.y() - minHeight
+                curTLY = parentTopLeft.y() if parentTopLeft.y() > yMinLimit else yMinLimit
+                curTLY = curTLY if parentBottomRight.y() - curTLY > minHeight else parentBottomRight.y() - minHeight
 
-                    self.setPos(QPointF(curTLX, curTLY))
-                    self.size = QSizeF(parentBottomRight.x() - curTLX, parentBottomRight.y() - curTLY)
+                self.setPos(QPointF(curTLX, curTLY))
+                self.size = QSizeF(parentBottomRight.x() - curTLX, parentBottomRight.y() - curTLY)
 
-                case "TOP_RIGHT":
-                    # 右上角拖拽
-                    parentTopRight = mouseMovePos - self.dragDiff
-                    parentBottomLeft = self.parentBottomLeft()
+            case "TOP_RIGHT":
+                # 右上角拖拽
+                parentTopRight = mouseMovePos - self.dragDiff
+                parentBottomLeft = self.parentBottomLeft()
 
-                    curTRX = parentTopRight.x() if parentTopRight.x() < xMaxLimit else xMaxLimit
-                    curTRX = curTRX if curTRX - parentBottomLeft.x() > minWidth else parentBottomLeft.x() + minWidth
+                curTRX = parentTopRight.x() if parentTopRight.x() < xMaxLimit else xMaxLimit
+                curTRX = curTRX if curTRX - parentBottomLeft.x() > minWidth else parentBottomLeft.x() + minWidth
 
-                    curTRY = parentTopRight.y() if parentTopRight.y() > yMinLimit else yMinLimit
-                    curTRY = curTRY if parentBottomLeft.y() - curTRY > minHeight else parentBottomLeft.y() - minHeight
+                curTRY = parentTopRight.y() if parentTopRight.y() > yMinLimit else yMinLimit
+                curTRY = curTRY if parentBottomLeft.y() - curTRY > minHeight else parentBottomLeft.y() - minHeight
 
-                    self.setPos(QPointF(parentBottomLeft.x(), curTRY))
-                    self.size = QSizeF(curTRX - parentBottomLeft.x(), parentBottomLeft.y() - curTRY)
+                self.setPos(QPointF(parentBottomLeft.x(), curTRY))
+                self.size = QSizeF(curTRX - parentBottomLeft.x(), parentBottomLeft.y() - curTRY)
 
-                case "BOTTOM_LEFT":
-                    # 左下角拖拽
-                    parentBottomLeft = mouseMovePos - self.dragDiff
-                    parentTopRight = self.parentTopRight()
+            case "BOTTOM_LEFT":
+                # 左下角拖拽
+                parentBottomLeft = mouseMovePos - self.dragDiff
+                parentTopRight = self.parentTopRight()
 
-                    curBLX = parentBottomLeft.x() if parentBottomLeft.x() > xMinLimit else xMinLimit
-                    curBLX = curBLX if parentTopRight.x() - curBLX > minWidth else parentTopRight.x() - minWidth
+                curBLX = parentBottomLeft.x() if parentBottomLeft.x() > xMinLimit else xMinLimit
+                curBLX = curBLX if parentTopRight.x() - curBLX > minWidth else parentTopRight.x() - minWidth
 
-                    curBLY = parentBottomLeft.y() if parentBottomLeft.y() < yMaxLimit else yMaxLimit
-                    curBLY = curBLY if curBLY - parentTopRight.y() > minHeight else parentTopRight.y() + minHeight
+                curBLY = parentBottomLeft.y() if parentBottomLeft.y() < yMaxLimit else yMaxLimit
+                curBLY = curBLY if curBLY - parentTopRight.y() > minHeight else parentTopRight.y() + minHeight
 
-                    self.setPos(QPointF(curBLX, parentTopRight.y()))
-                    self.size = QSizeF(parentTopRight.x() - curBLX, curBLY - parentTopRight.y())
+                self.setPos(QPointF(curBLX, parentTopRight.y()))
+                self.size = QSizeF(parentTopRight.x() - curBLX, curBLY - parentTopRight.y())
 
-                case "BOTTOM_RIGHT":
-                    # 右下角拖拽
-                    parentBottomRight = mouseMovePos - self.dragDiff
-                    parentTopLeft = self.parentTopLeft()
+            case "BOTTOM_RIGHT":
+                # 右下角拖拽
+                parentBottomRight = mouseMovePos - self.dragDiff
+                parentTopLeft = self.parentTopLeft()
 
-                    curBRX = parentBottomRight.x() if parentBottomRight.x() < xMaxLimit else xMaxLimit
-                    curBRX = curBRX if curBRX - parentTopLeft.x() > minWidth else parentTopLeft.x() + minWidth
+                curBRX = parentBottomRight.x() if parentBottomRight.x() < xMaxLimit else xMaxLimit
+                curBRX = curBRX if curBRX - parentTopLeft.x() > minWidth else parentTopLeft.x() + minWidth
 
-                    curBRY = parentBottomRight.y() if parentBottomRight.y() < yMaxLimit else yMaxLimit
-                    curBRY = curBRY if curBRY - parentTopLeft.y() > minHeight else parentTopLeft.y() + minHeight
+                curBRY = parentBottomRight.y() if parentBottomRight.y() < yMaxLimit else yMaxLimit
+                curBRY = curBRY if curBRY - parentTopLeft.y() > minHeight else parentTopLeft.y() + minHeight
 
-                    self.setPos(parentTopLeft)
-                    self.size = QSizeF(curBRX - parentTopLeft.x(), curBRY - parentTopLeft.y())
+                self.setPos(parentTopLeft)
+                self.size = QSizeF(curBRX - parentTopLeft.x(), curBRY - parentTopLeft.y())
 
-                case "CENTER":
-                    # 中心区域进行移动
-                    parentTopLeft = mouseMovePos - self.dragDiff
+            case "CENTER":
+                # 中心区域进行移动
+                parentTopLeft = mouseMovePos - self.dragDiff
 
-                    curTLX = parentTopLeft.x() if parentTopLeft.x() > xMinLimit else xMinLimit
-                    curTLX = curTLX if curTLX + self.size.width() < xMaxLimit else xMaxLimit - self.size.width()
-                    curTLY = parentTopLeft.y() if parentTopLeft.y() > yMinLimit else yMinLimit
-                    curTLY = curTLY if curTLY + self.size.height() < yMaxLimit else yMaxLimit - self.size.height()
+                curTLX = parentTopLeft.x() if parentTopLeft.x() > xMinLimit else xMinLimit
+                curTLX = curTLX if curTLX + self.size.width() < xMaxLimit else xMaxLimit - self.size.width()
+                curTLY = parentTopLeft.y() if parentTopLeft.y() > yMinLimit else yMinLimit
+                curTLY = curTLY if curTLY + self.size.height() < yMaxLimit else yMaxLimit - self.size.height()
 
-                    self.setPos(QPointF(curTLX, curTLY))
-            self.update()  # 更新绘制
-            event.accept()
-        except Exception as e:
-            print("Error:", e)
+                self.setPos(QPointF(curTLX, curTLY))
+        self.update()  # 更新绘制
+        event.accept()
 
     # 重写鼠标释放事件
     def mouseReleaseEvent(self, event):
-        print("test")
-        try:
-            if event.button() == Qt.LeftButton:
-                print("鼠标在SelectionBox里松开了！")
-                self.dragFlag = None
-                event.accept()
-        except Exception as e:
-            print("Error:", e)
+        self.dragFlag = None
+        event.accept()
 
     def setState(self, pos, size):
         try:
@@ -260,11 +250,17 @@ class CropBox(QGraphicsItem):
         except Exception as e:
             print("Error:", e)
 
+    def updateState(self):
+        self.prepareGeometryChange()
+        self.setPos(0, 0)
+        self.limitRect = QRectF(self.parent.pixmap().rect())
+        self.update()
+
     def setSize(self, size):
         self.size = QSizeF(size)
 
-    def setLimit(self, limit: QRectF):
-        self.limitRect = limit
+    def setLimit(self, limit_rect: QRectF):
+        self.limitRect = limit_rect
 
     def getState(self):
         return self.pos(), self.size
@@ -284,64 +280,6 @@ class CropBox(QGraphicsItem):
     def getHeight(self):
         return self.size.height()
 
-
-            # def __init__(self, pixmap, parent=None):
-    #     try:
-    #         super().__init__(parent)
-    #         # self.min_width = 80  # 最小宽度
-    #         # self.min_height = 80  # 最小高度
-    #         self.left_button_clicked = False  # 裁剪框被鼠标左键点击标志
-    #         # self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)  # 透明背景
-    #         #self.setWindowFlags(Qt.FramelessWindowHint)  # 隐藏系统边框
-    #         #self.setMouseTracking(True)  # 开启鼠标追踪
-    #         self.pixmap = pixmap
-    #         self.draw_border()
-    #         #self.setParentItem(parent)
-    #
-
-    #
-    # # 绘制事件
-    # # def paintEvent(self, event):
-    # #     try:
-    # #         print("CropBox paint!")
-    # #         painter = QPainter(self)
-    # #         self.draw_internal_lines(painter)  # 绘制裁剪框内部虚线
-    # #         self.draw_border(painter)  # 绘制裁剪框边框实线
-    # #         # self.draw_border_points(painter)  # 绘制边框上八个方向的顶点
-    # #         # self.draw_size_text(painter)  # 绘制当前裁剪框像素大小文本
-    # #     except Exception as e:
-    # #         print("Error:paintEvent", e)
-    #
-    #
-    #
-
-    # # 绘制裁剪框边框实线
-    # def draw_border(self):
-    #     try:
-    #         print("draw_border")
-    #         # painter = QPainter(self)
-    #         rect = QRectF(self.pixmap.rect())
-    #         pen = QPen(QColor(3, 125, 203), 5)  # 笔线宽5个像素
-    #         # painter.setPen(pen)
-    #         # painter.drawRect(rect)
-    #         self.path = QPainterPath()
-    #         self.path.addRect(rect)
-    #         self.setPath(self.path)
-    #     except Exception as e:
-    #         print("Error: draw_border", e)
-    #
-    # # 绘制边框上八个方向的顶点
-    # def draw_border_points(self, painter):
-    #     pen = QPen(QColor(3, 125, 203), 5)  # 笔线宽5个像素
-    #     painter.setPen(pen)
-    #     painter.drawPoint(2, 2)  # 左上角
-    #     painter.drawPoint(self.width() // 2, 2)  # 顶部
-    #     painter.drawPoint(self.width() - 2, 2)  # 右上角
-    #     painter.drawPoint(2, self.height() // 2)  # 左侧
-    #     painter.drawPoint(2, self.height() - 2)  # 左下角
-    #     painter.drawPoint(self.width() - 2, self.height() // 2)  # 右侧
-    #     painter.drawPoint(self.width() - 2, self.height() - 2)  # 右下角
-    #     painter.drawPoint(self.width() // 2, self.height() - 2)  # 底部
     #
     # # 绘制裁剪框内部虚线
     # def draw_internal_lines(self, painter):
@@ -374,5 +312,3 @@ class CropBox(QGraphicsItem):
     #     rect = QRectF(top_left, size)
     #     option = QTextOption()  # 文本垂直方向居中对齐，水平方向右对齐
     #     painter.drawText(rect, size_text, option)
-
-

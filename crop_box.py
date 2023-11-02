@@ -11,10 +11,10 @@ class CropBox(QGraphicsItem):
             self.parent = parent
             self.setParentItem(parent)  # 设置父QGraphicsPixmapItem
             self.size = QSizeF(parent.pixmap().size())  # 设置size为父Item中pixmap的大小
-            self.minSize = QSizeF(50, 50)  # 裁剪框最小尺寸
+            self.minSize = QSizeF(1, 1)  # 裁剪框最小尺寸
             self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在pixmap中
             self.PEN_RATIO = 1 / 100  # 设置裁剪框笔的大小为图片大小的1/100
-            self.pen_size = int(max(self.size.width(), self.size.height()) * self.PEN_RATIO)
+            self.pen_size = self.set_pen_size()
             print("pen size:", self.pen_size)
 
             self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
@@ -31,6 +31,13 @@ class CropBox(QGraphicsItem):
             self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
         except Exception as e:
             print("Error:", e)
+
+    def set_pen_size(self):
+        pen_size = max(self.size.width(), self.size.height()) * self.PEN_RATIO
+        if pen_size > 0:
+            return pen_size
+        else:
+            return 1
 
     # 四个corner的rect
     def centerRect(self):
@@ -77,6 +84,10 @@ class CropBox(QGraphicsItem):
     # 获取裁剪区域在parentItem中的矩形
     def parentRect(self):
         return self.mapRectToParent(self.centerRect())
+
+    # 获取裁剪框左上角点在场景中的位置
+    def getSceneTopLeft(self):
+        return self.mapToScene(self.itemTopLeft())
 
     def refreshCornerFix(self):
         self.cornerFix = QPointF(self.cornerSize.width() / 2, self.cornerSize.height() / 2)

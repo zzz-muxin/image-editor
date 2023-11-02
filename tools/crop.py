@@ -1,6 +1,6 @@
-import cv2 as cv
+import cv2
 import numpy as np
-from PyQt5.QtCore import QRect
+from PyQt5.QtCore import QRectF
 from PyQt5.QtGui import QPixmap
 
 from tools.image_format import ImageFormat
@@ -11,8 +11,9 @@ class Crop:
         pass
 
     # 用QRect裁剪QPixmap
+    # 裁剪实际上只是拷贝某块区域的像素
     @staticmethod
-    def crop_image(pixmap: QPixmap, rect: QRect):
+    def crop_image(pixmap: QPixmap, rect: QRectF):
         x = int(rect.x())
         y = int(rect.y())
         width = int(rect.width())

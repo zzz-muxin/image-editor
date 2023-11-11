@@ -26,7 +26,6 @@ class CropBox(QGraphicsItem):
 
             self.dragFlag = None  # 拖拽的方向标志
             self.dragDiff = None  # 拖拽的坐标
-            self.scale_original = 0
 
             self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
         except Exception as e:
@@ -107,17 +106,17 @@ class CropBox(QGraphicsItem):
             painter.drawRect(self.centerRect())
 
             # 绘制裁剪框内部虚线
-            pen = QPen(QColor(255, 255, 255), self.pen_size, Qt.DashLine)  # 白色，笔宽1，虚线
+            pen = QPen(QColor(255, 255, 255), self.pen_size, Qt.DashLine)  # 白色，笔宽，虚线
             painter.setPen(pen)
             # 绘制2条垂直虚线
             for i in range(1, 3):
-                width = self.getWidth() // 3
+                width = self.getWidth() / 3
                 height = self.getHeight()
                 painter.drawLine(int(i * width), 0, int(i * width), int(height))
             # 绘制2条水平虚线
             for i in range(1, 3):
                 width = self.getWidth()
-                height = self.getHeight() // 3
+                height = self.getHeight() / 3
                 painter.drawLine(0, int(i * height), int(width), int(i * height))
 
             # 绘制四个顶点

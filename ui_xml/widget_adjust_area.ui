@@ -256,7 +256,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_light_perception">
+              <widget class="QSlider" name="slider_light_perception">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -360,7 +360,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_brightness">
+              <widget class="QSlider" name="slider_brightness">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -464,7 +464,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_exposure">
+              <widget class="QSlider" name="slider_exposure">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -568,7 +568,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_contrast">
+              <widget class="QSlider" name="slider_contrast">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -672,7 +672,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_saturation">
+              <widget class="QSlider" name="slider_saturation">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -776,7 +776,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_sharp">
+              <widget class="QSlider" name="slider_sharp">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -880,7 +880,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_smooth">
+              <widget class="QSlider" name="slider_smooth">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -984,7 +984,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_temperature">
+              <widget class="QSlider" name="slider_temperature">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -1003,7 +1003,7 @@ QSlider::handle:horizontal {
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="widget_tone" native="true">
+           <widget class="QWidget" name="widget_hue" native="true">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -1018,9 +1018,9 @@ QSlider::handle:horizontal {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_8">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_tone" stretch="1,4,1">
+              <layout class="QHBoxLayout" name="horizontalLayout_hue" stretch="1,4,1">
                <item>
-                <widget class="QLabel" name="label_image_tone">
+                <widget class="QLabel" name="label_image_hue">
                  <property name="minimumSize">
                   <size>
                    <width>30</width>
@@ -1036,7 +1036,7 @@ QSlider::handle:horizontal {
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_text_tone">
+                <widget class="QLabel" name="label_text_hue">
                  <property name="minimumSize">
                   <size>
                    <width>90</width>
@@ -1064,7 +1064,7 @@ QSlider::handle:horizontal {
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_tone">
+                <widget class="QLabel" name="label_hue">
                  <property name="font">
                   <font>
                    <family>黑体</family>
@@ -1088,7 +1088,7 @@ QSlider::handle:horizontal {
               </layout>
              </item>
              <item>
-              <widget class="QSlider" name="horizontalSlider_tone">
+              <widget class="QSlider" name="slider_hue">
                <property name="styleSheet">
                 <string notr="true"/>
                </property>
@@ -1120,7 +1120,7 @@ QSlider::handle:horizontal {
  </resources>
  <connections>
   <connection>
-   <sender>horizontalSlider_brightness</sender>
+   <sender>slider_brightness</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_brightness</receiver>
    <slot>setNum(int)</slot>
@@ -1136,7 +1136,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_contrast</sender>
+   <sender>slider_contrast</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_contrast</receiver>
    <slot>setNum(int)</slot>
@@ -1152,7 +1152,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_exposure</sender>
+   <sender>slider_exposure</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_exposure</receiver>
    <slot>setNum(int)</slot>
@@ -1168,7 +1168,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_light_perception</sender>
+   <sender>slider_light_perception</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_light_perception</receiver>
    <slot>setNum(int)</slot>
@@ -1184,7 +1184,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_saturation</sender>
+   <sender>slider_saturation</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_saturation</receiver>
    <slot>setNum(int)</slot>
@@ -1200,7 +1200,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_sharp</sender>
+   <sender>slider_sharp</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_sharp</receiver>
    <slot>setNum(int)</slot>
@@ -1216,7 +1216,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_smooth</sender>
+   <sender>slider_smooth</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_smooth</receiver>
    <slot>setNum(int)</slot>
@@ -1232,7 +1232,7 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_temperature</sender>
+   <sender>slider_temperature</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_temperature</receiver>
    <slot>setNum(int)</slot>
@@ -1248,9 +1248,9 @@ QSlider::handle:horizontal {
    </hints>
   </connection>
   <connection>
-   <sender>horizontalSlider_tone</sender>
+   <sender>slider_hue</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_tone</receiver>
+   <receiver>label_hue</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">

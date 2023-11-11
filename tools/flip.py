@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from PyQt5.QtGui import QPixmap
 
 from tools.image_format import ImageFormat

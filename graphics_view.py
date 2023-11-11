@@ -1,5 +1,4 @@
-from PyQt5.QtCore import QRectF, Qt, pyqtSignal, QRect, QPointF, QSizeF
-from PyQt5.QtGui import QColor, QPixmap, QPen, QPainterPath, QPainter, QTransform
+from PyQt5.QtCore import QRectF, Qt, pyqtSignal
 from PyQt5.QtWidgets import QGraphicsView, QGraphicsPixmapItem, QGraphicsScene, QGraphicsItem
 
 from crop_box import CropBox
@@ -24,8 +23,10 @@ class GraphicsView(QGraphicsView):
         self.pixmap_item.setFlag(QGraphicsItem.ItemIsSelectable)  # 设置允许选中图元
         self.scene.addItem(self.pixmap_item)  # 添加图元到场景
         self.min_ratio = None  # 最小缩放倍数（根据图片大小动态设置）
-        self.max_ratio = 50.00  # 最大缩放倍数5000倍
+        self.MAX_RATIO = 50.00  # 最大缩放倍数5000倍
         self.cur_scale_ratio = None  # 当前缩放倍数
+        self.ZOOM_IN_FACTOR = 1.1  # 放大比例
+        self.ZOOM_OUT_FACTOR = 0.9  # 缩小比例
 
         # 调整图片以合适的大小显示
         self.zoom_fitted_view()
@@ -34,44 +35,64 @@ class GraphicsView(QGraphicsView):
 
     def add_crop_box(self):
         try:
-            self.crop_box = CropBox(
-                    parent=self.pixmap_item
-                )
+            self.crop_box = CropBox(parent=self.pixmap_item)
             self.scene.addItem(self.crop_box)
         except Exception as e:
             print("Error:", e)
 
     def delete_crop_box(self):
         try:
-            self.scene.removeItem(self.crop_box)
-            self.crop_box = None
+            if self.crop_box is not None:
+                self.scene.removeItem(self.crop_box)
+                self.crop_box = None
         except Exception as e:
             print("Error:", e)
 
     # 滚轮事件
     def wheelEvent(self, event):
-        zoom_in_factor = 1.1  # 放大比例
-        zoom_out_factor = 0.9  # 缩小比例
         # 滚轮前滚放大
         if event.angleDelta().y() > 0:
             # 放大不能超过最大倍数
-            if self.cur_scale_ratio * zoom_in_factor < self.max_ratio:
-                zoom_factor = zoom_in_factor
-                self.cur_scale_ratio *= zoom_in_factor
+            if self.cur_scale_ratio * self.ZOOM_IN_FACTOR < self.MAX_RATIO:
+                zoom_factor = self.ZOOM_IN_FACTOR
+                self.cur_scale_ratio *= self.ZOOM_IN_FACTOR
             else:
-                zoom_factor = self.max_ratio / self.cur_scale_ratio
-                self.cur_scale_ratio = self.max_ratio
+                zoom_factor = self.MAX_RATIO / self.cur_scale_ratio
+                self.cur_scale_ratio = self.MAX_RATIO
         # 滚轮后滚缩小
         else:
             # 缩小不能小于最小倍数
-            if self.cur_scale_ratio * zoom_out_factor > self.min_ratio:
-                zoom_factor = zoom_out_factor
-                self.cur_scale_ratio *= zoom_out_factor
+            if self.cur_scale_ratio * self.ZOOM_OUT_FACTOR > self.min_ratio:
+                zoom_factor = self.ZOOM_OUT_FACTOR
+                self.cur_scale_ratio *= self.ZOOM_OUT_FACTOR
             else:
                 zoom_factor = self.min_ratio / self.cur_scale_ratio
                 self.cur_scale_ratio = self.min_ratio
-        self.scale(zoom_factor, zoom_factor)
-        print(self.cur_scale_ratio)
+        self.scale(zoom_factor, zoom_factor)  # 根据缩放比例进行缩放
+        self.scale_signal.emit(self.cur_scale_ratio)  # 发射图片缩放信号
+
+    # 放大视图
+    def zoom_in_view(self):
+        # 放大不能超过最大倍数
+        if self.cur_scale_ratio * self.ZOOM_IN_FACTOR < self.MAX_RATIO:
+            zoom_factor = self.ZOOM_IN_FACTOR
+            self.cur_scale_ratio *= self.ZOOM_IN_FACTOR
+        else:
+            zoom_factor = self.MAX_RATIO / self.cur_scale_ratio
+            self.cur_scale_ratio = self.MAX_RATIO
+        self.scale(zoom_factor, zoom_factor)  # 根据缩放比例进行缩放
+        self.scale_signal.emit(self.cur_scale_ratio)  # 发射图片缩放信号
+
+    # 缩小视图
+    def zoom_out_view(self):
+        # 缩小不能小于最小倍数
+        if self.cur_scale_ratio * self.ZOOM_OUT_FACTOR > self.min_ratio:
+            zoom_factor = self.ZOOM_OUT_FACTOR
+            self.cur_scale_ratio *= self.ZOOM_OUT_FACTOR
+        else:
+            zoom_factor = self.min_ratio / self.cur_scale_ratio
+            self.cur_scale_ratio = self.min_ratio
+        self.scale(zoom_factor, zoom_factor)  # 根据缩放比例进行缩放
         self.scale_signal.emit(self.cur_scale_ratio)  # 发射图片缩放信号
 
     # # 鼠标释放事件
@@ -104,12 +125,8 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
         super().__init__()
         self.setPixmap(image)  # 设置图元内图像
         self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
-        # self.is_start_cut = False  # 开始裁剪
-        #self.move_DragPosition = None  # 鼠标拖拽坐标
-        self.current_point = None
-        self.start_point = None
-        # self.is_finish_cut = False
-        # print(self.pixmap().size())
+        self.current_point = None  # 鼠标当前坐标
+        self.start_point = None  # 鼠标点击时的坐标
 
     # 鼠标移动事件
     def mouseMoveEvent(self, event):
@@ -117,6 +134,7 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
         print(self.pos().x(), self.pos().y())
         self.moveBy(self.current_point.x() - self.start_point.x(),
                     self.current_point.y() - self.start_point.y())
+
 
     # 鼠标按压事件
     def mousePressEvent(self, event):

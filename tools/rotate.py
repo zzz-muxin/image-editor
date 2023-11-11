@@ -4,6 +4,7 @@ from PyQt5.QtGui import QPixmap
 
 from tools.image_format import ImageFormat
 
+
 class Rotate:
     def __init__(self):
         self.pixmap = None

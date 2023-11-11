@@ -180,6 +180,14 @@ class Ui_MainWindow(object):
         self.pushButton_zoom_in.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
 "    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
 "}")
         self.pushButton_zoom_in.setText("")
         icon = QtGui.QIcon()
@@ -194,6 +202,14 @@ class Ui_MainWindow(object):
         self.pushButton_zoom_out.setToolTipDuration(3000)
         self.pushButton_zoom_out.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_zoom_out.setText("")
@@ -324,6 +340,14 @@ class Ui_MainWindow(object):
         self.pushButton_undo.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
 "    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
 "}")
         self.pushButton_undo.setText("")
         icon5 = QtGui.QIcon()
@@ -342,6 +366,14 @@ class Ui_MainWindow(object):
         self.pushButton_redo.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
 "    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
 "}")
         self.pushButton_redo.setText("")
         icon6 = QtGui.QIcon()
@@ -359,6 +391,14 @@ class Ui_MainWindow(object):
         self.pushButton_reset.setToolTipDuration(3000)
         self.pushButton_reset.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_reset.setText("")
@@ -385,6 +425,14 @@ class Ui_MainWindow(object):
         self.pushButton_crop.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
 "    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
 "}")
         self.pushButton_crop.setText("")
         icon8 = QtGui.QIcon()
@@ -402,6 +450,14 @@ class Ui_MainWindow(object):
         self.pushButton_rotate.setToolTipDuration(3000)
         self.pushButton_rotate.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_rotate.setText("")
@@ -421,6 +477,14 @@ class Ui_MainWindow(object):
         self.pushButton_curve.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
 "    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
 "}")
         self.pushButton_curve.setText("")
         icon10 = QtGui.QIcon()
@@ -438,6 +502,14 @@ class Ui_MainWindow(object):
         self.pushButton_face.setToolTipDuration(3000)
         self.pushButton_face.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_face.setText("")
@@ -457,6 +529,14 @@ class Ui_MainWindow(object):
         self.pushButton_text.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
 "    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
 "}")
         self.pushButton_text.setText("")
         icon12 = QtGui.QIcon()
@@ -474,6 +554,14 @@ class Ui_MainWindow(object):
         self.pushButton_adjust.setToolTipDuration(3000)
         self.pushButton_adjust.setStyleSheet(".QPushButton:hover{\n"
 "    background-color:rgb(58, 58, 58);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(90, 90, 90);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_adjust.setText("")

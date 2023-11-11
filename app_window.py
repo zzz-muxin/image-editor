@@ -1,17 +1,25 @@
-import functools
 
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtCore import Qt, QPoint
-from PyQt5.QtGui import QColor, QEnterEvent, QTransform
-from PyQt5.QtWidgets import QMainWindow, QGraphicsPixmapItem, QGraphicsItem
+from PyQt5.QtGui import QColor, QEnterEvent
+from PyQt5.QtWidgets import QMainWindow, QGraphicsPixmapItem
 
 from adjust_area import AdjustArea
 from crop_box import CropBox
 from function_stack import FunctionStack
-from graphics_view import GraphicsView, GraphicsPixmapItem
+from graphics_view import GraphicsView
+from tools.adjust import Adjust
+from tools.crop import Crop
+from tools.flip import Flip
+from tools.rotate import Rotate
 from ui_py.main_window import Ui_MainWindow
 from upload_image import UploadImageWidget
-from tools.crop import Crop
+from hist_area import HistArea
+from histogram import GrayHistFigure, ColorHistFigure
+
+
+# from function_bar import FunctionBar
+
 
 class AppWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -68,28 +76,44 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_min.clicked.connect(self.showMinimized)  # 最小化按钮
 
         self.graphicsView = None  # 初始化图像显示视图
+        self.rotate = Rotate()
+        self.adjust = Adjust()
+        self.canvas_gray = None
+        self.canvas_color = None
         self._init_all_widget()  # 初始化所有组件的事件
 
     # 初始化所有组件的事件
     def _init_all_widget(self):
         self.function_stack = FunctionStack()
         self.adjust_area = AdjustArea()
-        self.pushButton_crop.clicked.connect(self._init_button_crop)
-        self.pushButton_rotate.clicked.connect(self._init_button_rotate)
-        self.pushButton_adjust.clicked.connect(self._init_button_adjust)
+        self.hist_area = HistArea()
+        self.pushButton_zoom_in.clicked.connect(self._init_button_zoom_in)  # 放大按钮
+        self.pushButton_zoom_out.clicked.connect(self._init_button_zoom_out)  # 缩小按钮
+        self.pushButton_crop.clicked.connect(self._init_button_crop)  # 裁剪按钮
+        self.pushButton_rotate.clicked.connect(self._init_button_rotate)  # 旋转按钮
+        self.pushButton_curve.clicked.connect(self._init_button_hist)
+        self.pushButton_adjust.clicked.connect(self._init_button_adjust)  # 调整区域按钮
+        self.function_stack.slider_rotate.valueChanged.connect(self.slider_rotate)  # 滑动条旋转
+        self.function_stack.pushButton_right_90.clicked.connect(self.rotate_90_clockwise)  # 顺时针旋转
+        self.function_stack.pushButton_left_90.clicked.connect(self.rotate_90_counterclockwise)  # 逆时针旋转
+        self.function_stack.pushButton_flip_x.clicked.connect(self.flip_x)  # 水平镜像
+        self.function_stack.pushButton_flip_y.clicked.connect(self.flip_y)  # 垂直镜像
+        self.adjust_area.slider_saturation.valueChanged.connect(self.saturation_adjust)
+        self.adjust_area.slider_contrast.valueChanged.connect(self.contrast_adjust)
+        self.adjust_area.slider_brightness.valueChanged.connect(self.brightness_adjust)
 
         uploader = UploadImageWidget()
         self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片UploadImageWidget类
         uploader.image_exist.connect(self.show_image)  # 连接到图片显示方法
 
         # 一个垂直布局套一个水平布局
-        self.horizontalLayout_adjust_view = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_adjust_view.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_adjust_view.setObjectName("horizontalLayout_adjust_view")
+        self.horizontalLayout_view = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_view.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_view.setObjectName("horizontalLayout_view")
         self.verticalLayout_image_view = QtWidgets.QVBoxLayout()
         self.verticalLayout_image_view.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_image_view.setObjectName("verticalLayout_image_view")
-        self.verticalLayout_image_view.addLayout(self.horizontalLayout_adjust_view)
+        self.verticalLayout_image_view.addLayout(self.horizontalLayout_view)
         self.verticalLayout_image_view.setStretch(0, 1)
         self.verticalLayout_image_view.addWidget(self.function_stack)
         self.function_stack.hide()
@@ -100,67 +124,152 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
         self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
         self.page_image_view.setLayout(self.verticalLayout_image_view)  # 设置垂直布局
-        self.horizontalLayout_adjust_view.addWidget(self.graphicsView)  # 添加graphicsView到布局
-        self.horizontalLayout_adjust_view.setStretch(0, 2)
 
+        self.horizontalLayout_view.addWidget(self.graphicsView)  # 添加graphicsView到布局
+        self.horizontalLayout_view.setStretch(0, 2)
+
+        self.horizontalLayout_view.addWidget(self.adjust_area)
+        self.horizontalLayout_view.setStretch(1, 1)
+        self.adjust_area.hide()
+
+        self.horizontalLayout_view.addWidget(self.hist_area)
+        self.horizontalLayout_view.setStretch(2, 1)
+        self.hist_area.hide()
+
+        self.adjust.set_pixmap(pixmap)
         self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
 
         self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
 
-    # 图片缩放比例显示方法
+    # 图片缩放比例显示
     def show_label_scale(self, scale):
         self.label_scale.setText(f"{scale * 100: .1f}%")  # 用f-string格式化输出
 
+    # 通过滑动条旋转
+    def slider_rotate(self, degree):
+        pixmap_item = self.graphicsView.pixmap_item
+        self.function_stack.label_rotate.setText(f"{degree}°")  # 显示旋转角度
+        pixmap_item.setTransformOriginPoint(pixmap_item.pixmap().width() / 2, pixmap_item.pixmap().height() / 2)
+        pixmap_item.setRotation(degree)
+        # pixmap = self.rotate.rotate_by_slider(degree)
+        # self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    # 顺时针旋转90度
+    def rotate_90_clockwise(self):
+        pixmap = Rotate.rotate(self.graphicsView.pixmap_item.pixmap(), 90)
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    # 逆时针旋转90度
+    def rotate_90_counterclockwise(self):
+        pixmap = Rotate.rotate(self.graphicsView.pixmap_item.pixmap(), -90)
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    # 水平镜像
+    def flip_x(self):
+        pixmap = Flip.flip_x(self.graphicsView.pixmap_item.pixmap())
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    # 垂直镜像
+    def flip_y(self):
+        pixmap = Flip.flip_y(self.graphicsView.pixmap_item.pixmap())
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    # 饱和度
+    def saturation_adjust(self, value):
+        pixmap = self.adjust.adjust_saturation(value)
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    def contrast_adjust(self, value):
+        pixmap = self.adjust.adjust_contrast(value)
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    def brightness_adjust(self, value):
+        pixmap = self.adjust.adjust_brightness(value)
+        self.graphicsView.pixmap_item.setPixmap(pixmap)
+
+    # 检查graphicsView视图内是否存在图元
+    def is_pixmap_exist(self):
+        if self.graphicsView is not None:
+            for item in self.graphicsView.items():
+                if isinstance(item, QGraphicsPixmapItem):
+                    return True
+        return False
+
+    # 放大视图
+    def _init_button_zoom_in(self):
+        if self.is_pixmap_exist():
+            self.graphicsView.zoom_in_view()
+
+    # 缩小视图
+    def _init_button_zoom_out(self):
+        if self.is_pixmap_exist():
+            self.graphicsView.zoom_out_view()
+
+    # 直方图和曲线调色按钮
+    def _init_button_hist(self):
+        if self.is_pixmap_exist():
+            self.main_stacked_widget.setCurrentIndex(1)
+            if self.canvas_gray is None and self.canvas_color is None:
+                self.canvas_gray = GrayHistFigure(self.graphicsView.pixmap_item.pixmap())
+                self.canvas_color = ColorHistFigure(self.graphicsView.pixmap_item.pixmap())
+                self.hist_area.verticalLayout_gray_hist.addWidget(self.canvas_gray)
+                self.hist_area.verticalLayout_color_hist.addWidget(self.canvas_color)
+            self.hist_area.show()
+            self.adjust_area.hide()
+            self.function_stack.hide()
+
+
+    # 调节按钮
     def _init_button_adjust(self):
-        # 检查graphicsView视图内是否存在图片
-        if self.graphicsView is not None:
-            for item in self.graphicsView.items():
-                if isinstance(item, QGraphicsPixmapItem):
-                    # 存在图片才显示adjust_area
-                    self.main_stacked_widget.setCurrentIndex(1)
-                    self.horizontalLayout_adjust_view.addWidget(self.adjust_area)
-                    self.horizontalLayout_adjust_view.setStretch(1, 1)
-                    self.adjust_area.show()
-                    self.function_stack.hide()
+        if self.is_pixmap_exist():
+            # 存在图片才显示adjust_area
+            self.main_stacked_widget.setCurrentIndex(1)
+            self.adjust_area.show()
+            self.hist_area.hide()
+            self.function_stack.hide()
 
+    # 旋转按钮
     def _init_button_rotate(self):
-        # 检查graphicsView视图内是否存在图元
-        if self.graphicsView is not None:
-            for item in self.graphicsView.items():
-                if isinstance(item, QGraphicsPixmapItem):
-                    self.main_stacked_widget.setCurrentIndex(1)
-                    self.function_stack.basic_function_stack.setCurrentIndex(1)
-                    self.adjust_area.hide()
-                    self.function_stack.show()
+        if self.is_pixmap_exist():
+            self.rotate.set_pixmap(self.graphicsView.pixmap_item.pixmap())  # 设置当前旋转图片
+            self.main_stacked_widget.setCurrentIndex(1)
+            self.function_stack.basic_function_stack.setCurrentIndex(1)
+            self.adjust_area.hide()
+            self.hist_area.hide()
+            self.function_stack.show()
 
-
+    # 裁剪按钮
     def _init_button_crop(self):
         crop_box_exist = False
-        # 检查graphicsView是否初始化
+        if self.is_pixmap_exist():
+            self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图page
+            self.function_stack.basic_function_stack.setCurrentIndex(0)  # 跳转到裁剪功能page
+            self.adjust_area.hide()
+            self.hist_area.hide()
+            self.function_stack.show()
         if self.graphicsView is not None:
             for item in self.graphicsView.items():
-                # 检查graphicsView内是否存在图元
-                if isinstance(item, GraphicsPixmapItem):
-                    self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图page
-                    self.function_stack.basic_function_stack.setCurrentIndex(0)  # 跳转到裁剪功能page
-                    self.adjust_area.hide()
-                    self.function_stack.show()
-                # 检查graphicsView内是否已存在裁剪框
                 if isinstance(item, CropBox):
+                    # 检查graphicsView内是否已存在裁剪框
                     crop_box_exist = True
             # 不存在裁剪框则新建
             if not crop_box_exist:
                 self.graphicsView.add_crop_box()
-                self.function_stack.pushButton_apply.clicked.connect(self.crop_image)  # 裁剪完成按钮
-                self.function_stack.pushButton_cancel.clicked.connect(self.graphicsView.delete_crop_box)  # 取消裁剪按钮
+                self.function_stack.pushButton_apply.clicked.connect(self.crop_apply)  # 应用裁剪按钮
+                self.function_stack.pushButton_cancel.clicked.connect(self.crop_cancel)  # 取消裁剪按钮
 
+    def crop_apply(self):
+        if self.graphicsView.crop_box is not None:
+            pixmap = self.graphicsView.pixmap_item.pixmap()
+            rect = self.graphicsView.crop_box.parentRect()
+            pixmap_cropped = Crop.crop_image(pixmap, rect)  # 参数为裁剪的图片和框选的范围
+            self.graphicsView.pixmap_item.setPixmap(pixmap_cropped)  # 设置为裁剪后的图片
+            self.graphicsView.pixmap_item.setPos(self.graphicsView.crop_box.getSceneTopLeft())  # 设置左上角点位
+            self.graphicsView.crop_box.updateState()  # 裁剪后更新裁剪框状态
 
-    def crop_image(self):
-        pixmap = self.graphicsView.pixmap_item.pixmap()
-        rect = self.graphicsView.crop_box.parentRect()
-        pixmap_cropped = Crop.crop_image(pixmap, rect)
-        self.graphicsView.pixmap_item.setPixmap(pixmap_cropped)
-        self.graphicsView.crop_box.updateState()
+    def crop_cancel(self):
+        self.graphicsView.delete_crop_box()
+        self.function_stack.hide()
 
     # 事件过滤器
     def eventFilter(self, obj, event):

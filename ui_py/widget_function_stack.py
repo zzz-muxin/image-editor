@@ -151,7 +151,7 @@ class Ui_Form(object):
 "}")
         self.pushButton_flip_y.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/images/icon/ic-flip-x.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/images/icon/ic-flip-y.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_flip_y.setIcon(icon4)
         self.pushButton_flip_y.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_flip_y.setFlat(True)
@@ -168,7 +168,7 @@ class Ui_Form(object):
 "}")
         self.pushButton_flip_x.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/images/icon/ic-flip-y.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/images/icon/ic-flip-x.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_flip_x.setIcon(icon5)
         self.pushButton_flip_x.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_flip_x.setFlat(True)
@@ -208,22 +208,22 @@ class Ui_Form(object):
 "    background: white;\n"
 "}\n"
 "")
-        self.slider_rotate.setMinimum(-43)
+        self.slider_rotate.setMinimum(-45)
         self.slider_rotate.setMaximum(45)
         self.slider_rotate.setOrientation(QtCore.Qt.Horizontal)
         self.slider_rotate.setObjectName("slider_rotate")
         self.horizontalLayout_14.addWidget(self.slider_rotate)
-        self.label = QtWidgets.QLabel(self.widget_rotate)
-        self.label.setMinimumSize(QtCore.QSize(30, 44))
+        self.label_rotate = QtWidgets.QLabel(self.widget_rotate)
+        self.label_rotate.setMinimumSize(QtCore.QSize(30, 44))
         font = QtGui.QFont()
         font.setFamily("Microsoft JhengHei UI")
-        self.label.setFont(font)
-        self.label.setStyleSheet("QLabel{\n"
+        self.label_rotate.setFont(font)
+        self.label_rotate.setStyleSheet("QLabel{\n"
 "    color: rgb(255, 255, 255);\n"
 "    background-color: transparent;\n"
 "}")
-        self.label.setObjectName("label")
-        self.horizontalLayout_14.addWidget(self.label)
+        self.label_rotate.setObjectName("label_rotate")
+        self.horizontalLayout_14.addWidget(self.label_rotate)
         self.horizontalLayout_16.addWidget(self.widget_rotate)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_16.addItem(spacerItem3)
@@ -241,7 +241,7 @@ class Ui_Form(object):
         self.pushButton_cancel.setToolTip(_translate("Form", "取消"))
         self.pushButton_left_90.setToolTip(_translate("Form", "逆时针旋转90°"))
         self.pushButton_right_90.setToolTip(_translate("Form", "顺时针旋转90°"))
-        self.pushButton_flip_y.setToolTip(_translate("Form", "X镜像"))
-        self.pushButton_flip_x.setToolTip(_translate("Form", "Y镜像"))
-        self.label.setText(_translate("Form", "0°"))
+        self.pushButton_flip_y.setToolTip(_translate("Form", "水平翻转"))
+        self.pushButton_flip_x.setToolTip(_translate("Form", "垂直翻转"))
+        self.label_rotate.setText(_translate("Form", "0°"))
 import resources_rc

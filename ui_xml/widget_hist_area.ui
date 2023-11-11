@@ -161,14 +161,38 @@ QSlider::handle:horizontal {
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
           <item>
            <widget class="QWidget" name="widget_gray_hist" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_4"/>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>240</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_gray_hist"/>
            </widget>
           </item>
           <item>
            <widget class="QWidget" name="widget_color_hist" native="true">
-            <layout class="QVBoxLayout" name="verticalLayout_5"/>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>240</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_color_hist"/>
            </widget>
           </item>
          </layout>

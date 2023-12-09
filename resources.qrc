@@ -1,7 +1,9 @@
 <RCC>
     <qresource>
         <file>images/icon/adjust_control_con.svg</file>
-        <file>images/icon/bright_light_control_shine_icon.svg</file>
+        <file>images/icon/apply_icon.svg</file>
+        <file>images/icon/blue_circle.svg</file>
+        <file>images/icon/light_control_icon.svg</file>
         <file>images/icon/brightness_light_icon.svg</file>
         <file>images/icon/bx_tone_icon.svg</file>
         <file>images/icon/bxs_tone_icon.svg</file>
@@ -42,9 +44,18 @@
         <file>images/icon/face_smile_icon.svg</file>
         <file>images/icon/close_icon.svg</file>
         <file>images/icon/cancel_icon.svg</file>
-        <file>images/icon/apply_icon.svg</file>
+        <file>images/icon/font_decrease_icon.svg</file>
+        <file>images/icon/font_increase_icon.svg</file>
+        <file>images/icon/home_icon.svg</file>
+        <file>images/icon/save_icon.svg</file>
+        <file>images/icon/text_bolder_icon.svg</file>
+        <file>images/icon/text_italic_icon.svg</file>
         <file>images/icon/rotate_clockwise_icon.svg</file>
         <file>images/icon/rotate_counterclockwise_icon.svg</file>
         <file>images/icon/bx_color_fill_icon.svg</file>
+        <file>images/icon/red_circle.svg</file>
+        <file>images/icon/green_circle.svg</file>
+
+        <file>images/icon/colorful.png</file>
     </qresource>
 </RCC>

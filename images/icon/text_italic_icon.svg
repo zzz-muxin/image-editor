@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="none" height="256" width="256"/>
+    <line fill="none" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" x1="152" x2="104"
+          y1="56" y2="200"/>
+    <line fill="none" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" x1="64" x2="144"
+          y1="200" y2="200"/>
+    <line fill="none" stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="24" x1="112" x2="192"
+          y1="56" y2="56"/>
+</svg>

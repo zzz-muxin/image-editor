@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QColorDialog, QFontDialog
 
 from ui_py.widget_function_stack import Ui_Form
 

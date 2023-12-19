@@ -1,8 +1,12 @@
-from PyQt5.QtCore import QRectF, Qt, pyqtSignal
-from PyQt5.QtWidgets import QGraphicsView, QGraphicsPixmapItem, QGraphicsScene, QGraphicsItem
+import cv2
+from PyQt5.QtCore import pyqtSignal, QPoint, QRect
+from PyQt5.QtGui import QPixmap, QPainter, QColor, QFont
+from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QTextEdit
 
+from tools.text import Text
 from crop_box import CropBox
-
+from graphics_pixmap import GraphicsPixmapItem
+from tools.image_format import ImageFormat
 
 class GraphicsView(QGraphicsView):
     save_signal = pyqtSignal(bool)  # 保存图片信号
@@ -10,9 +14,8 @@ class GraphicsView(QGraphicsView):
 
     def __init__(self, pixmap, parent=None):
         super(GraphicsView, self).__init__(parent)
-        self.setTransformationAnchor(QGraphicsView.NoAnchor)  # 设置缩放或旋转基于视图中心调整
-        self.setResizeAnchor(QGraphicsView.AnchorViewCenter)  # 设置视图放大缩小时基于鼠标点调整
-
+        #self.setTransformationAnchor(QGraphicsView.NoAnchor)  # 设置缩放或旋转基于视图中心调整
+        #self.setResizeAnchor(QGraphicsView.AnchorViewCenter)  # 设置视图放大缩小时基于鼠标点调整
 
         # 设置scene
         self.scene = QGraphicsScene()
@@ -20,7 +23,6 @@ class GraphicsView(QGraphicsView):
 
         # 设置图元
         self.pixmap_item = GraphicsPixmapItem(pixmap)  # 设置图元内图像
-        self.pixmap_item.setFlag(QGraphicsItem.ItemIsSelectable)  # 设置允许选中图元
         self.scene.addItem(self.pixmap_item)  # 添加图元到场景
         self.min_ratio = None  # 最小缩放倍数（根据图片大小动态设置）
         self.MAX_RATIO = 50.00  # 最大缩放倍数5000倍
@@ -33,6 +35,9 @@ class GraphicsView(QGraphicsView):
 
         self.crop_box = None  # 初始化裁剪框
 
+        self.text_stack = []  # 文本类的栈
+
+    # 添加裁剪框
     def add_crop_box(self):
         try:
             self.crop_box = CropBox(parent=self.pixmap_item)
@@ -42,11 +47,81 @@ class GraphicsView(QGraphicsView):
 
     def delete_crop_box(self):
         try:
-            if self.crop_box is not None:
+            if self.crop_box:
                 self.scene.removeItem(self.crop_box)
-                self.crop_box = None
         except Exception as e:
             print("Error:", e)
+        # todo
+        # 裁剪框删不干净问题待解决
+        # if self.crop_box is not None:
+        #     self.crop_box.show()
+        #     self.crop_box.updateState()
+
+    # 添加文本编辑框
+    def add_text_edit(self):
+        try:
+            text = Text(parent=self.pixmap_item)
+            self.text_stack.append(text)  # 添加到文本类栈
+            self.scene.addItem(text)  # 添加到场景
+        except Exception as e:
+            print("Error:", e)
+
+    # 绘制文本到图像
+    def draw_text(self):
+        pixmap = self.get_pixmap()
+        painter = QPainter(pixmap)
+        painter.setRenderHint(QPainter.Antialiasing)  # 启用抗锯齿
+        # 设置裁剪区域为图像大小
+        clip_rect = QRect(0, 0, pixmap.width(), pixmap.height())
+        painter.setClipRect(clip_rect)
+        for text in self.text_stack:
+            rect = text.parent_rect()  # 获取文本矩形位置
+            painter.setPen(text.defaultTextColor())  # 设置笔颜色
+            painter.setFont(text.font())  # 设置字体
+            painter.drawText(rect, text.toPlainText())  # 绘制文本
+        painter.end()  # 结束 QPainter 操作
+        self.set_pixmap(pixmap)  # 更新添加文字后的图像
+
+    # 删除所有文本
+    def delete_text(self):
+        try:
+            for text in self.text_stack:
+                self.scene.removeItem(text)
+            self.text_stack.clear()
+        except Exception as e:
+            print("Error:", e)
+
+    # 获取当前的文本类
+    def get_text(self):
+        # 遍历栈查找是否有文本类被选中
+        for text in self.text_stack:
+            if text.isSelected():
+                return text
+        # 没有被选中的则返回栈顶文本
+        if len(self.text_stack) != 0:
+            return self.text_stack[-1]
+        else:
+            return False
+
+    # 改变文本类颜色
+    def change_text_color(self, color: QColor):
+        if self.get_text():
+            text = self.get_text()
+            text.setDefaultTextColor(color)
+
+    # 改变文本类字体
+    def change_text_font(self, font: QFont):
+        if self.get_text():
+            text = self.get_text()
+            text.setFont(font)
+
+    # 使用SpinBox调整字体大小
+    def spinbox_change(self, font_size):
+        if self.get_text():
+            text = self.get_text()
+            font = text.font()
+            font.setPointSize(font_size)
+            text.setFont(font)
 
     # 滚轮事件
     def wheelEvent(self, event):
@@ -117,40 +192,10 @@ class GraphicsView(QGraphicsView):
         self.cur_scale_ratio = round(scale_ratio, 2)
         print("image scale:", self.cur_scale_ratio)
 
+    # 获取pixmap
+    def get_pixmap(self):
+        return self.pixmap_item.pixmap()
 
-class GraphicsPixmapItem(QGraphicsPixmapItem):
-    save_signal = pyqtSignal(bool)
-
-    def __init__(self, image):
-        super().__init__()
-        self.setPixmap(image)  # 设置图元内图像
-        self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
-        self.current_point = None  # 鼠标当前坐标
-        self.start_point = None  # 鼠标点击时的坐标
-
-    # 鼠标移动事件
-    def mouseMoveEvent(self, event):
-        self.current_point = event.pos()
-        print(self.pos().x(), self.pos().y())
-        self.moveBy(self.current_point.x() - self.start_point.x(),
-                    self.current_point.y() - self.start_point.y())
-
-
-    # 鼠标按压事件
-    def mousePressEvent(self, event):
-        super(GraphicsPixmapItem, self).mousePressEvent(event)
-
-        self.start_point = event.pos()
-
-    # 鼠标释放事件
-    def mouseReleaseEvent(self, event):
-        self.setCursor(Qt.OpenHandCursor)
-
-    # 伪状态移动事件设置鼠标样式
-    def hoverMoveEvent(self, event):
-        try:
-            if QRectF(self.pixmap().rect()).contains(event.pos()):
-                self.setCursor(Qt.OpenHandCursor)
-        except Exception as e:
-            print("Error:", e)
-
+    # 设置pixmap
+    def set_pixmap(self, pixmap: QPixmap):
+        self.pixmap_item.setPixmap(pixmap)

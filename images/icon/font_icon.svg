@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<svg class="icon icon-tabler icon-tabler-letter-f" fill="none" height="48" stroke="currentColor" stroke-linecap="round"
+     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none" stroke="none"/>
+    <path stroke="#FFF" d="M17 4h-10v16"/>
+    <line stroke="#FFF" x1="7" x2="15" y1="12" y2="12"/>
+</svg>

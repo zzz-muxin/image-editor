@@ -145,8 +145,8 @@ class Ui_MainWindow(object):
         self.frame_menu.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_menu.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_menu.setObjectName("frame_menu")
-        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.frame_menu)
-        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_menu)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.horizontalLayout_logo = QtWidgets.QHBoxLayout()
         self.horizontalLayout_logo.setObjectName("horizontalLayout_logo")
         self.widget_logo = QtWidgets.QWidget(self.frame_menu)
@@ -169,20 +169,45 @@ class Ui_MainWindow(object):
         self.label_logo.setWordWrap(False)
         self.label_logo.setObjectName("label_logo")
         self.horizontalLayout_logo.addWidget(self.label_logo)
-        self.horizontalLayout_10.addLayout(self.horizontalLayout_logo)
+        self.horizontalLayout.addLayout(self.horizontalLayout_logo)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_10.addItem(spacerItem)
+        self.horizontalLayout.addItem(spacerItem)
+        self.pushButton_home = QtWidgets.QPushButton(self.frame_menu)
+        self.pushButton_home.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_home.setToolTipDuration(3000)
+        self.pushButton_home.setStyleSheet(".QPushButton:hover{\n"
+"    background-color:rgb(75, 75, 75);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(50, 50, 50);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
+"}")
+        self.pushButton_home.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/images/icon/home_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_home.setIcon(icon)
+        self.pushButton_home.setIconSize(QtCore.QSize(35, 35))
+        self.pushButton_home.setFlat(True)
+        self.pushButton_home.setObjectName("pushButton_home")
+        self.horizontalLayout.addWidget(self.pushButton_home)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
         self.horizontalLayout_scale = QtWidgets.QHBoxLayout()
         self.horizontalLayout_scale.setObjectName("horizontalLayout_scale")
         self.pushButton_zoom_in = QtWidgets.QPushButton(self.frame_menu)
         self.pushButton_zoom_in.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_zoom_in.setToolTipDuration(3000)
         self.pushButton_zoom_in.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
@@ -190,9 +215,9 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}")
         self.pushButton_zoom_in.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/images/icon/zoom_in_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_zoom_in.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/images/icon/zoom_in_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_zoom_in.setIcon(icon1)
         self.pushButton_zoom_in.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_zoom_in.setFlat(True)
         self.pushButton_zoom_in.setObjectName("pushButton_zoom_in")
@@ -201,11 +226,11 @@ class Ui_MainWindow(object):
         self.pushButton_zoom_out.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_zoom_out.setToolTipDuration(3000)
         self.pushButton_zoom_out.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
@@ -213,9 +238,9 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}")
         self.pushButton_zoom_out.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/images/icon/zoom_out_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_zoom_out.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/images/icon/zoom_out_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_zoom_out.setIcon(icon2)
         self.pushButton_zoom_out.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_zoom_out.setFlat(True)
         self.pushButton_zoom_out.setObjectName("pushButton_zoom_out")
@@ -231,19 +256,44 @@ class Ui_MainWindow(object):
 "}")
         self.label_scale.setObjectName("label_scale")
         self.horizontalLayout_scale.addWidget(self.label_scale)
-        self.horizontalLayout_10.addLayout(self.horizontalLayout_scale)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_10.addItem(spacerItem1)
+        self.horizontalLayout.addLayout(self.horizontalLayout_scale)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
+        self.pushButton_save = QtWidgets.QPushButton(self.frame_menu)
+        self.pushButton_save.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_save.setToolTipDuration(3000)
+        self.pushButton_save.setStyleSheet(".QPushButton:hover{\n"
+"    background-color:rgb(75, 75, 75);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:pressed{\n"
+"    background-color:rgb(50, 50, 50);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
+"    border-radius:10px;\n"
+"}")
+        self.pushButton_save.setText("")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/images/icon/save_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_save.setIcon(icon3)
+        self.pushButton_save.setIconSize(QtCore.QSize(35, 35))
+        self.pushButton_save.setFlat(True)
+        self.pushButton_save.setObjectName("pushButton_save")
+        self.horizontalLayout.addWidget(self.pushButton_save)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
         self.horizontalLayout_control_window = QtWidgets.QHBoxLayout()
         self.horizontalLayout_control_window.setObjectName("horizontalLayout_control_window")
         self.pushButton_min = QtWidgets.QPushButton(self.frame_menu)
         self.pushButton_min.setToolTipDuration(3000)
         self.pushButton_min.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
@@ -251,9 +301,9 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}")
         self.pushButton_min.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/images/icon/minus_delete_remove_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_min.setIcon(icon2)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/images/icon/minus_delete_remove_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_min.setIcon(icon4)
         self.pushButton_min.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_min.setDefault(False)
         self.pushButton_min.setFlat(True)
@@ -262,18 +312,22 @@ class Ui_MainWindow(object):
         self.pushButton_max_and_reduction = QtWidgets.QPushButton(self.frame_menu)
         self.pushButton_max_and_reduction.setToolTipDuration(3000)
         self.pushButton_max_and_reduction.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
+"    border-radius:10px;\n"
+"}\n"
+".QPushButton:normal{\n"
+"    background-color:transparent;\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_max_and_reduction.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/images/icon/maximize_expand_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon3.addPixmap(QtGui.QPixmap(":/images/icon/minimize_2_reduce_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.On)
-        self.pushButton_max_and_reduction.setIcon(icon3)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/images/icon/maximize_expand_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/images/icon/minimize_2_reduce_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.pushButton_max_and_reduction.setIcon(icon5)
         self.pushButton_max_and_reduction.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_max_and_reduction.setFlat(True)
         self.pushButton_max_and_reduction.setObjectName("pushButton_max_and_reduction")
@@ -286,18 +340,18 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgba(255, 0, 0, 190);\n"
+"    background-color:rgba(255, 0, 0, 150);\n"
 "    border-radius:10px;\n"
 "}")
         self.pushButton_close.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/images/icon/close_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_close.setIcon(icon4)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/images/icon/close_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_close.setIcon(icon6)
         self.pushButton_close.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_close.setFlat(True)
         self.pushButton_close.setObjectName("pushButton_close")
         self.horizontalLayout_control_window.addWidget(self.pushButton_close)
-        self.horizontalLayout_10.addLayout(self.horizontalLayout_control_window)
+        self.horizontalLayout.addLayout(self.horizontalLayout_control_window)
         self.verticalLayout.addWidget(self.frame_menu)
         self.widget_view = QtWidgets.QWidget(self.frame)
         self.widget_view.setObjectName("widget_view")
@@ -338,11 +392,11 @@ class Ui_MainWindow(object):
         self.pushButton_undo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_undo.setToolTipDuration(3000)
         self.pushButton_undo.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
@@ -350,25 +404,25 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}")
         self.pushButton_undo.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/images/icon/undo_line_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_undo.setIcon(icon5)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/images/icon/undo_line_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_undo.setIcon(icon7)
         self.pushButton_undo.setIconSize(QtCore.QSize(48, 48))
         self.pushButton_undo.setFlat(True)
         self.pushButton_undo.setObjectName("pushButton_undo")
         self.horizontalLayout_4.addWidget(self.pushButton_undo)
-        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem2)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
         self.pushButton_redo = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_redo.setMinimumSize(QtCore.QSize(61, 61))
         self.pushButton_redo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_redo.setToolTipDuration(3000)
         self.pushButton_redo.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
@@ -376,25 +430,25 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}")
         self.pushButton_redo.setText("")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/images/icon/redo_line_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_redo.setIcon(icon6)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/images/icon/redo_line_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_redo.setIcon(icon8)
         self.pushButton_redo.setIconSize(QtCore.QSize(48, 48))
         self.pushButton_redo.setFlat(True)
         self.pushButton_redo.setObjectName("pushButton_redo")
         self.horizontalLayout_4.addWidget(self.pushButton_redo)
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem3)
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem5)
         self.pushButton_reset = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_reset.setMinimumSize(QtCore.QSize(61, 61))
         self.pushButton_reset.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_reset.setToolTipDuration(3000)
         self.pushButton_reset.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
@@ -402,9 +456,9 @@ class Ui_MainWindow(object):
 "    border-radius:10px;\n"
 "}")
         self.pushButton_reset.setText("")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/images/icon/circulate_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_reset.setIcon(icon7)
+        icon9 = QtGui.QIcon()
+        icon9.addPixmap(QtGui.QPixmap(":/images/icon/circulate_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_reset.setIcon(icon9)
         self.pushButton_reset.setIconSize(QtCore.QSize(48, 48))
         self.pushButton_reset.setFlat(True)
         self.pushButton_reset.setObjectName("pushButton_reset")
@@ -423,152 +477,164 @@ class Ui_MainWindow(object):
         self.pushButton_crop.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_crop.setToolTipDuration(3000)
         self.pushButton_crop.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
 "    background-color:transparent;\n"
 "    border-radius:10px;\n"
-"}")
+"}\n"
+"")
         self.pushButton_crop.setText("")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/images/icon/crop_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_crop.setIcon(icon8)
+        icon10 = QtGui.QIcon()
+        icon10.addPixmap(QtGui.QPixmap(":/images/icon/crop_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_crop.setIcon(icon10)
         self.pushButton_crop.setIconSize(QtCore.QSize(48, 48))
+        self.pushButton_crop.setAutoExclusive(True)
         self.pushButton_crop.setFlat(True)
         self.pushButton_crop.setObjectName("pushButton_crop")
         self.horizontalLayout_6.addWidget(self.pushButton_crop)
-        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem4)
+        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem6)
         self.pushButton_rotate = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_rotate.setMinimumSize(QtCore.QSize(61, 57))
         self.pushButton_rotate.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_rotate.setToolTipDuration(3000)
         self.pushButton_rotate.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
 "    background-color:transparent;\n"
 "    border-radius:10px;\n"
-"}")
+"}\n"
+"")
         self.pushButton_rotate.setText("")
-        icon9 = QtGui.QIcon()
-        icon9.addPixmap(QtGui.QPixmap(":/images/icon/rotate_cw_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_rotate.setIcon(icon9)
+        icon11 = QtGui.QIcon()
+        icon11.addPixmap(QtGui.QPixmap(":/images/icon/rotate_cw_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_rotate.setIcon(icon11)
         self.pushButton_rotate.setIconSize(QtCore.QSize(48, 48))
+        self.pushButton_rotate.setAutoExclusive(True)
         self.pushButton_rotate.setFlat(True)
         self.pushButton_rotate.setObjectName("pushButton_rotate")
         self.horizontalLayout_6.addWidget(self.pushButton_rotate)
-        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem5)
-        self.pushButton_curve = QtWidgets.QPushButton(self.frame_function)
-        self.pushButton_curve.setMinimumSize(QtCore.QSize(61, 57))
-        self.pushButton_curve.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_curve.setToolTipDuration(3000)
-        self.pushButton_curve.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem7)
+        self.pushButton_chart = QtWidgets.QPushButton(self.frame_function)
+        self.pushButton_chart.setMinimumSize(QtCore.QSize(61, 57))
+        self.pushButton_chart.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_chart.setToolTipDuration(3000)
+        self.pushButton_chart.setStyleSheet(".QPushButton:hover{\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
 "    background-color:transparent;\n"
 "    border-radius:10px;\n"
-"}")
-        self.pushButton_curve.setText("")
-        icon10 = QtGui.QIcon()
-        icon10.addPixmap(QtGui.QPixmap(":/images/icon/curve_adjustment_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_curve.setIcon(icon10)
-        self.pushButton_curve.setIconSize(QtCore.QSize(43, 43))
-        self.pushButton_curve.setFlat(True)
-        self.pushButton_curve.setObjectName("pushButton_curve")
-        self.horizontalLayout_6.addWidget(self.pushButton_curve)
-        spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem6)
+"}\n"
+"")
+        self.pushButton_chart.setText("")
+        icon12 = QtGui.QIcon()
+        icon12.addPixmap(QtGui.QPixmap(":/images/icon/curve_adjustment_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_chart.setIcon(icon12)
+        self.pushButton_chart.setIconSize(QtCore.QSize(43, 43))
+        self.pushButton_chart.setAutoExclusive(True)
+        self.pushButton_chart.setFlat(True)
+        self.pushButton_chart.setObjectName("pushButton_chart")
+        self.horizontalLayout_6.addWidget(self.pushButton_chart)
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem8)
         self.pushButton_face = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_face.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_face.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_face.setToolTipDuration(3000)
         self.pushButton_face.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
 "    background-color:transparent;\n"
 "    border-radius:10px;\n"
-"}")
+"}\n"
+"")
         self.pushButton_face.setText("")
-        icon11 = QtGui.QIcon()
-        icon11.addPixmap(QtGui.QPixmap(":/images/icon/face_smile_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_face.setIcon(icon11)
+        icon13 = QtGui.QIcon()
+        icon13.addPixmap(QtGui.QPixmap(":/images/icon/face_smile_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_face.setIcon(icon13)
         self.pushButton_face.setIconSize(QtCore.QSize(48, 48))
+        self.pushButton_face.setAutoExclusive(True)
         self.pushButton_face.setFlat(True)
         self.pushButton_face.setObjectName("pushButton_face")
         self.horizontalLayout_6.addWidget(self.pushButton_face)
-        spacerItem7 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem7)
+        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem9)
         self.pushButton_text = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_text.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_text.setToolTipDuration(3000)
         self.pushButton_text.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
 "    background-color:transparent;\n"
 "    border-radius:10px;\n"
-"}")
+"}\n"
+"")
         self.pushButton_text.setText("")
-        icon12 = QtGui.QIcon()
-        icon12.addPixmap(QtGui.QPixmap(":/images/icon/type_text_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_text.setIcon(icon12)
+        icon14 = QtGui.QIcon()
+        icon14.addPixmap(QtGui.QPixmap(":/images/icon/type_text_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_text.setIcon(icon14)
         self.pushButton_text.setIconSize(QtCore.QSize(48, 48))
+        self.pushButton_text.setAutoExclusive(True)
         self.pushButton_text.setFlat(True)
         self.pushButton_text.setObjectName("pushButton_text")
         self.horizontalLayout_6.addWidget(self.pushButton_text)
-        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_6.addItem(spacerItem8)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem10)
         self.pushButton_adjust = QtWidgets.QPushButton(self.frame_function)
         self.pushButton_adjust.setMinimumSize(QtCore.QSize(50, 50))
         self.pushButton_adjust.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_adjust.setToolTipDuration(3000)
         self.pushButton_adjust.setStyleSheet(".QPushButton:hover{\n"
-"    background-color:rgb(58, 58, 58);\n"
+"    background-color:rgb(75, 75, 75);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:pressed{\n"
-"    background-color:rgb(90, 90, 90);\n"
+"    background-color:rgb(50, 50, 50);\n"
 "    border-radius:10px;\n"
 "}\n"
 ".QPushButton:normal{\n"
 "    background-color:transparent;\n"
 "    border-radius:10px;\n"
-"}")
+"}\n"
+"")
         self.pushButton_adjust.setText("")
-        icon13 = QtGui.QIcon()
-        icon13.addPixmap(QtGui.QPixmap(":/images/icon/adjust_control_con.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_adjust.setIcon(icon13)
+        icon15 = QtGui.QIcon()
+        icon15.addPixmap(QtGui.QPixmap(":/images/icon/adjust_control_con.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton_adjust.setIcon(icon15)
         self.pushButton_adjust.setIconSize(QtCore.QSize(48, 48))
+        self.pushButton_adjust.setAutoExclusive(True)
         self.pushButton_adjust.setFlat(True)
         self.pushButton_adjust.setObjectName("pushButton_adjust")
         self.horizontalLayout_6.addWidget(self.pushButton_adjust)
@@ -591,8 +657,10 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label_logo.setText(_translate("MainWindow", "image-editor"))
+        self.pushButton_home.setToolTip(_translate("MainWindow", "主页"))
         self.pushButton_zoom_in.setToolTip(_translate("MainWindow", "放大"))
         self.pushButton_zoom_out.setToolTip(_translate("MainWindow", "缩小"))
+        self.pushButton_save.setToolTip(_translate("MainWindow", "保存"))
         self.pushButton_min.setToolTip(_translate("MainWindow", "最小化"))
         self.pushButton_max_and_reduction.setToolTip(_translate("MainWindow", "最大化"))
         self.pushButton_close.setToolTip(_translate("MainWindow", "关闭"))
@@ -601,7 +669,7 @@ class Ui_MainWindow(object):
         self.pushButton_reset.setToolTip(_translate("MainWindow", "重置"))
         self.pushButton_crop.setToolTip(_translate("MainWindow", "裁剪"))
         self.pushButton_rotate.setToolTip(_translate("MainWindow", "旋转"))
-        self.pushButton_curve.setToolTip(_translate("MainWindow", "曲线调色"))
+        self.pushButton_chart.setToolTip(_translate("MainWindow", "图表"))
         self.pushButton_face.setToolTip(_translate("MainWindow", "人脸"))
         self.pushButton_text.setToolTip(_translate("MainWindow", "文字"))
         self.pushButton_adjust.setToolTip(_translate("MainWindow", "调节"))

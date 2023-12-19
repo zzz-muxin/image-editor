@@ -178,15 +178,13 @@ class RGBChart(QChartView):
     # rgb直方图均衡化
     def hist_equalize(self):
         cv_image = ImageFormat.pixmap_to_cv(self.pixmap)  # 转换为cv图像
-        b, g, r, _ = cv2.split(cv_image)  # 通道分解
+        b, g, r, a = cv2.split(cv_image)  # 通道分解
         # 分别计算三个通道的均衡化直方图
         self.red_hist_equalize = cv2.equalizeHist(r)
         self.green_hist_equalize = cv2.equalizeHist(g)
         self.blue_hist_equalize = cv2.equalizeHist(b)
-        if _ is None:
-            result = cv2.merge((self.blue_hist_equalize, self.green_hist_equalize, self.red_hist_equalize))
-        else:
-            result = cv2.merge((self.blue_hist_equalize, self.green_hist_equalize, self.red_hist_equalize, _))
+        # 通道合并
+        result = cv2.merge((self.blue_hist_equalize, self.green_hist_equalize, self.red_hist_equalize, a))
         new_pixmap = ImageFormat.cv_to_pixmap(result)
         self.update_chart(new_pixmap)
         self.image_updated.emit(new_pixmap)  # 发射图片更新信号
@@ -196,3 +194,6 @@ class RGBChart(QChartView):
         self.update_chart(self.pixmap)
         self.image_updated.emit(self.pixmap)  # 发射图片更新信号
 
+    def set_pixmap(self, pixmap):
+        self.pixmap = pixmap
+        self.update_chart(pixmap)

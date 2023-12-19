@@ -15,24 +15,12 @@ class ImageFormat:
     # PyQt图像 转换为 OpenCV图像
     @staticmethod
     def pixmap_to_cv(pixmap: QPixmap):
-        q_image = QPixmap.toImage(pixmap)  # QPixmap 转换为 QImage
-        channels = None
-        if q_image.depth() == 32:
-            # 32位深的图像通道数为4（rgba）
-            channels = 4
-        elif q_image.depth() == 24:
-            # 24位深的图像通道数为3（rgb）
-            channels = 3
-        elif q_image.depth() == 8:
-            # 8位深的图像通道数为1（灰度图像）
-            channels = 1
-        else:
-            QtCore.qDebug("ERROR: QPixmap.channels could not be converted to cv_image")
+        q_image = QPixmap.toImage(pixmap)  # QPixmap 转换为 QImage，默认转32位
         # 构造shape：图像栅格的行数（高度）、列数（宽度）、通道数
         # 每行像素的总位数 整除 像素的位深度 = 每行像素的像素数量（宽度）
         shape = (q_image.height(), q_image.bytesPerLine() * 8 // q_image.depth())
         # 获取QImage通道数
-        shape += (channels,)
+        shape += (4,)
         # 获取一个指向图像数据的 QByteArray 指针，其中包含了图像的像素信息
         ptr = q_image.bits()
         # 将指针的大小设置为与图像数据的总字节数相等，确保指针具有足够的内存来容纳整个图像数据

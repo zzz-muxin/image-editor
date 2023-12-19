@@ -55,7 +55,7 @@
         <file>images/icon/bx_color_fill_icon.svg</file>
         <file>images/icon/red_circle.svg</file>
         <file>images/icon/green_circle.svg</file>
-
+        <file>images/icon/font_icon.svg</file>
         <file>images/icon/colorful.png</file>
     </qresource>
 </RCC>

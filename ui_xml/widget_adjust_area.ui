@@ -190,7 +190,7 @@ QSlider::handle:horizontal {
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">image:url(:/images/icon/bright_light_control_shine_icon.svg)</string>
+                  <string notr="true">image:url(:/images/icon/light_control_icon.svg)</string>
                  </property>
                  <property name="text">
                   <string/>

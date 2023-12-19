@@ -6,30 +6,27 @@ from PyQt5.QtWidgets import QGraphicsItem, QGraphicsPixmapItem
 # 裁剪框类
 class CropBox(QGraphicsItem):
     def __init__(self, parent: QGraphicsPixmapItem):
-        try:
-            super().__init__()
-            self.parent = parent
-            self.setParentItem(parent)  # 设置父QGraphicsPixmapItem
-            self.size = QSizeF(parent.pixmap().size())  # 设置size为父Item中pixmap的大小
-            self.minSize = QSizeF(1, 1)  # 裁剪框最小尺寸
-            self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在pixmap中
-            self.PEN_RATIO = 1 / 100  # 设置裁剪框笔的大小为图片大小的1/100
-            self.pen_size = self.set_pen_size()
-            print("pen size:", self.pen_size)
+        super().__init__()
+        self.parent = parent
+        self.setParentItem(parent)  # 设置父QGraphicsPixmapItem
+        self.size = QSizeF(parent.pixmap().size())  # 设置size为父Item中pixmap的大小
+        self.minSize = QSizeF(1, 1)  # 裁剪框最小尺寸
+        self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在pixmap中
+        self.PEN_RATIO = 1 / 100  # 设置裁剪框笔的大小为图片大小的1/100
+        self.pen_size = self.set_pen_size()
+        print("pen size:", self.pen_size)
 
-            self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
-            self.cornerPen = QPen(Qt.black, self.pen_size)  # 四个顶点的笔
-            self.cornerSize = QSizeF(self.pen_size * 5, self.pen_size * 5)  # 顶点尺寸
-            self.cornerFix = None
-            self.refreshCornerFix()
-            self.cornerBrush = QBrush(Qt.white)
+        self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
+        self.cornerPen = QPen(Qt.black, self.pen_size)  # 四个顶点的笔
+        self.cornerSize = QSizeF(self.pen_size * 5, self.pen_size * 5)  # 顶点尺寸
+        self.cornerFix = None
+        self.refreshCornerFix()
+        self.cornerBrush = QBrush(Qt.white)
 
-            self.dragFlag = None  # 拖拽的方向标志
-            self.dragDiff = None  # 拖拽的坐标
+        self.dragFlag = None  # 拖拽的方向标志
+        self.dragDiff = None  # 拖拽的坐标
 
-            self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
-        except Exception as e:
-            print("Error:", e)
+        self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
 
     def set_pen_size(self):
         pen_size = max(self.size.width(), self.size.height()) * self.PEN_RATIO
@@ -88,17 +85,15 @@ class CropBox(QGraphicsItem):
     def getSceneTopLeft(self):
         return self.mapToScene(self.itemTopLeft())
 
+    # 圆形顶点大小
     def refreshCornerFix(self):
         self.cornerFix = QPointF(self.cornerSize.width() / 2, self.cornerSize.height() / 2)
 
-    # 可调整大小区域圆点
+    # 边界区域
     def boundingRect(self):
-        try:
-            return QRectF(-self.cornerFix, QSizeF(self.size) + self.cornerSize)
-        except Exception as e:
-            print("Error:", e)
+        return QRectF(-self.cornerFix, QSizeF(self.size) + self.cornerSize)
 
-    # 绘制裁剪框
+    # 绘制
     def paint(self, painter, option, widget=None):
         try:
             # 绘制中心的矩形
@@ -106,7 +101,7 @@ class CropBox(QGraphicsItem):
             painter.drawRect(self.centerRect())
 
             # 绘制裁剪框内部虚线
-            pen = QPen(QColor(255, 255, 255), self.pen_size, Qt.DashLine)  # 白色，笔宽，虚线
+            pen = QPen(QColor(255, 255, 255, 150), self.pen_size, Qt.DashLine)  # 白色，笔宽，虚线
             painter.setPen(pen)
             # 绘制2条垂直虚线
             for i in range(1, 3):
@@ -124,11 +119,16 @@ class CropBox(QGraphicsItem):
             painter.setBrush(self.cornerBrush)
             cornerXRadius = self.cornerFix.x()
             cornerYRadius = self.cornerFix.y()
-            # 使用圆角矩形绘制
+            # 使用圆角矩形绘制圆点
             painter.drawRoundedRect(self.topLeftCornerRect(), cornerXRadius, cornerYRadius)  # top left
             painter.drawRoundedRect(self.topRightCornerRect(), cornerXRadius, cornerYRadius)  # top right
             painter.drawRoundedRect(self.bottomLeftCornerRect(), cornerXRadius, cornerYRadius)  # bottom left
             painter.drawRoundedRect(self.bottomRightCornerRect(), cornerXRadius, cornerYRadius)  # bottom right
+
+            # 绘制阴影遮罩
+            # painter.setPen(Qt.NoPen)
+            # painter.setBrush(QColor(0, 0, 0, 155))
+            # todo
         except Exception as e:
             print("Error:", e)
 
@@ -290,26 +290,7 @@ class CropBox(QGraphicsItem):
     def getHeight(self):
         return self.size.height()
 
-    #
-    # # 绘制裁剪框内部虚线
-    # def draw_internal_lines(self, painter):
-    #     crop_box_path = QPainterPath()  # 绘图区域
-    #     crop_box_path.addRect(2, 2, self.width() - 4, self.height() - 4)  # 添加矩形区域
-    #     painter.setClipPath(crop_box_path)  # 设置被限制的绘画区域为crop_box_path
-    #     painter.setClipping(True)  # 启用剪切限制
-    #     # 绘画内部虚线线条
-    #     pen = QPen(QColor(230, 230, 230), 1, Qt.DashLine)  # 笔线宽1，为虚线
-    #     painter.setPen(pen)
-    #     # 绘制2条垂直虚线
-    #     for i in range(1, 3):
-    #         width = self.width() // 3
-    #         painter.drawLine(i * width, 2, i * width, self.height() - 2)
-    #     # 绘制2条水平虚线
-    #     for i in range(1, 3):
-    #         height = self.height() // 3
-    #         painter.drawLine(2, i * height, self.width() - 2, i * height)
-    #     # 绘画完，取消被限制的区域
-    #     painter.setClipping(False)
+
     #
     # # 绘制当前裁剪框像素大小文本
     # def draw_size_text(self, painter):

@@ -65,7 +65,7 @@ class Curve(QChartView):
 
     # 初始表格数据系列
     def init_series(self):
-        # 设置各曲线和散点画笔颜色和大小
+        # 设置各曲线和散点画笔颜色
         self.scatter_series_rgb.setPen(QColor(0, 0, 0))
         self.scatter_series_rgb.setBrush(QColor(255, 255, 255))
         self.scatter_series_r.setPen(QColor(240, 0, 0))
@@ -136,7 +136,7 @@ class Curve(QChartView):
         point = QPoint(int(point.x()), int(point.y()))  # 将坐标转换为整数类型
         # 左键点击实现新增散点
         if event.button() == Qt.LeftButton:
-            # 检测是否点击在散点附近，使用散点的半径范围
+            # 检测是否点击在散点附近
             for i, data_point in enumerate(current_series.pointsVector()):
                 if abs(data_point.x() - point.x()) < self.diameter and abs(data_point.y() - point.y()) < self.diameter:
                     self.selected_point_index = i
@@ -160,7 +160,7 @@ class Curve(QChartView):
         if event.button() == Qt.RightButton:
             # 只有点的个数大于2才能删除
             if current_series.count() > 2:
-                # 检测是否点击在散点附近，使用散点的半径范围
+                # 检测是否点击在散点附近
                 for i, data_point in enumerate(current_series.pointsVector()):
                     if abs(data_point.x() - point.x()) < self.diameter and abs(
                             data_point.y() - point.y()) < self.diameter:
@@ -195,7 +195,7 @@ class Curve(QChartView):
         self.selected_point_index = None  # 重置鼠标点击选中的点的索引值
         self.curve_apply()
 
-    # 根据散点计算出样条曲线
+    # 根据散点计算出样条曲线数据
     @staticmethod
     def spline(points: list) -> list:
         point_count = len(points)
@@ -211,7 +211,7 @@ class Curve(QChartView):
         # 点的个数小于3时使用线性曲线
         else:
             kind = 'linear'
-        # 用scipy的interp1d计算样条插值函数
+        # 用scipy的interp1d函数计算样条插值函数
         spline_function = interp1d(x_values, y_values, kind=kind)
         # 计算插值区间上的整数点
         x_min = int(np.floor(min(x_values)))
@@ -227,7 +227,7 @@ class Curve(QChartView):
         # 返回一个计算出的样条曲线的整数点集
         return interpolated_points
 
-    # 更新样条曲线系列
+    # 更新样条曲线系列数据
     def update_line_series(self):
         current_scatter_series = self.find_current_series()
         # 根据当前散点系列找到对应的样条曲线系列，并清空对应的样条曲线系列数据点，准备重绘
@@ -324,3 +324,7 @@ class Curve(QChartView):
     # 点击蓝色按钮
     def click_blue_button(self):
         self.set_series_visibility(False, False, False, True)
+
+    # 更新需要调整的图像
+    def set_pixmap(self, pixmap: QPixmap):
+        self.pixmap = pixmap

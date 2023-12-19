@@ -152,7 +152,7 @@ class Ui_Form(object):
         self.horizontalLayout_light.setObjectName("horizontalLayout_light")
         self.label_image_light = QtWidgets.QLabel(self.widget_light)
         self.label_image_light.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_light.setStyleSheet("image:url(:/images/icon/bright_light_control_shine_icon.svg)")
+        self.label_image_light.setStyleSheet("image:url(:/images/icon/light_control_icon.svg)")
         self.label_image_light.setText("")
         self.label_image_light.setObjectName("label_image_light")
         self.horizontalLayout_light.addWidget(self.label_image_light)

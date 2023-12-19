@@ -1,4 +1,5 @@
 import cv2
+import dlib
 import numpy as np
 from PyQt5.QtCore import pyqtSignal, QObject, QThread
 from PyQt5.QtGui import QPixmap
@@ -15,13 +16,20 @@ class FaceDetect(QThread):
 
     @staticmethod
     def detect(image):
+        # # 使用dlib的人脸关键点检测器
+        # predictor = dlib.shape_predictor("tools/shape_predictor_68_face_landmarks.dat")
+        # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         # 加载预训练的模型, 使用TensorFlow深度学习框架
         # Tensorflow 的配置网络和训练的权重参数，model: .pb 文件，config: .pbtxt 文件
         net = cv2.dnn.readNetFromTensorflow("tools/opencv_face_detector_uint8.pb", "tools/opencv_face_detector.pbtxt")
+        # 设置使用 CUDA 加速，需要从源码编译安装支持CUDA版本的opencv
+        # net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+        # net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+
         blob = cv2.dnn.blobFromImage(image,
                                      1.0,
                                      (300, 300),
-                                     [104., 117., 123.],
+                                     [0, 0, 0],
                                      False,
                                      False)
         # 将 blob 设置为输入并获取检测结果
@@ -35,7 +43,7 @@ class FaceDetect(QThread):
             # 获取当前检测结果的置信度
             confidence = detections[0, 0, i, 2]
             # 如果置信大于最小置信度，则将其可视化
-            if confidence > 0.7:
+            if confidence > 0.5:
                 detected_faces += 1
                 # 获取当前检测结果的坐标
                 box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
@@ -44,7 +52,7 @@ class FaceDetect(QThread):
                 text = "{:.3f}%".format(confidence * 100)
                 y = startY - 10 if startY - 10 > 10 else startY + 10
                 print(detected_faces, confidence)
-                image = image.astype(np.uint8)
+                image = image.astype(np.uint8)  # 改为uint8格式
                 cv2.rectangle(image, (startX, startY), (endX, endY), (255, 0, 0), 3)
                 cv2.putText(image,
                             text,
@@ -53,6 +61,34 @@ class FaceDetect(QThread):
                             0.9,
                             (0, 0, 255),
                             2)
+        return detected_faces, image
+
+    @staticmethod
+    def detect_landmarks(image):
+        image = image.astype(np.uint8)
+        # 使用dlib的人脸检测器
+        detector = dlib.get_frontal_face_detector()
+        # 使用dlib的人脸关键点检测器
+        predictor = dlib.shape_predictor("tools/shape_predictor_68_face_landmarks.dat")
+
+        # 将图像转换为灰度图
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+        # 检测人脸
+        faces = detector(gray)
+        detected_faces = 0
+        for face in faces:
+            print(face)
+            # 检测关键点
+            landmarks = predictor(gray, face)
+
+            # 绘制关键点
+            for i in range(0, 68):
+                x, y = landmarks.part(i).x, landmarks.part(i).y
+                cv2.circle(image, (x, y), 2, (0, 255, 0), -1)
+
+            detected_faces += 1
+
         return detected_faces, image
 
     # @staticmethod

@@ -187,7 +187,7 @@ QSlider::handle:horizontal {
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_logo">
             <item>
@@ -244,6 +244,62 @@ QSlider::handle:horizontal {
            </spacer>
           </item>
           <item>
+           <widget class="QPushButton" name="pushButton_home">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>主页</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>3000</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">.QPushButton:hover{
+	background-color:rgb(75, 75, 75);
+	border-radius:10px;
+}
+.QPushButton:pressed{
+	background-color:rgb(50, 50, 50);
+	border-radius:10px;
+}
+.QPushButton:normal{
+	background-color:transparent;
+	border-radius:10px;
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/images/icon/home_icon.svg</normaloff>:/images/icon/home_icon.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_scale">
             <item>
              <widget class="QPushButton" name="pushButton_zoom_in">
@@ -258,11 +314,11 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
@@ -301,11 +357,11 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
@@ -363,6 +419,62 @@ QSlider::handle:horizontal {
            </spacer>
           </item>
           <item>
+           <widget class="QPushButton" name="pushButton_save">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>保存</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>3000</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">.QPushButton:hover{
+	background-color:rgb(75, 75, 75);
+	border-radius:10px;
+}
+.QPushButton:pressed{
+	background-color:rgb(50, 50, 50);
+	border-radius:10px;
+}
+.QPushButton:normal{
+	background-color:transparent;
+	border-radius:10px;
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/images/icon/save_icon.svg</normaloff>:/images/icon/save_icon.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_control_window">
             <item>
              <widget class="QPushButton" name="pushButton_min">
@@ -374,11 +486,11 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
@@ -417,11 +529,15 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
+	border-radius:10px;
+}
+.QPushButton:normal{
+	background-color:transparent;
 	border-radius:10px;
 }</string>
               </property>
@@ -464,7 +580,7 @@ QSlider::handle:horizontal {
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgba(255, 0, 0, 190);
+	background-color:rgba(255, 0, 0, 150);
 	border-radius:10px;
 }</string>
               </property>
@@ -582,11 +698,11 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
@@ -644,11 +760,11 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
@@ -706,11 +822,11 @@ QSlider::handle:horizontal {
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
@@ -773,17 +889,18 @@ background-color: transparent;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
 	background-color:transparent;
 	border-radius:10px;
-}</string>
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -797,6 +914,9 @@ background-color: transparent;</string>
                 <width>48</width>
                 <height>48</height>
                </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -835,17 +955,18 @@ background-color: transparent;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
 	background-color:transparent;
 	border-radius:10px;
-}</string>
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -859,6 +980,9 @@ background-color: transparent;</string>
                 <width>48</width>
                 <height>48</height>
                </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -879,7 +1003,7 @@ background-color: transparent;</string>
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_curve">
+             <widget class="QPushButton" name="pushButton_chart">
               <property name="minimumSize">
                <size>
                 <width>61</width>
@@ -890,24 +1014,25 @@ background-color: transparent;</string>
                <cursorShape>PointingHandCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>曲线调色</string>
+               <string>图表</string>
               </property>
               <property name="toolTipDuration">
                <number>3000</number>
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
 	background-color:transparent;
 	border-radius:10px;
-}</string>
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -921,6 +1046,9 @@ background-color: transparent;</string>
                 <width>43</width>
                 <height>43</height>
                </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -959,17 +1087,18 @@ background-color: transparent;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
 	background-color:transparent;
 	border-radius:10px;
-}</string>
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -983,6 +1112,9 @@ background-color: transparent;</string>
                 <width>48</width>
                 <height>48</height>
                </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -1021,17 +1153,18 @@ background-color: transparent;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
 	background-color:transparent;
 	border-radius:10px;
-}</string>
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -1045,6 +1178,9 @@ background-color: transparent;</string>
                 <width>48</width>
                 <height>48</height>
                </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>
@@ -1083,17 +1219,18 @@ background-color: transparent;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">.QPushButton:hover{
-	background-color:rgb(58, 58, 58);
+	background-color:rgb(75, 75, 75);
 	border-radius:10px;
 }
 .QPushButton:pressed{
-	background-color:rgb(90, 90, 90);
+	background-color:rgb(50, 50, 50);
 	border-radius:10px;
 }
 .QPushButton:normal{
 	background-color:transparent;
 	border-radius:10px;
-}</string>
+}
+</string>
               </property>
               <property name="text">
                <string/>
@@ -1107,6 +1244,9 @@ background-color: transparent;</string>
                 <width>48</width>
                 <height>48</height>
                </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
               </property>
               <property name="flat">
                <bool>true</bool>

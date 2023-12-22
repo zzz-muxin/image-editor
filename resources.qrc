@@ -57,5 +57,6 @@
         <file>images/icon/green_circle.svg</file>
         <file>images/icon/font_icon.svg</file>
         <file>images/icon/colorful.png</file>
+        <file>images/icon/skin_smooth.svg</file>
     </qresource>
 </RCC>

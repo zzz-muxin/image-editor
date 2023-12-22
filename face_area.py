@@ -8,6 +8,11 @@ class FaceArea(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)  # 设置ui
-        self.switch_button = SwitchButton()  # 摄像头开关按钮
-        self.horizontalLayout_switch_camera.addWidget(self.switch_button)
+        # 摄像头开关按钮
+        self.switch_button_camera = SwitchButton()
+        self.horizontalLayout_switch_camera.addWidget(self.switch_button_camera)
+        # 人脸检测框开关按钮
+        self.switch_button_rect = SwitchButton()
+        self.horizontalLayout_switch_rect.addWidget(self.switch_button_rect)
+
 

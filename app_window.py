@@ -140,59 +140,70 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 初始化与图片相关的组件
     def init_image_widget(self, pixmap):
-        self.graphicsView = GraphicsView(pixmap, self)  # 查看图片的GraphicsView
-        self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
-        self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
-        self.page_image_view.setLayout(self.verticalLayout_image_view)  # 设置垂直布局
+        if not self.graphicsView:
+            self.graphicsView = GraphicsView(pixmap, self)  # 查看图片的GraphicsView
+            self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭垂直滑动条
+            self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)  # 关闭水平滑动条
+            self.page_image_view.setLayout(self.verticalLayout_image_view)  # 设置垂直布局
 
-        self.horizontalLayout_view.addWidget(self.chart_area)
-        self.horizontalLayout_view.setStretch(0, 1)
-        self.chart_area.hide()
+            self.horizontalLayout_view.addWidget(self.chart_area)
+            self.horizontalLayout_view.setStretch(0, 1)
+            self.chart_area.hide()
 
-        self.horizontalLayout_view.addWidget(self.graphicsView)  # 添加graphicsView到布局
-        self.horizontalLayout_view.setStretch(1, 2)
+            # 添加graphicsView到布局
+            self.horizontalLayout_view.addWidget(self.graphicsView)
+            self.horizontalLayout_view.setStretch(1, 2)
 
-        self.horizontalLayout_view.addWidget(self.adjust_area)
-        self.horizontalLayout_view.setStretch(2, 1)
-        self.adjust_area.hide()
+            self.horizontalLayout_view.addWidget(self.adjust_area)
+            self.horizontalLayout_view.setStretch(2, 1)
+            self.adjust_area.hide()
 
-        self.horizontalLayout_view.addWidget(self.face_area)
-        self.horizontalLayout_view.setStretch(3, 1)
-        self.face_area.hide()
+            self.horizontalLayout_view.addWidget(self.face_area)
+            self.horizontalLayout_view.setStretch(3, 1)
+            self.face_area.hide()
 
-        # 曲线调色
-        self.curve_chart = Curve(pixmap)
-        self.curve_chart.image_updated.connect(self.pixmap_update)
-        self.chart_area.verticalLayout_curve.addWidget(self.curve_chart)
-        # 连接按钮信号
-        self.chart_area.pushButton_colorful.clicked.connect(self.press_colorful_button)
-        self.chart_area.pushButton_red.clicked.connect(self.press_red_button)
-        self.chart_area.pushButton_green.clicked.connect(self.press_green_button)
-        self.chart_area.pushButton_blue.clicked.connect(self.press_blue_button)
-        # 灰度直方图
-        self.gray_chart = GrayChart(pixmap)
-        self.chart_area.verticalLayout_gray_hist.addWidget(self.gray_chart)
-        # rgb直方图
-        self.rgb_chart = RGBChart(pixmap)
-        self.chart_area.verticalLayout_rgb_hist.addWidget(self.rgb_chart)
-        # 连接直方图均衡化信号
-        self.rgb_chart.image_updated.connect(self.pixmap_update)
-        self.rgb_chart.image_updated.connect(self.gray_chart.set_pixmap)
-        self.chart_area.switch_button.clickedOn.connect(self.rgb_chart.hist_equalize)
-        self.chart_area.switch_button.clickedOff.connect(self.rgb_chart.hist_restore)
+            # 曲线调色
+            self.curve_chart = Curve(pixmap)
+            self.curve_chart.image_updated.connect(self.pixmap_update)
+            self.chart_area.verticalLayout_curve.addWidget(self.curve_chart)
+            # 连接按钮信号
+            self.chart_area.pushButton_colorful.clicked.connect(self.press_colorful_button)
+            self.chart_area.pushButton_red.clicked.connect(self.press_red_button)
+            self.chart_area.pushButton_green.clicked.connect(self.press_green_button)
+            self.chart_area.pushButton_blue.clicked.connect(self.press_blue_button)
+            # 灰度直方图
+            self.gray_chart = GrayChart(pixmap)
+            self.chart_area.verticalLayout_gray_hist.addWidget(self.gray_chart)
+            # rgb直方图
+            self.rgb_chart = RGBChart(pixmap)
+            self.chart_area.verticalLayout_rgb_hist.addWidget(self.rgb_chart)
+            # 连接直方图均衡化信号
+            self.rgb_chart.image_updated.connect(self.pixmap_update)
+            self.rgb_chart.image_updated.connect(self.gray_chart.set_pixmap)
+            self.chart_area.switch_button.clickedOn.connect(self.rgb_chart.hist_equalize)
+            self.chart_area.switch_button.clickedOff.connect(self.rgb_chart.hist_restore)
 
-        # 字体spinBox信号
-        self.function_stack.spinBox.valueChanged.connect(self.graphicsView.spinbox_change)
+            # 字体spinBox信号
+            self.function_stack.spinBox.valueChanged.connect(self.graphicsView.spinbox_change)
 
-        # 人脸检测
-        self.face_detect = FaceDetect(pixmap)
-        self.face_detect.image_updated.connect(self.pixmap_update)
-        self.face_detect.face_num.connect(self.face_area.label_face_num.setNum)
-        self.face_area.switch_button.clickedOn.connect(self.open_camera)
-        self.face_area.switch_button.clickedOff.connect(self.close_camera)
+            # 人脸检测
+            self.face_detect = FaceDetect(pixmap)
+            self.face_detect.image_updated.connect(self.pixmap_update)
+            self.face_detect.face_num.connect(self.face_area.label_face_num.setNum)
+            self.face_area.slider_smooth_skin.sliderReleased.connect(self.skin_smoothing)  # 滑动条磨皮
+            self.face_area.switch_button_camera.clickedOn.connect(self.open_camera)
+            self.face_area.switch_button_camera.clickedOff.connect(self.close_camera)
+            self.face_area.switch_button_rect.clickedOn.connect(self.show_face_rect)
+            self.face_area.switch_button_rect.clickedOff.connect(self.hide_face_rect)
 
-        self.adjust.set_pixmap(pixmap)
-        self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
+            self.adjust.set_pixmap(pixmap)
+            self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
+        else:
+            self.graphicsView.set_pixmap(pixmap)
+            self.graphicsView.zoom_fitted_view()
+            self.graphicsView.delete_crop_box()
+            self.graphicsView.delete_text()
+            self.function_stack.hide()
 
         self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
 
@@ -253,6 +264,10 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 主页按钮
     def press_button_home(self):
         self.main_stacked_widget.setCurrentIndex(0)
+        self.chart_area.hide()
+        self.adjust_area.hide()
+        self.function_stack.hide()
+        self.face_area.hide()
 
     # 放大视图
     def press_button_zoom_in(self):
@@ -299,12 +314,33 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 人脸按钮
     def press_button_face(self):
         if self.is_pixmap_exist():
-            self.face_detect.image_detect()
+            self.face_detect.set_pixmap(self.graphicsView.get_pixmap())
+            self.graphicsView.get_pixmap()
+            self.face_detect.detect_face()
             self.main_stacked_widget.setCurrentIndex(1)
             self.face_area.show()
             self.adjust_area.hide()
             self.chart_area.hide()
             self.function_stack.hide()
+
+    # 显示人脸检测框
+    def show_face_rect(self):
+        self.face_detect.draw_face_img(True)
+
+    # 隐藏人脸检测框
+    def hide_face_rect(self):
+        self.face_detect.draw_face_img(False)
+
+    # 磨皮
+    def skin_smoothing(self):
+        value = self.face_area.slider_smooth_skin.value()  # 获取当前滑动条值
+        if value == 0:
+            self.graphicsView.set_pixmap(self.face_detect.pixmap)
+        else:
+            self.setCursor(Qt.WaitCursor)  # 设置等待光标
+            value = (value / 100.0) * 5.0  # [0, 100] 的值归一化到 [0, 5]
+            self.face_detect.image_face_smooth(value)  # 传值进行磨皮
+            self.setCursor(Qt.ArrowCursor)
 
     # 打开摄像头
     def open_camera(self):
@@ -319,7 +355,6 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 关闭摄像头
     def close_camera(self):
         self.camera.close_camera()
-        self.face_detect.image_detect()
         self.camera.hide()
         self.graphicsView.pixmap_item.show()
 

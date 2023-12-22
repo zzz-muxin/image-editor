@@ -13,6 +13,7 @@ from graphics_view import GraphicsView
 from tools.adjust import Adjust
 from tools.crop import Crop
 from tools.flip import Flip
+from tools.history import History
 from tools.rotate import Rotate
 from ui_py.main_window import Ui_MainWindow
 from upload_image import UploadImageWidget
@@ -82,15 +83,19 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_close.clicked.connect(self.close)  # 关闭按钮
         self.pushButton_max_and_reduction.clicked.connect(self.toggle_maximize)  # 最大化（还原）按钮
         self.pushButton_min.clicked.connect(self.showMinimized)  # 最小化按钮
+        # 三个历史记录按钮初始时不可用
+        self.pushButton_undo.setEnabled(False)
+        self.pushButton_redo.setEnabled(False)
+        self.pushButton_reset.setEnabled(False)
 
-        self.graphicsView = None  # 初始化图像显示视图
-        self.curve_chart = None
-        self.gray_chart = None
-        self.rgb_chart = None
-        self.face_detect = None
-        self.camera = None
-        self.rotate = Rotate()
-        self.adjust = Adjust()
+        self.graphicsView = None  # 图像显示视图
+        self.history = None  # 历史记录
+        self.curve_chart = None  # 曲线图表
+        self.gray_chart = None  # 灰度直方图
+        self.rgb_chart = None  # rgb直方图
+        self.face_detect = None  # 人脸检测
+        self.camera = None  # 摄像头
+
         self._init_all_widget()  # 初始化所有组件的事件
 
     # 初始化所有组件的事件
@@ -118,6 +123,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.function_stack.pushButton_font.clicked.connect(self.show_font_dialog)  # 字体按钮
         self.function_stack.pushButton_cancel_text.clicked.connect(self.cancel_text)  # 取消字体按钮
         self.function_stack.pushButton_apply_text.clicked.connect(self.apply_text)  # 应用字体按钮
+        # todo
         self.adjust_area.slider_saturation.valueChanged.connect(self.saturation_adjust)
         self.adjust_area.slider_contrast.valueChanged.connect(self.contrast_adjust)
         self.adjust_area.slider_brightness.valueChanged.connect(self.brightness_adjust)
@@ -162,6 +168,17 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             self.horizontalLayout_view.setStretch(3, 1)
             self.face_area.hide()
 
+            # 历史记录
+            self.history = History(pixmap)  # 历史记录类
+            self.history.image_updated.connect(self.pixmap_update)  # 更新图像
+            # 设置三个历史记录按钮是否可用
+            self.history.undo_enable.connect(self.set_undo_enable)
+            self.history.redo_enable.connect(self.set_redo_enable)
+            self.history.reset_enable.connect(self.set_reset_enable)
+            self.pushButton_undo.clicked.connect(self.undo_action)  # 撤销按钮
+            self.pushButton_redo.clicked.connect(self.redo_action)  # 重做按钮
+            self.pushButton_reset.clicked.connect(self.reset_action)  # 重置按钮
+
             # 曲线调色
             self.curve_chart = Curve(pixmap)
             self.curve_chart.image_updated.connect(self.pixmap_update)
@@ -196,12 +213,15 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             self.face_area.switch_button_rect.clickedOn.connect(self.show_face_rect)
             self.face_area.switch_button_rect.clickedOff.connect(self.hide_face_rect)
 
+            # 调节功能
             self.adjust.set_pixmap(pixmap)
             self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
         else:
+            self.history.set_pixmap(pixmap)  # 更新原始图片
+            self.history.reset()  # 重置历史记录
             self.graphicsView.set_pixmap(pixmap)
             self.graphicsView.zoom_fitted_view()
-            self.graphicsView.delete_crop_box()
+            self.graphicsView.hide_crop_box()
             self.graphicsView.delete_text()
             self.function_stack.hide()
 
@@ -215,42 +235,32 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def slider_rotate(self, degree):
         pixmap_item = self.graphicsView.pixmap_item
         self.function_stack.label_rotate.setText(f"{degree}°")  # 显示旋转角度
+        # 设置旋转锚点
         pixmap_item.setTransformOriginPoint(pixmap_item.pixmap().width() / 2, pixmap_item.pixmap().height() / 2)
         pixmap_item.setRotation(degree)
-        # pixmap = self.rotate.rotate_by_slider(degree)
-        # self.graphicsView.pixmap_item.setPixmap(pixmap)
 
     # 顺时针旋转90度
     def rotate_90_clockwise(self):
         pixmap = Rotate.rotate(self.graphicsView.get_pixmap(), 90)
+        self.history.undo_stack_append(pixmap)  # 添加到历史记录撤销栈
         self.graphicsView.set_pixmap(pixmap)
 
     # 逆时针旋转90度
     def rotate_90_counterclockwise(self):
         pixmap = Rotate.rotate(self.graphicsView.get_pixmap(), -90)
+        self.history.undo_stack_append(pixmap)  # 添加到历史记录撤销栈
         self.graphicsView.set_pixmap(pixmap)
 
     # 水平镜像
     def flip_x(self):
         pixmap = Flip.flip_x(self.graphicsView.get_pixmap())
+        self.history.undo_stack_append(pixmap)  # 添加到历史记录撤销栈
         self.graphicsView.set_pixmap(pixmap)
 
     # 垂直镜像
     def flip_y(self):
         pixmap = Flip.flip_y(self.graphicsView.get_pixmap())
-        self.graphicsView.set_pixmap(pixmap)
-
-    # 饱和度
-    def saturation_adjust(self, value):
-        pixmap = self.adjust.adjust_saturation(value)
-        self.graphicsView.set_pixmap(pixmap)
-
-    def contrast_adjust(self, value):
-        pixmap = self.adjust.adjust_contrast(value)
-        self.graphicsView.set_pixmap(pixmap)
-
-    def brightness_adjust(self, value):
-        pixmap = self.adjust.adjust_brightness(value)
+        self.history.undo_stack_append(pixmap)  # 添加到历史记录撤销栈
         self.graphicsView.set_pixmap(pixmap)
 
     # 检查graphicsView视图内是否存在图元
@@ -260,6 +270,51 @@ class AppWindow(QMainWindow, Ui_MainWindow):
                 if isinstance(item, QGraphicsPixmapItem):
                     return True
         return False
+
+    # 设置撤销按钮是否可用
+    def set_undo_enable(self, enable):
+        self.pushButton_undo.setEnabled(enable)
+
+    # 设置重做按钮是否可用
+    def set_redo_enable(self, enable):
+        self.pushButton_redo.setEnabled(enable)
+
+    # 设置撤销按钮是否可用
+    def set_reset_enable(self, enable):
+        self.pushButton_reset.setEnabled(enable)
+
+    # 撤销动作
+    def undo_action(self):
+        self.graphicsView.hide_crop_box()
+        self.graphicsView.delete_text()
+        self.function_stack.hide()
+        self.chart_area.hide()
+        self.face_area.hide()
+        self.adjust_area.hide()
+        self.history.undo()
+
+    # 重做动作
+    def redo_action(self):
+        self.graphicsView.hide_crop_box()
+        self.graphicsView.delete_text()
+        self.function_stack.hide()
+        self.chart_area.hide()
+        self.face_area.hide()
+        self.adjust_area.hide()
+        self.history.redo()
+
+    # 重置动作
+    def reset_action(self):
+        reply = QMessageBox.question(self, '是否重置图像？', '将删除对此图像所做的所有编辑',
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.graphicsView.hide_crop_box()
+            self.graphicsView.delete_text()
+            self.function_stack.hide()
+            self.chart_area.hide()
+            self.face_area.hide()
+            self.adjust_area.hide()
+            self.history.reset()  # 执行重置
 
     # 主页按钮
     def press_button_home(self):
@@ -283,6 +338,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def press_button_chart(self):
         if self.is_pixmap_exist():
             self.main_stacked_widget.setCurrentIndex(1)
+            self.history.undo_stack_append(self.graphicsView.get_pixmap())  # 添加到撤销历史记录栈
             self.curve_chart.set_pixmap(self.graphicsView.get_pixmap())
             self.gray_chart.set_pixmap(self.graphicsView.get_pixmap())
             self.rgb_chart.set_pixmap(self.graphicsView.get_pixmap())
@@ -314,6 +370,8 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 人脸按钮
     def press_button_face(self):
         if self.is_pixmap_exist():
+            self.setCursor(Qt.WaitCursor)
+            self.history.undo_stack_append(self.graphicsView.get_pixmap())  # 添加到撤销历史记录栈
             self.face_detect.set_pixmap(self.graphicsView.get_pixmap())
             self.graphicsView.get_pixmap()
             self.face_detect.detect_face()
@@ -362,7 +420,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     def press_button_text(self):
         if self.is_pixmap_exist():
             self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图page
-            self.function_stack.basic_function_stack.setCurrentIndex(2)  # 跳转到文字菜单栏
+            self.function_stack.function_stack.setCurrentIndex(2)  # 跳转到文字菜单栏
             self.adjust_area.hide()
             self.chart_area.hide()
             self.face_area.hide()
@@ -375,7 +433,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.orig_color = self.get_current_color()
         # 创建颜色对话框
         color_dialog = QColorDialog()
+        # noinspection PyUnresolvedReferences
         color_dialog.currentColorChanged.connect(self.preview_color)
+        # noinspection PyUnresolvedReferences
         color_dialog.rejected.connect(self.cancel_select_color)
         color_dialog.exec_()
 
@@ -413,6 +473,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 显示字体对话框
     def show_font_dialog(self):
         font_dialog = QFontDialog()
+        # noinspection PyUnresolvedReferences
         font_dialog.currentFontChanged.connect(self.graphicsView.change_text_font)
         font_dialog.exec_()
 
@@ -424,8 +485,8 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 应用文本按钮
     def apply_text(self):
-        #self.function_stack.hide()
         self.graphicsView.draw_text()  # 绘制文本
+        self.history.undo_stack_append(self.graphicsView.get_pixmap())  # 添加到撤销历史记录栈
         self.graphicsView.delete_text()  # 删除所有文本
 
     # 调节按钮
@@ -433,6 +494,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         if self.is_pixmap_exist():
             # 存在图片才显示adjust_area
             self.main_stacked_widget.setCurrentIndex(1)
+            self.history.undo_stack_append(self.graphicsView.get_pixmap())  # 添加到撤销历史记录栈
             self.adjust_area.show()
             self.chart_area.hide()
             self.function_stack.hide()
@@ -441,9 +503,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 旋转按钮
     def press_button_rotate(self):
         if self.is_pixmap_exist():
-            self.rotate.set_pixmap(self.graphicsView.get_pixmap())  # 设置当前旋转图片
+            #self.rotate.set_pixmap(self.graphicsView.get_pixmap())  # 设置当前旋转图片
             self.main_stacked_widget.setCurrentIndex(1)
-            self.function_stack.basic_function_stack.setCurrentIndex(1)
+            self.function_stack.function_stack.setCurrentIndex(1)
             self.adjust_area.hide()
             self.chart_area.hide()
             self.function_stack.show()
@@ -454,7 +516,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         crop_box_exist = False
         if self.is_pixmap_exist():
             self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图page
-            self.function_stack.basic_function_stack.setCurrentIndex(0)  # 跳转到裁剪功能page
+            self.function_stack.function_stack.setCurrentIndex(0)  # 跳转到裁剪功能page
             self.adjust_area.hide()
             self.chart_area.hide()
             self.face_area.hide()
@@ -462,25 +524,29 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             for item in self.graphicsView.items():
                 if isinstance(item, CropBox):
                     # 检查graphicsView内是否已存在裁剪框
-                    # self.graphicsView.show_crop_box()  # 显示裁剪框
                     crop_box_exist = True
+                    self.graphicsView.show_crop_box()
             # 不存在裁剪框则新建
             if not crop_box_exist:
                 self.graphicsView.add_crop_box()  # 新增裁剪框
-                self.function_stack.pushButton_apply.clicked.connect(self.press_crop_apply)  # 应用裁剪按钮
-                self.function_stack.pushButton_cancel.clicked.connect(self.press_crop_cancel)  # 取消裁剪按钮
+                self.function_stack.pushButton_apply.clicked.connect(self.crop_apply)  # 应用裁剪按钮
+                self.function_stack.pushButton_cancel.clicked.connect(self.crop_cancel)  # 取消裁剪按钮
 
-    def press_crop_apply(self):
+    # 应用裁剪按钮
+    def crop_apply(self):
         if self.graphicsView.crop_box:
             pixmap = self.graphicsView.get_pixmap()
             rect = self.graphicsView.crop_box.parentRect()
             pixmap_cropped = Crop.crop_image(pixmap, rect)  # 参数为裁剪的图片和框选的范围
             self.graphicsView.set_pixmap(pixmap_cropped)  # 设置为裁剪后的图片
+            self.history.undo_stack_append(pixmap_cropped)  # 添加到撤销历史记录栈
             self.graphicsView.pixmap_item.setPos(self.graphicsView.crop_box.getSceneTopLeft())  # 重新设置左上角点位
             self.graphicsView.crop_box.updateState()  # 裁剪后更新裁剪框状态
 
-    def press_crop_cancel(self):
-        self.graphicsView.delete_crop_box()  # 删除裁剪框
+    # 取消裁剪按钮
+    def crop_cancel(self):
+        self.graphicsView.hide_crop_box()  # 隐藏裁剪框
+        self.function_stack.slider_rotate.setValue(0)  # 旋转角度置为0
         self.function_stack.hide()
 
     # 保存图片

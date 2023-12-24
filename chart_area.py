@@ -10,5 +10,3 @@ class ChartArea(QWidget, Ui_Form):
         self.setupUi(self)  # 设置ui
         self.switch_button = SwitchButton()  # 直方图均衡化开关按钮
         self.horizontalLayout_switch.addWidget(self.switch_button)
-
-

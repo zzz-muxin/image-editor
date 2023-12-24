@@ -1,12 +1,9 @@
-
 from PyQt5.QtCore import pyqtSignal, QObject
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QMessageBox
 
 
 # 历史记录类
 class History(QObject):
-
     image_updated = pyqtSignal(QPixmap)  # 图像更新信号
     undo_enable = pyqtSignal(bool)  # 是否可撤销
     redo_enable = pyqtSignal(bool)  # 是否可重做

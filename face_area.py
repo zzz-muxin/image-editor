@@ -14,5 +14,3 @@ class FaceArea(QWidget, Ui_Form):
         # 人脸检测框开关按钮
         self.switch_button_rect = SwitchButton()
         self.horizontalLayout_switch_rect.addWidget(self.switch_button_rect)
-
-

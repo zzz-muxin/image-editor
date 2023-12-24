@@ -20,119 +20,119 @@ class Ui_Form(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget_hist = QtWidgets.QWidget(Form)
         self.widget_hist.setStyleSheet("QWidget{\n"
-"    border-radius:20px;\n"
-"    background-color: rgb(32, 32, 32);\n"
-"}\n"
-"QScrollBar:horizontal{\n"
-"    height:8px;\n"
-"    background:rgba(0,0,0,0%);\n"
-"border-radius:4px;\n"
-"\n"
-"}\n"
-"QScrollBar::handle:horizontal{\n"
-"    background:rgba(255,255,255,50%);\n"
-"border-radius:4px;\n"
-"}\n"
-"QScrollBar::handle:horizontal:hover{\n"
-"    background:rgba(255,255,255,100%);\n"
-"    min-width:0;\n"
-"}\n"
-"QScrollBar::add-line:horizontal{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::sub-line:horizontal{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::add-line:horizontal:hover{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::sub-line:horizontal:hover{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal\n"
-"{\n"
-"    background:rgba(0,0,0,10%);\n"
-"    border-radius:4px;\n"
-"}\n"
-"\n"
-"QScrollBar:vertical{\n"
-"    width:8px;\n"
-"    background:rgba(0,0,0,0%);\n"
-"\n"
-"}\n"
-"QScrollBar::handle:vertical{\n"
-"    width:0px;\n"
-"    background:rgba(255,255,255,50%);\n"
-"    border-radius:4px;\n"
-"}\n"
-"QScrollBar::handle:vertical:hover{\n"
-"    width:0px;\n"
-"    background:rgba(255,255,255,100%);\n"
-"    border-radius:4px;\n"
-"    min-width:20;\n"
-"}\n"
-"QScrollBar::add-line:vertical{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::sub-line:vertical{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::add-line:vertical:hover{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::sub-line:vertical:hover{\n"
-"    height:0px;width:0px;\n"
-"\n"
-"}\n"
-"QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical\n"
-"{\n"
-"    background:rgba(0,0,0,10%);\n"
-"    border-radius:4px;\n"
-"}\n"
-"\n"
-" \n"
-" \n"
-"QSlider::add-page:horizontal {\n"
-"    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-"                                      stop: 0 rgb(100, 100, 100),\n"
-"                                      stop: 1 rgb(255, 78, 0,));\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QSlider::sub-page:horizontal {\n"
-"    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-"                                      stop: 0 rgb(51, 151, 255),\n"
-"                                      stop: 1 rgb(100, 100, 100));\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QSlider::groove:horizontal {\n"
-"    background: transparent;\n"
-"    height: 8px;\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"    width: 16px;\n"
-"    height: 18px;\n"
-"    margin: -4px 0px -4px 0px;\n"
-"    border-radius: 8px;\n"
-"    background: white;\n"
-"}\n"
-"")
+                                       "    border-radius:20px;\n"
+                                       "    background-color: rgb(32, 32, 32);\n"
+                                       "}\n"
+                                       "QScrollBar:horizontal{\n"
+                                       "    height:8px;\n"
+                                       "    background:rgba(0,0,0,0%);\n"
+                                       "border-radius:4px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::handle:horizontal{\n"
+                                       "    background:rgba(255,255,255,50%);\n"
+                                       "border-radius:4px;\n"
+                                       "}\n"
+                                       "QScrollBar::handle:horizontal:hover{\n"
+                                       "    background:rgba(255,255,255,100%);\n"
+                                       "    min-width:0;\n"
+                                       "}\n"
+                                       "QScrollBar::add-line:horizontal{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::sub-line:horizontal{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::add-line:horizontal:hover{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::sub-line:horizontal:hover{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal\n"
+                                       "{\n"
+                                       "    background:rgba(0,0,0,10%);\n"
+                                       "    border-radius:4px;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QScrollBar:vertical{\n"
+                                       "    width:8px;\n"
+                                       "    background:rgba(0,0,0,0%);\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::handle:vertical{\n"
+                                       "    width:0px;\n"
+                                       "    background:rgba(255,255,255,50%);\n"
+                                       "    border-radius:4px;\n"
+                                       "}\n"
+                                       "QScrollBar::handle:vertical:hover{\n"
+                                       "    width:0px;\n"
+                                       "    background:rgba(255,255,255,100%);\n"
+                                       "    border-radius:4px;\n"
+                                       "    min-width:20;\n"
+                                       "}\n"
+                                       "QScrollBar::add-line:vertical{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::sub-line:vertical{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::add-line:vertical:hover{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::sub-line:vertical:hover{\n"
+                                       "    height:0px;width:0px;\n"
+                                       "\n"
+                                       "}\n"
+                                       "QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical\n"
+                                       "{\n"
+                                       "    background:rgba(0,0,0,10%);\n"
+                                       "    border-radius:4px;\n"
+                                       "}\n"
+                                       "\n"
+                                       " \n"
+                                       " \n"
+                                       "QSlider::add-page:horizontal {\n"
+                                       "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+                                       "                                      stop: 0 rgb(100, 100, 100),\n"
+                                       "                                      stop: 1 rgb(255, 78, 0,));\n"
+                                       "    border-radius: 4px;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QSlider::sub-page:horizontal {\n"
+                                       "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+                                       "                                      stop: 0 rgb(51, 151, 255),\n"
+                                       "                                      stop: 1 rgb(100, 100, 100));\n"
+                                       "    border-radius: 4px;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QSlider::groove:horizontal {\n"
+                                       "    background: transparent;\n"
+                                       "    height: 8px;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QSlider::handle:horizontal {\n"
+                                       "    width: 16px;\n"
+                                       "    height: 18px;\n"
+                                       "    margin: -4px 0px -4px 0px;\n"
+                                       "    border-radius: 8px;\n"
+                                       "    background: white;\n"
+                                       "}\n"
+                                       "")
         self.widget_hist.setObjectName("widget_hist")
         self.horizontalLayout_hist = QtWidgets.QHBoxLayout(self.widget_hist)
         self.horizontalLayout_hist.setObjectName("horizontalLayout_hist")
         self.scrollArea = QtWidgets.QScrollArea(self.widget_hist)
         self.scrollArea.setStyleSheet("QScrollArea{\n"
-"    background-color: transparent;\n"
-"}")
+                                      "    background-color: transparent;\n"
+                                      "}")
         self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
@@ -161,8 +161,8 @@ class Ui_Form(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_face.setFont(font)
         self.label_face.setStyleSheet("QLabel{\n"
-"    color:rgb(255, 255, 255);\n"
-"}")
+                                      "    color:rgb(255, 255, 255);\n"
+                                      "}")
         self.label_face.setObjectName("label_face")
         self.horizontalLayout_3.addWidget(self.label_face)
         self.label_face_num = QtWidgets.QLabel(self.widget_face_num)
@@ -173,8 +173,8 @@ class Ui_Form(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_face_num.setFont(font)
         self.label_face_num.setStyleSheet("QLabel{\n"
-"    color:rgb(255, 255, 255);\n"
-"}")
+                                          "    color:rgb(255, 255, 255);\n"
+                                          "}")
         self.label_face_num.setObjectName("label_face_num")
         self.horizontalLayout_3.addWidget(self.label_face_num)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -205,8 +205,8 @@ class Ui_Form(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_camera.setFont(font)
         self.label_camera.setStyleSheet("QLabel{\n"
-"    color:rgb(255, 255, 255);\n"
-"}")
+                                        "    color:rgb(255, 255, 255);\n"
+                                        "}")
         self.label_camera.setObjectName("label_camera")
         self.horizontalLayout_4.addWidget(self.label_camera)
         self.widget_switch_button_camera = QtWidgets.QWidget(self.widget_camera)
@@ -244,8 +244,8 @@ class Ui_Form(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_face_rect.setFont(font)
         self.label_face_rect.setStyleSheet("QLabel{\n"
-"    color:rgb(255, 255, 255);\n"
-"}")
+                                           "    color:rgb(255, 255, 255);\n"
+                                           "}")
         self.label_face_rect.setObjectName("label_face_rect")
         self.horizontalLayout_5.addWidget(self.label_face_rect)
         self.widget_switch_button_rect = QtWidgets.QWidget(self.widget_face_rect)
@@ -283,8 +283,8 @@ class Ui_Form(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_text_skin.setFont(font)
         self.label_text_skin.setStyleSheet("QLabel{\n"
-"    color:rgb(255, 255, 255);\n"
-"}")
+                                           "    color:rgb(255, 255, 255);\n"
+                                           "}")
         self.label_text_skin.setObjectName("label_text_skin")
         self.horizontalLayout_skin.addWidget(self.label_text_skin)
         self.label_smooth_value = QtWidgets.QLabel(self.widget_skin)
@@ -298,8 +298,8 @@ class Ui_Form(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.label_smooth_value.setFont(font)
         self.label_smooth_value.setStyleSheet("QLabel{\n"
-"    color:rgb(255, 255, 255);\n"
-"}")
+                                              "    color:rgb(255, 255, 255);\n"
+                                              "}")
         self.label_smooth_value.setObjectName("label_smooth_value")
         self.horizontalLayout_skin.addWidget(self.label_smooth_value)
         self.horizontalLayout_skin.setStretch(0, 1)
@@ -319,7 +319,7 @@ class Ui_Form(object):
         self.horizontalLayout.addWidget(self.widget_hist)
 
         self.retranslateUi(Form)
-        self.slider_smooth_skin.valueChanged['int'].connect(self.label_smooth_value.setNum) # type: ignore
+        self.slider_smooth_skin.valueChanged['int'].connect(self.label_smooth_value.setNum)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -331,4 +331,3 @@ class Ui_Form(object):
         self.label_face_rect.setText(_translate("Form", "人脸检测框："))
         self.label_text_skin.setText(_translate("Form", "磨皮"))
         self.label_smooth_value.setText(_translate("Form", "0"))
-import resources_rc

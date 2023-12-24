@@ -1,11 +1,6 @@
-import cv2
-from PyQt5.QtGui import QPixmap, QColor, QFont
-from PyQt5.QtCore import pyqtSignal, QPointF, QSizeF, Qt, QRectF
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QGraphicsTextItem, QWidget, \
-    QTextEdit, QGraphicsProxyWidget, QGraphicsPixmapItem
-
-from tools.image_format import ImageFormat
+from PyQt5.QtCore import Qt, QRectF
+from PyQt5.QtGui import QColor, QFont
+from PyQt5.QtWidgets import QGraphicsItem, QGraphicsTextItem, QGraphicsPixmapItem
 
 
 # 文本框类

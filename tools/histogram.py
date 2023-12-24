@@ -1,8 +1,7 @@
 import cv2
-from PyQt5.QtChart import *
 from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis
 from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QPixmap, QImage, QPainter, QColor, QCursor
+from PyQt5.QtGui import QPixmap, QImage, QPainter, QColor
 
 from tools.image_format import ImageFormat
 

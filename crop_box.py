@@ -302,4 +302,3 @@ class CropBox(QGraphicsItem):
 
     def getHeight(self):
         return self.size.height()
-

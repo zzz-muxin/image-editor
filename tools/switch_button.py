@@ -1,5 +1,5 @@
-from PyQt5.QtCore import pyqtSignal, QTimer, Qt, QRect, QRectF, QThread
-from PyQt5.QtGui import QColor, QMouseEvent, QPaintEvent, QPainter, QPainterPath, QPen, QFont
+from PyQt5.QtCore import pyqtSignal, QTimer, Qt, QRect, QRectF
+from PyQt5.QtGui import QColor, QPaintEvent, QPainter, QPainterPath, QPen, QFont
 from PyQt5.QtWidgets import QWidget
 
 

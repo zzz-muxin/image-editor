@@ -19,4 +19,3 @@ class Crop:
         image_original = ImageFormat.pixmap_to_cv(pixmap)  # 格式转换
         image_cropped = image_original[y:y + height, x:x + width].copy()  # 用copy()进行深拷贝
         return ImageFormat.cv_to_pixmap(image_cropped)
-

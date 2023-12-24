@@ -8,6 +8,7 @@ from PyQt5.QtGui import QPixmap, QImage
     因此，将OpenCV彩色图像转换为QImage时,要进行颜色通道的顺序调换
 '''
 
+
 class ImageFormat:
     def __init__(self):
         pass

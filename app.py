@@ -1,30 +1,26 @@
 import re
 
 from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtChart import QChartView
-from PyQt5.QtCore import Qt, QPoint, QFileInfo
-from PyQt5.QtGui import QColor, QEnterEvent, QPainter
+from PyQt5.QtCore import Qt, QPoint
+from PyQt5.QtGui import QColor, QEnterEvent
 from PyQt5.QtWidgets import QMainWindow, QGraphicsPixmapItem, QFileDialog, QMessageBox, QColorDialog, QFontDialog
 
 from adjust_area import AdjustArea
+from chart_area import ChartArea
 from crop_box import CropBox
+from face_area import FaceArea
 from function_stack import FunctionStack
 from graphics_view import GraphicsView
-from tools.adjust import Adjust
+from tools.camera import Camera
 from tools.crop import Crop
+from tools.curve import Curve
+from tools.face_detect import FaceDetect
 from tools.flip import Flip
+from tools.histogram import GrayChart, RGBChart
 from tools.history import History
 from tools.rotate import Rotate
 from ui_py.main_window import Ui_MainWindow
 from upload_image import UploadImageWidget
-from chart_area import ChartArea
-from tools.histogram import GrayChart, RGBChart
-from face_area import FaceArea
-from tools.face_detect import FaceDetect
-from tools.switch_button import SwitchButton
-from tools.curve import Curve
-from tools.text import Text
-from tools.camera import Camera
 
 
 # from function_bar import FunctionBar
@@ -215,7 +211,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
             # 调节功能
             # todo
-            #self.adjust.set_pixmap(pixmap)
+            # self.adjust.set_pixmap(pixmap)
             self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
         else:
             self.history.set_pixmap(pixmap)  # 更新原始图片
@@ -504,7 +500,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
     # 旋转按钮
     def press_button_rotate(self):
         if self.is_pixmap_exist():
-            #self.rotate.set_pixmap(self.graphicsView.get_pixmap())  # 设置当前旋转图片
+            # self.rotate.set_pixmap(self.graphicsView.get_pixmap())  # 设置当前旋转图片
             self.main_stacked_widget.setCurrentIndex(1)
             self.function_stack.function_stack.setCurrentIndex(1)
             self.adjust_area.hide()

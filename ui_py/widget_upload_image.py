@@ -25,13 +25,13 @@ class Ui_Form(object):
         self.widget_upload.setMaximumSize(QtCore.QSize(550, 300))
         self.widget_upload.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.widget_upload.setStyleSheet(".QWidget#widget_upload{\n"
-"    border: 5px dashed #ccc;\n"
-"    border-radius:10px;\n"
-"    background-color:transparent;\n"
-"}\n"
-".QWidget#widget_upload:hover{\n"
-"    background-color: rgba(0, 170, 255, 50);\n"
-"}")
+                                         "    border: 5px dashed #ccc;\n"
+                                         "    border-radius:10px;\n"
+                                         "    background-color:transparent;\n"
+                                         "}\n"
+                                         ".QWidget#widget_upload:hover{\n"
+                                         "    background-color: rgba(0, 170, 255, 50);\n"
+                                         "}")
         self.widget_upload.setObjectName("widget_upload")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.widget_upload)
         self.verticalLayout_2.setContentsMargins(10, 10, 10, 10)
@@ -42,9 +42,9 @@ class Ui_Form(object):
         self.widget_cloud.setMinimumSize(QtCore.QSize(161, 141))
         self.widget_cloud.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.widget_cloud.setStyleSheet("QWidget{\n"
-"    image:url(:/images/icon/download_cloud_multimedia_icon.svg);\n"
-"    background-color: transparent;\n"
-"}")
+                                        "    image:url(:/images/icon/download_cloud_multimedia_icon.svg);\n"
+                                        "    background-color: transparent;\n"
+                                        "}")
         self.widget_cloud.setObjectName("widget_cloud")
         self.verticalLayout_2.addWidget(self.widget_cloud)
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
@@ -64,9 +64,9 @@ class Ui_Form(object):
         self.label_drag.setFont(font)
         self.label_drag.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label_drag.setStyleSheet("QLabel{\n"
-"    background-color:transparent;\n"
-"    color: rgb(255, 255, 255);\n"
-"}")
+                                      "    background-color:transparent;\n"
+                                      "    color: rgb(255, 255, 255);\n"
+                                      "}")
         self.label_drag.setObjectName("label_drag")
         self.horizontalLayout_9.addWidget(self.label_drag)
         self.label_upload = QtWidgets.QLabel(self.widget_upload)
@@ -75,9 +75,9 @@ class Ui_Form(object):
         font.setPointSize(15)
         self.label_upload.setFont(font)
         self.label_upload.setStyleSheet("QLabel{\n"
-"    background-color:transparent;\n"
-"    color: rgb(64, 158, 255);\n"
-"}")
+                                        "    background-color:transparent;\n"
+                                        "    color: rgb(64, 158, 255);\n"
+                                        "}")
         self.label_upload.setObjectName("label_upload")
         self.horizontalLayout_9.addWidget(self.label_upload)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -95,4 +95,3 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_drag.setText(_translate("Form", "将图片拖拽到此处，或"))
         self.label_upload.setText(_translate("Form", "点击上传"))
-import resources_rc

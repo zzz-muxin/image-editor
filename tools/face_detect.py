@@ -2,8 +2,8 @@ import cv2
 import dlib
 import numpy as np
 from PIL import ImageEnhance, Image, ImageFilter
-from PyQt5.QtCore import pyqtSignal, QObject, QThread
-from PyQt5.QtGui import QPixmap, QImage, QPainter
+from PyQt5.QtCore import pyqtSignal, QThread
+from PyQt5.QtGui import QPixmap
 from scipy.interpolate import CubicSpline
 
 from tools.image_format import ImageFormat
@@ -256,8 +256,3 @@ class FaceDetect(QThread):
     #     #cv2.imshow('mask', skin_mask)
     #     # cv2.imshow('apply_mask', res)
     #     return skin_mask, res
-
-
-
-
-

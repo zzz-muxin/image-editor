@@ -1,12 +1,11 @@
-import cv2
-from PyQt5.QtCore import pyqtSignal, QPoint, QRect
+from PyQt5.QtCore import pyqtSignal, QRect
 from PyQt5.QtGui import QPixmap, QPainter, QColor, QFont
-from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsItem, QTextEdit
+from PyQt5.QtWidgets import QGraphicsView, QGraphicsScene
 
-from tools.text import Text
 from crop_box import CropBox
 from graphics_pixmap import GraphicsPixmapItem
-from tools.image_format import ImageFormat
+from tools.text import Text
+
 
 class GraphicsView(QGraphicsView):
     save_signal = pyqtSignal(bool)  # 保存图片信号
@@ -186,14 +185,14 @@ class GraphicsView(QGraphicsView):
         x_ratio = pixmap_size.width() / parent_widget_size.width()
         y_ratio = pixmap_size.height() / parent_widget_size.height()
 
-        TARGET_RATIO = 2 / 5  # 缩放目标比例为窗口的2/5
+        target_ratio = 2 / 5  # 缩放目标比例为窗口的2/5
         # 计算缩放比例，根据不同情况缩小视图
-        if x_ratio > TARGET_RATIO or y_ratio > TARGET_RATIO:
-            scale_ratio = TARGET_RATIO / max(x_ratio, y_ratio)
+        if x_ratio > target_ratio or y_ratio > target_ratio:
+            scale_ratio = target_ratio / max(x_ratio, y_ratio)
         else:
             scale_ratio = 1.0  # 不需要缩放
         self.scale(scale_ratio, scale_ratio)
-        #self.min_ratio = round(scale_ratio, 2)  # 保留2位小数
+        # self.min_ratio = round(scale_ratio, 2)  # 保留2位小数
         self.cur_scale_ratio = round(scale_ratio, 2)
         print("image scale:", self.cur_scale_ratio)
 

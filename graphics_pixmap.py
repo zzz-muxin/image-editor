@@ -1,4 +1,4 @@
-from PyQt5.QtCore import pyqtSignal, Qt, QRectF, QPointF
+from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import QGraphicsPixmapItem, QGraphicsItem
 
 
@@ -32,4 +32,3 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
     # 伪状态移动事件设置鼠标样式
     def hoverMoveEvent(self, event):
         self.setCursor(Qt.OpenHandCursor)
-

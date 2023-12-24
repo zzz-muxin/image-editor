@@ -1,10 +1,7 @@
-import cv2
 import numpy as np
-
-from PyQt5.QtChart import QChart, QChartView, QLineSeries, QValueAxis, QSplineSeries, QScatterSeries
+from PyQt5.QtChart import QChart, QChartView, QValueAxis, QSplineSeries, QScatterSeries
 from PyQt5.QtCore import Qt, QPoint, QPointF, pyqtSignal
-from PyQt5.QtGui import QPixmap, QImage, QPainter, QColor, QPen, QCursor
-from PyQt5.QtWidgets import QToolTip
+from PyQt5.QtGui import QPixmap, QPainter, QColor
 from scipy.interpolate import interp1d
 
 from tools.image_format import ImageFormat

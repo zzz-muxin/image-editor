@@ -134,6 +134,7 @@ class FaceDetect(QThread):
             # 将原始图像中的人脸区域替换为磨皮后的图像中的对应区域
             result_img = np.copy(image)
             result_img[face_mask > 0] = smoothed_img[face_mask > 0]
+            # cv2.imshow('landmark', image_dlib_draw)
             # cv2.imshow('smooth_mask', smoothed_img)
             # cv2.imshow('result', result_img)
             if face_num == 0:

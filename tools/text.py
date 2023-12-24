@@ -19,7 +19,7 @@ class Text(QGraphicsTextItem):
         self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在父项pixmap中
         self.setPlainText("输入文字")  # 设置默认文本
         self.setDefaultTextColor(QColor(255, 255, 255))  # 设置默认字体颜色
-        self.setFont(QFont("微软雅黑", 10))  # 设置默认字体
+        self.setFont(QFont("微软雅黑", 24))  # 设置默认字体
 
         self.setTextInteractionFlags(Qt.TextEditorInteraction)  # 启用文本编辑器交互
         self.setAcceptHoverEvents(True)  # 开启接受伪状态事件

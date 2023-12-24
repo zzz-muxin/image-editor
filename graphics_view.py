@@ -14,8 +14,8 @@ class GraphicsView(QGraphicsView):
 
     def __init__(self, pixmap, parent=None):
         super(GraphicsView, self).__init__(parent)
-        #self.setTransformationAnchor(QGraphicsView.NoAnchor)  # 设置缩放或旋转基于视图中心调整
-        #self.setResizeAnchor(QGraphicsView.AnchorViewCenter)  # 设置视图放大缩小时基于鼠标点调整
+        # self.setTransformationAnchor(QGraphicsView.NoAnchor)  # 设置缩放或旋转基于视图中心调整
+        # self.setResizeAnchor(QGraphicsView.AnchorViewCenter)  # 设置视图放大缩小时基于鼠标点调整
 
         # 设置scene
         self.scene = QGraphicsScene()
@@ -24,7 +24,7 @@ class GraphicsView(QGraphicsView):
         # 设置图元
         self.pixmap_item = GraphicsPixmapItem(pixmap)  # 设置图元内图像
         self.scene.addItem(self.pixmap_item)  # 添加图元到场景
-        self.min_ratio = None  # 最小缩放倍数（根据图片大小动态设置）
+        self.min_ratio = 0.1  # 最小缩放倍数（根据图片大小动态设置）
         self.MAX_RATIO = 50.00  # 最大缩放倍数5000倍
         self.cur_scale_ratio = None  # 当前缩放倍数
         self.ZOOM_IN_FACTOR = 1.1  # 放大比例
@@ -45,17 +45,22 @@ class GraphicsView(QGraphicsView):
         except Exception as e:
             print("Error:", e)
 
-    def delete_crop_box(self):
+    # 隐藏裁剪框
+    def hide_crop_box(self):
         try:
             if self.crop_box:
-                self.scene.removeItem(self.crop_box)
+                self.crop_box.hide()
         except Exception as e:
             print("Error:", e)
-        # todo
-        # 裁剪框删不干净问题待解决
-        # if self.crop_box is not None:
-        #     self.crop_box.show()
-        #     self.crop_box.updateState()
+
+    # 显示裁剪框
+    def show_crop_box(self):
+        try:
+            if self.crop_box:
+                self.crop_box.show()
+                self.crop_box.update_pos()
+        except Exception as e:
+            print("Error:", e)
 
     # 添加文本编辑框
     def add_text_edit(self):
@@ -188,7 +193,7 @@ class GraphicsView(QGraphicsView):
         else:
             scale_ratio = 1.0  # 不需要缩放
         self.scale(scale_ratio, scale_ratio)
-        self.min_ratio = round(scale_ratio, 2)  # 保留2位小数
+        #self.min_ratio = round(scale_ratio, 2)  # 保留2位小数
         self.cur_scale_ratio = round(scale_ratio, 2)
         print("image scale:", self.cur_scale_ratio)
 

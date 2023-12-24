@@ -124,9 +124,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.function_stack.pushButton_cancel_text.clicked.connect(self.cancel_text)  # 取消字体按钮
         self.function_stack.pushButton_apply_text.clicked.connect(self.apply_text)  # 应用字体按钮
         # todo
-        self.adjust_area.slider_saturation.valueChanged.connect(self.saturation_adjust)
-        self.adjust_area.slider_contrast.valueChanged.connect(self.contrast_adjust)
-        self.adjust_area.slider_brightness.valueChanged.connect(self.brightness_adjust)
+        # self.adjust_area.slider_saturation.valueChanged.connect(self.saturation_adjust)
+        # self.adjust_area.slider_contrast.valueChanged.connect(self.contrast_adjust)
+        # self.adjust_area.slider_brightness.valueChanged.connect(self.brightness_adjust)
 
         uploader = UploadImageWidget()
         self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片UploadImageWidget类
@@ -214,7 +214,8 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             self.face_area.switch_button_rect.clickedOff.connect(self.hide_face_rect)
 
             # 调节功能
-            self.adjust.set_pixmap(pixmap)
+            # todo
+            #self.adjust.set_pixmap(pixmap)
             self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
         else:
             self.history.set_pixmap(pixmap)  # 更新原始图片
@@ -305,7 +306,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 重置动作
     def reset_action(self):
-        reply = QMessageBox.question(self, '是否重置图像？', '将删除对此图像所做的所有编辑',
+        reply = QMessageBox.question(self, '重置', '是否重置图像？',
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             self.graphicsView.hide_crop_box()
@@ -541,7 +542,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             self.graphicsView.set_pixmap(pixmap_cropped)  # 设置为裁剪后的图片
             self.history.undo_stack_append(pixmap_cropped)  # 添加到撤销历史记录栈
             self.graphicsView.pixmap_item.setPos(self.graphicsView.crop_box.getSceneTopLeft())  # 重新设置左上角点位
-            self.graphicsView.crop_box.updateState()  # 裁剪后更新裁剪框状态
+            self.graphicsView.crop_box.update_pos()  # 裁剪后更新裁剪框位置大小和状态
 
     # 取消裁剪按钮
     def crop_cancel(self):

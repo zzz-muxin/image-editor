@@ -8,7 +8,8 @@
         <file>images/icon/bx_tone_icon.svg</file>
         <file>images/icon/bxs_tone_icon.svg</file>
         <file>images/icon/chart_histogram_icon.svg</file>
-        <file>images/icon/circulate_icon.svg</file>
+        <file>images/icon/reset_icon.svg</file>
+        <file>images/icon/reset_disable_icon.svg</file>
         <file>images/icon/contrast_brightness_setting_icon.svg</file>
         <file>images/icon/crop_icon.svg</file>
         <file>images/icon/curve_adjustment_icon.svg</file>
@@ -32,12 +33,14 @@
         <file>images/icon/minimize_2_reduce_icon.svg</file>
         <file>images/icon/minus_delete_remove_icon.svg</file>
         <file>images/icon/power_icon.svg</file>
-        <file>images/icon/redo_line_icon.svg</file>
+        <file>images/icon/redo_icon.svg</file>
+        <file>images/icon/redo_disable_icon.svg</file>
         <file>images/icon/rotate_cw_icon.svg</file>
         <file>images/icon/thermometer_high_icon.svg</file>
         <file>images/icon/triangle_outline_icon.svg</file>
         <file>images/icon/type_text_icon.svg</file>
-        <file>images/icon/undo_line_icon.svg</file>
+        <file>images/icon/undo_icon.svg</file>
+        <file>images/icon/undo_disable_icon.svg</file>
         <file>images/icon/zoom_in_icon.svg</file>
         <file>images/icon/zoom_out_icon.svg</file>
         <file>images/icon/vertical_line_icon.svg</file>

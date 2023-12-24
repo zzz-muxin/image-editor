@@ -715,7 +715,8 @@ QSlider::handle:horizontal {
               </property>
               <property name="icon">
                <iconset resource="../resources.qrc">
-                <normaloff>:/images/icon/undo_line_icon.svg</normaloff>:/images/icon/undo_line_icon.svg</iconset>
+                <normaloff>:/images/icon/undo_icon.svg</normaloff>
+                <disabledoff>:/images/icon/undo_disable_icon.svg</disabledoff>:/images/icon/undo_icon.svg</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -777,7 +778,8 @@ QSlider::handle:horizontal {
               </property>
               <property name="icon">
                <iconset resource="../resources.qrc">
-                <normaloff>:/images/icon/redo_line_icon.svg</normaloff>:/images/icon/redo_line_icon.svg</iconset>
+                <normaloff>:/images/icon/redo_icon.svg</normaloff>
+                <disabledoff>:/images/icon/redo_disable_icon.svg</disabledoff>:/images/icon/redo_icon.svg</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -839,7 +841,8 @@ QSlider::handle:horizontal {
               </property>
               <property name="icon">
                <iconset resource="../resources.qrc">
-                <normaloff>:/images/icon/circulate_icon.svg</normaloff>:/images/icon/circulate_icon.svg</iconset>
+                <normaloff>:/images/icon/reset_icon.svg</normaloff>
+                <disabledoff>:/images/icon/reset_disable_icon.svg</disabledoff>:/images/icon/reset_icon.svg</iconset>
               </property>
               <property name="iconSize">
                <size>

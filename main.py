@@ -3,7 +3,7 @@ import sys
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication
 
-from app_window import AppWindow
+from app import AppWindow
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

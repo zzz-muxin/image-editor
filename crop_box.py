@@ -13,7 +13,7 @@ class CropBox(QGraphicsItem):
         self.minSize = QSizeF(1, 1)  # 裁剪框最小尺寸
         self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在pixmap中
         self.PEN_RATIO = 1 / 100  # 设置裁剪框笔的大小为图片大小的1/100
-        self.pen_size = self.set_pen_size()
+        self.pen_size = self.update_pen_size()
         print("pen size:", self.pen_size)
 
         self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
@@ -28,7 +28,8 @@ class CropBox(QGraphicsItem):
 
         self.setAcceptHoverEvents(True)  # 开启接受伪状态事件
 
-    def set_pen_size(self):
+    # 更新笔的大小
+    def update_pen_size(self):
         pen_size = max(self.size.width(), self.size.height()) * self.PEN_RATIO
         if pen_size > 0:
             return pen_size
@@ -246,6 +247,7 @@ class CropBox(QGraphicsItem):
 
                 self.setPos(QPointF(curTLX, curTLY))
         self.update()  # 更新绘制
+        self.updateState()
         event.accept()
 
     # 重写鼠标释放事件
@@ -260,11 +262,22 @@ class CropBox(QGraphicsItem):
         except Exception as e:
             print("Error:", e)
 
+    # 更新裁剪框状态
     def updateState(self):
         self.prepareGeometryChange()
-        self.setPos(0, 0)
+        self.pen_size = self.update_pen_size()
+        self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
+        self.cornerPen = QPen(Qt.black, self.pen_size)  # 四个顶点的笔
+        self.cornerSize = QSizeF(self.pen_size * 5, self.pen_size * 5)  # 顶点尺寸
+        self.refreshCornerFix()
         self.limitRect = QRectF(self.parent.pixmap().rect())
         self.update()
+
+    # 更新裁剪框大小和位置
+    def update_pos(self):
+        self.setPos(0, 0)
+        self.size = QSizeF(self.parent.pixmap().size())  # 设置size为父Item中pixmap的大小
+        self.updateState()
 
     def setSize(self, size):
         self.size = QSizeF(size)
@@ -290,16 +303,3 @@ class CropBox(QGraphicsItem):
     def getHeight(self):
         return self.size.height()
 
-
-    #
-    # # 绘制当前裁剪框像素大小文本
-    # def draw_size_text(self, painter):
-    #     # 通过在裁剪框底部开辟一块矩形区来实现
-    #     pen = QPen(QColor(255, 0, 0))  # 红笔
-    #     painter.setPen(pen)
-    #     size_text = f"({self.width()}, {self.height()})"  # 使用f-string格式化字符串
-    #     top_left = QPointF(self.width() - self.min_width, self.height() - 20)  # 文本绘制区域的左上角坐标
-    #     size = QSizeF(self.min_width, 20)
-    #     rect = QRectF(top_left, size)
-    #     option = QTextOption()  # 文本垂直方向居中对齐，水平方向右对齐
-    #     painter.drawText(rect, size_text, option)

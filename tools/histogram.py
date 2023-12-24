@@ -40,7 +40,7 @@ class GrayChart(QChartView):
         self.chart.addSeries(self.line_series)  # 图表添加折线序列
         self.chart.setTitle("Gray Histogram")  # 表格标题
         self.chart.legend().hide()  # 隐藏图例
-        # self.chart.legend().setVisible(False)  # 设置图例不可见
+        # self.chart.legend().setVisible(True)  # 设置图例可见
         # self.chart.setTheme(QChart.ChartThemeDark)  # 表格主题颜色
         self.chart.setAnimationOptions(QChart.SeriesAnimations)  # 启用系列动画
 
@@ -67,6 +67,7 @@ class GrayChart(QChartView):
         for i in range(256):
             self.line_series.replace(i, i, self.gray_hist[i][0])
         # 强制图表刷新
+        self.axis_y.setRange(0, max(self.gray_hist)[0])  # y轴限制显示范围
         self.chart.update()
 
     def set_pixmap(self, pixmap):
@@ -172,6 +173,12 @@ class RGBChart(QChartView):
             self.line_series_r.replace(i, i, red_hist[i][0])
             self.line_series_g.replace(i, i, green_hist[i][0])
             self.line_series_b.replace(i, i, blue_hist[i][0])
+        # 计算三个通道出现的最大频率，设置y轴的显示范围
+        red_max_value = max(red_hist)[0]
+        green_max_value = max(green_hist)[0]
+        blue_max_value = max(blue_hist)[0]
+        max_value = max(red_max_value, green_max_value, blue_max_value)
+        self.axis_y.setRange(0, max_value)  # y轴限制显示范围
         # 强制图表刷新
         self.chart.update()
 

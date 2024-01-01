@@ -19,11 +19,9 @@ from tools.flip import Flip
 from tools.histogram import GrayChart, RGBChart
 from tools.history import History
 from tools.rotate import Rotate
+from tools.adjust import Adjust
 from ui_py.main_window import Ui_MainWindow
 from upload_image import UploadImageWidget
-
-
-# from function_bar import FunctionBar
 
 
 class AppWindow(QMainWindow, Ui_MainWindow):
@@ -90,6 +88,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.gray_chart = None  # 灰度直方图
         self.rgb_chart = None  # rgb直方图
         self.face_detect = None  # 人脸检测
+        self.adjust = None  # 调节功能
         self.camera = None  # 摄像头
 
         self._init_all_widget()  # 初始化所有组件的事件
@@ -119,10 +118,19 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.function_stack.pushButton_font.clicked.connect(self.show_font_dialog)  # 字体按钮
         self.function_stack.pushButton_cancel_text.clicked.connect(self.cancel_text)  # 取消字体按钮
         self.function_stack.pushButton_apply_text.clicked.connect(self.apply_text)  # 应用字体按钮
-        # todo
-        # self.adjust_area.slider_saturation.valueChanged.connect(self.saturation_adjust)
-        # self.adjust_area.slider_contrast.valueChanged.connect(self.contrast_adjust)
-        # self.adjust_area.slider_brightness.valueChanged.connect(self.brightness_adjust)
+        self.adjust_area.slider_light_perception.valueChanged.connect(self.light_perception_adjust)  # 光感
+        self.adjust_area.slider_contrast.valueChanged.connect(self.contrast_adjust)  # 对比度
+        self.adjust_area.slider_brightness.valueChanged.connect(self.brightness_adjust)  # 亮度
+        self.adjust_area.slider_exposure.valueChanged.connect(self.exposure_adjust)  # 曝光度
+        self.adjust_area.slider_saturation.valueChanged.connect(self.saturation_adjust)  # 饱和度
+        self.adjust_area.slider_temperature.valueChanged.connect(self.temperature_adjust)  # 色温
+        self.adjust_area.slider_hue.valueChanged.connect(self.hue_adjust)  # 色调
+        self.adjust_area.slider_sharp.valueChanged.connect(self.sharp_adjust)  # 锐化
+        self.adjust_area.slider_smooth.valueChanged.connect(self.smooth_adjust)  # 平滑
+        # HSL
+        self.adjust_area.slider_H.valueChanged.connect(self.adjust_h)
+        self.adjust_area.slider_S.valueChanged.connect(self.adjust_s)
+        self.adjust_area.slider_L.valueChanged.connect(self.adjust_l)
 
         uploader = UploadImageWidget()
         self.horizontalLayout_upload.addWidget(uploader)  # 添加自定义的上传图片UploadImageWidget类
@@ -210,8 +218,9 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             self.face_area.switch_button_rect.clickedOff.connect(self.hide_face_rect)
 
             # 调节功能
-            # todo
-            # self.adjust.set_pixmap(pixmap)
+            self.adjust = Adjust(pixmap)
+            self.adjust.image_updated.connect(self.pixmap_update)
+
             self.graphicsView.scale_signal.connect(self.show_label_scale)  # 连接到图片缩放比例显示方法
         else:
             self.history.set_pixmap(pixmap)  # 更新原始图片
@@ -223,6 +232,42 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             self.function_stack.hide()
 
         self.main_stacked_widget.setCurrentIndex(1)  # 跳转到图片视图界面
+
+    def brightness_adjust(self, value):
+        self.adjust.adjust_brightness(value)
+
+    def contrast_adjust(self, value):
+        self.adjust.adjust_contrast(value)
+
+    def light_perception_adjust(self, value):
+        self.adjust.adjust_light_perception(value)
+
+    def exposure_adjust(self, value):
+        self.adjust.adjust_exposure(value)
+
+    def saturation_adjust(self, value):
+        self.adjust.adjust_saturation(value)
+
+    def temperature_adjust(self, value):
+        self.adjust.adjust_temperature(value)
+
+    def hue_adjust(self, value):
+        self.adjust.adjust_hue(value)
+
+    def sharp_adjust(self, value):
+        self.adjust.adjust_sharp(value)
+
+    def smooth_adjust(self, value):
+        self.adjust.adjust_smooth(value)
+
+    def adjust_h(self, value):
+        self.adjust.adjust_h(value)
+
+    def adjust_s(self, value):
+        self.adjust.adjust_s(value)
+
+    def adjust_l(self, value):
+        self.adjust.adjust_l(value)
 
     # 图片缩放比例显示
     def show_label_scale(self, scale):
@@ -492,6 +537,7 @@ class AppWindow(QMainWindow, Ui_MainWindow):
             # 存在图片才显示adjust_area
             self.main_stacked_widget.setCurrentIndex(1)
             self.history.undo_stack_append(self.graphicsView.get_pixmap())  # 添加到撤销历史记录栈
+            self.adjust.set_pixmap(self.graphicsView.get_pixmap())
             self.adjust_area.show()
             self.chart_area.hide()
             self.function_stack.hide()

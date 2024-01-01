@@ -17,108 +17,78 @@ class Ui_MainWindow(object):
         MainWindow.resize(1020, 680)
         MainWindow.setMinimumSize(QtCore.QSize(1020, 680))
         MainWindow.setStyleSheet("QScrollBar:horizontal{\n"
-                                 "    height:8px;\n"
-                                 "    background:rgba(0,0,0,0%);\n"
-                                 "border-radius:4px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::handle:horizontal{\n"
-                                 "    background:rgba(255,255,255,50%);\n"
-                                 "border-radius:4px;\n"
-                                 "}\n"
-                                 "QScrollBar::handle:horizontal:hover{\n"
-                                 "    background:rgba(255,255,255,100%);\n"
-                                 "    min-width:0;\n"
-                                 "}\n"
-                                 "QScrollBar::add-line:horizontal{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::sub-line:horizontal{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::add-line:horizontal:hover{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::sub-line:horizontal:hover{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal\n"
-                                 "{\n"
-                                 "    background:rgba(0,0,0,10%);\n"
-                                 "    border-radius:4px;\n"
-                                 "}\n"
-                                 "\n"
-                                 "QScrollBar:vertical{\n"
-                                 "    width:8px;\n"
-                                 "    background:rgba(0,0,0,0%);\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::handle:vertical{\n"
-                                 "    width:0px;\n"
-                                 "    background:rgba(255,255,255,50%);\n"
-                                 "    border-radius:4px;\n"
-                                 "}\n"
-                                 "QScrollBar::handle:vertical:hover{\n"
-                                 "    width:0px;\n"
-                                 "    background:rgba(255,255,255,100%);\n"
-                                 "    border-radius:4px;\n"
-                                 "    min-width:20;\n"
-                                 "}\n"
-                                 "QScrollBar::add-line:vertical{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::sub-line:vertical{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::add-line:vertical:hover{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::sub-line:vertical:hover{\n"
-                                 "    height:0px;width:0px;\n"
-                                 "\n"
-                                 "}\n"
-                                 "QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical\n"
-                                 "{\n"
-                                 "    background:rgba(0,0,0,10%);\n"
-                                 "    border-radius:4px;\n"
-                                 "}\n"
-                                 "\n"
-                                 " \n"
-                                 " \n"
-                                 "QSlider::add-page:horizontal {\n"
-                                 "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-                                 "                                      stop: 0 rgb(100, 100, 100),\n"
-                                 "                                      stop: 1 rgb(255, 78, 0,));\n"
-                                 "    border-radius: 4px;\n"
-                                 "}\n"
-                                 "\n"
-                                 "QSlider::sub-page:horizontal {\n"
-                                 "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-                                 "                                      stop: 0 rgb(51, 151, 255),\n"
-                                 "                                      stop: 1 rgb(100, 100, 100));\n"
-                                 "    border-radius: 4px;\n"
-                                 "}\n"
-                                 "\n"
-                                 "QSlider::groove:horizontal {\n"
-                                 "    background: transparent;\n"
-                                 "    height: 8px;\n"
-                                 "}\n"
-                                 "\n"
-                                 "QSlider::handle:horizontal {\n"
-                                 "    width: 16px;\n"
-                                 "    height: 18px;\n"
-                                 "    margin: -4px 0px -4px 0px;\n"
-                                 "    border-radius: 8px;\n"
-                                 "    background: white;\n"
-                                 "}\n"
-                                 "")
+"                height:8px;\n"
+"                background:rgba(0,0,0,0%);\n"
+"                border-radius:4px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::handle:horizontal{\n"
+"                background:rgba(255,255,255,50%);\n"
+"                border-radius:4px;\n"
+"                }\n"
+"                QScrollBar::handle:horizontal:hover{\n"
+"                background:rgba(255,255,255,100%);\n"
+"                min-width:0;\n"
+"                }\n"
+"                QScrollBar::add-line:horizontal{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::sub-line:horizontal{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::add-line:horizontal:hover{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::sub-line:horizontal:hover{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal\n"
+"                {\n"
+"                background:rgba(0,0,0,10%);\n"
+"                border-radius:4px;\n"
+"                }\n"
+"\n"
+"                QScrollBar:vertical{\n"
+"                width:8px;\n"
+"                background:rgba(0,0,0,0%);\n"
+"\n"
+"                }\n"
+"                QScrollBar::handle:vertical{\n"
+"                width:0px;\n"
+"                background:rgba(255,255,255,50%);\n"
+"                border-radius:4px;\n"
+"                }\n"
+"                QScrollBar::handle:vertical:hover{\n"
+"                width:0px;\n"
+"                background:rgba(255,255,255,100%);\n"
+"                border-radius:4px;\n"
+"                min-width:20;\n"
+"                }\n"
+"                QScrollBar::add-line:vertical{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::sub-line:vertical{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::add-line:vertical:hover{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::sub-line:vertical:hover{\n"
+"                height:0px;width:0px;\n"
+"\n"
+"                }\n"
+"                QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical\n"
+"                {\n"
+"                background:rgba(0,0,0,10%);\n"
+"                border-radius:4px;\n"
+"                }")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setMouseTracking(True)
         self.centralwidget.setAcceptDrops(True)
@@ -128,9 +98,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setStyleSheet("QFrame{\n"
-                                 "    background-color: rgba(112, 112, 112, 255);\n"
-                                 "    border:none;\n"
-                                 "}")
+"                                background-color: rgba(112, 112, 112, 255);\n"
+"                                border:none;\n"
+"                                }\n"
+"                            ")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -140,8 +111,9 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame_menu = QtWidgets.QFrame(self.frame)
         self.frame_menu.setStyleSheet(".QFrame#frame_menu{\n"
-                                      "    background-color:rgb(32, 32, 32);\n"
-                                      "}")
+"                                            background-color:rgb(32, 32, 32);\n"
+"                                            }\n"
+"                                        ")
         self.frame_menu.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_menu.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_menu.setObjectName("frame_menu")
@@ -151,7 +123,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_logo.setObjectName("horizontalLayout_logo")
         self.widget_logo = QtWidgets.QWidget(self.frame_menu)
         self.widget_logo.setMinimumSize(QtCore.QSize(40, 0))
-        self.widget_logo.setStyleSheet("image:url(:/images/icon/image_photo_picture_gallery_icon.png)")
+        self.widget_logo.setStyleSheet("\n"
+"                                                                image:url(:/images/icon/image_photo_picture_gallery_icon.png)\n"
+"                                                            ")
         self.widget_logo.setObjectName("widget_logo")
         self.horizontalLayout_logo.addWidget(self.widget_logo)
         self.label_logo = QtWidgets.QLabel(self.frame_menu)
@@ -163,9 +137,10 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_logo.setFont(font)
         self.label_logo.setStyleSheet("QLabel{\n"
-                                      "    background-color:transparent;\n"
-                                      "    color:rgb(255, 255, 255);\n"
-                                      "}")
+"                                                                background-color:transparent;\n"
+"                                                                color:rgb(255, 255, 255);\n"
+"                                                                }\n"
+"                                                            ")
         self.label_logo.setWordWrap(False)
         self.label_logo.setObjectName("label_logo")
         self.horizontalLayout_logo.addWidget(self.label_logo)
@@ -176,17 +151,18 @@ class Ui_MainWindow(object):
         self.pushButton_home.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_home.setToolTipDuration(3000)
         self.pushButton_home.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}")
+"                                                        background-color:rgb(75, 75, 75);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                        .QPushButton:pressed{\n"
+"                                                        background-color:rgb(50, 50, 50);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                        .QPushButton:normal{\n"
+"                                                        background-color:transparent;\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_home.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/icon/home_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -203,17 +179,18 @@ class Ui_MainWindow(object):
         self.pushButton_zoom_in.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_zoom_in.setToolTipDuration(3000)
         self.pushButton_zoom_in.setStyleSheet(".QPushButton:hover{\n"
-                                              "    background-color:rgb(75, 75, 75);\n"
-                                              "    border-radius:10px;\n"
-                                              "}\n"
-                                              ".QPushButton:pressed{\n"
-                                              "    background-color:rgb(50, 50, 50);\n"
-                                              "    border-radius:10px;\n"
-                                              "}\n"
-                                              ".QPushButton:normal{\n"
-                                              "    background-color:transparent;\n"
-                                              "    border-radius:10px;\n"
-                                              "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_zoom_in.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/images/icon/zoom_in_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -226,17 +203,18 @@ class Ui_MainWindow(object):
         self.pushButton_zoom_out.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_zoom_out.setToolTipDuration(3000)
         self.pushButton_zoom_out.setStyleSheet(".QPushButton:hover{\n"
-                                               "    background-color:rgb(75, 75, 75);\n"
-                                               "    border-radius:10px;\n"
-                                               "}\n"
-                                               ".QPushButton:pressed{\n"
-                                               "    background-color:rgb(50, 50, 50);\n"
-                                               "    border-radius:10px;\n"
-                                               "}\n"
-                                               ".QPushButton:normal{\n"
-                                               "    background-color:transparent;\n"
-                                               "    border-radius:10px;\n"
-                                               "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_zoom_out.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/images/icon/zoom_out_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -251,9 +229,10 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         self.label_scale.setFont(font)
         self.label_scale.setStyleSheet("QLabel{\n"
-                                       "    background-color:transparent;\n"
-                                       "    color:rgb(255, 255, 255);\n"
-                                       "}")
+"                                                                background-color:transparent;\n"
+"                                                                color:rgb(255, 255, 255);\n"
+"                                                                }\n"
+"                                                            ")
         self.label_scale.setObjectName("label_scale")
         self.horizontalLayout_scale.addWidget(self.label_scale)
         self.horizontalLayout.addLayout(self.horizontalLayout_scale)
@@ -263,17 +242,18 @@ class Ui_MainWindow(object):
         self.pushButton_save.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_save.setToolTipDuration(3000)
         self.pushButton_save.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}")
+"                                                        background-color:rgb(75, 75, 75);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                        .QPushButton:pressed{\n"
+"                                                        background-color:rgb(50, 50, 50);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                        .QPushButton:normal{\n"
+"                                                        background-color:transparent;\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_save.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/images/icon/save_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -289,21 +269,21 @@ class Ui_MainWindow(object):
         self.pushButton_min = QtWidgets.QPushButton(self.frame_menu)
         self.pushButton_min.setToolTipDuration(3000)
         self.pushButton_min.setStyleSheet(".QPushButton:hover{\n"
-                                          "    background-color:rgb(75, 75, 75);\n"
-                                          "    border-radius:10px;\n"
-                                          "}\n"
-                                          ".QPushButton:pressed{\n"
-                                          "    background-color:rgb(50, 50, 50);\n"
-                                          "    border-radius:10px;\n"
-                                          "}\n"
-                                          ".QPushButton:normal{\n"
-                                          "    background-color:transparent;\n"
-                                          "    border-radius:10px;\n"
-                                          "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_min.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/images/icon/minus_delete_remove_icon.svg"), QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/images/icon/minus_delete_remove_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_min.setIcon(icon4)
         self.pushButton_min.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_min.setDefault(False)
@@ -313,21 +293,21 @@ class Ui_MainWindow(object):
         self.pushButton_max_and_reduction = QtWidgets.QPushButton(self.frame_menu)
         self.pushButton_max_and_reduction.setToolTipDuration(3000)
         self.pushButton_max_and_reduction.setStyleSheet(".QPushButton:hover{\n"
-                                                        "    background-color:rgb(75, 75, 75);\n"
-                                                        "    border-radius:10px;\n"
-                                                        "}\n"
-                                                        ".QPushButton:pressed{\n"
-                                                        "    background-color:rgb(50, 50, 50);\n"
-                                                        "    border-radius:10px;\n"
-                                                        "}\n"
-                                                        ".QPushButton:normal{\n"
-                                                        "    background-color:transparent;\n"
-                                                        "    border-radius:10px;\n"
-                                                        "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_max_and_reduction.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(":/images/icon/maximize_expand_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon5.addPixmap(QtGui.QPixmap(":/images/icon/minimize_2_reduce_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.pushButton_max_and_reduction.setIcon(icon5)
         self.pushButton_max_and_reduction.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_max_and_reduction.setFlat(True)
@@ -337,13 +317,14 @@ class Ui_MainWindow(object):
         self.pushButton_close.setMinimumSize(QtCore.QSize(0, 0))
         self.pushButton_close.setToolTipDuration(3000)
         self.pushButton_close.setStyleSheet(".QPushButton:hover{\n"
-                                            "    background-color:rgb(255, 0, 0);\n"
-                                            "    border-radius:10px;\n"
-                                            "}\n"
-                                            ".QPushButton:pressed{\n"
-                                            "    background-color:rgba(255, 0, 0, 150);\n"
-                                            "    border-radius:10px;\n"
-                                            "}")
+"                                                                background-color:rgb(255, 0, 0);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgba(255, 0, 0, 150);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_close.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/images/icon/close_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -361,8 +342,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.main_stacked_widget = QtWidgets.QStackedWidget(self.widget_view)
         self.main_stacked_widget.setStyleSheet("QWidget{\n"
-                                               "    background-color: transparent;\n"
-                                               "}")
+"                                                        background-color: transparent;\n"
+"                                                        }\n"
+"                                                    ")
         self.main_stacked_widget.setObjectName("main_stacked_widget")
         self.page_upload = QtWidgets.QWidget()
         self.page_upload.setObjectName("page_upload")
@@ -378,8 +360,9 @@ class Ui_MainWindow(object):
         self.frame_function = QtWidgets.QFrame(self.frame)
         self.frame_function.setMinimumSize(QtCore.QSize(0, 84))
         self.frame_function.setStyleSheet(".QFrame#frame_function{\n"
-                                          "    background-color: rgb(32, 32, 32);\n"
-                                          "}")
+"                                            background-color: rgb(32, 32, 32);\n"
+"                                            }\n"
+"                                        ")
         self.frame_function.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_function.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_function.setObjectName("frame_function")
@@ -393,17 +376,18 @@ class Ui_MainWindow(object):
         self.pushButton_undo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_undo.setToolTipDuration(3000)
         self.pushButton_undo.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_undo.setText("")
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(":/images/icon/undo_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -420,17 +404,18 @@ class Ui_MainWindow(object):
         self.pushButton_redo.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_redo.setToolTipDuration(3000)
         self.pushButton_redo.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_redo.setText("")
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(":/images/icon/redo_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -447,17 +432,18 @@ class Ui_MainWindow(object):
         self.pushButton_reset.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_reset.setToolTipDuration(3000)
         self.pushButton_reset.setStyleSheet(".QPushButton:hover{\n"
-                                            "    background-color:rgb(75, 75, 75);\n"
-                                            "    border-radius:10px;\n"
-                                            "}\n"
-                                            ".QPushButton:pressed{\n"
-                                            "    background-color:rgb(50, 50, 50);\n"
-                                            "    border-radius:10px;\n"
-                                            "}\n"
-                                            ".QPushButton:normal{\n"
-                                            "    background-color:transparent;\n"
-                                            "    border-radius:10px;\n"
-                                            "}")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_reset.setText("")
         icon9 = QtGui.QIcon()
         icon9.addPixmap(QtGui.QPixmap(":/images/icon/reset_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -471,7 +457,8 @@ class Ui_MainWindow(object):
         self.separator = QtWidgets.QWidget(self.frame_function)
         self.separator.setMinimumSize(QtCore.QSize(60, 65))
         self.separator.setStyleSheet("image:url(:/images/icon/vertical_line_icon.svg);\n"
-                                     "background-color: transparent;")
+"                                                        background-color: transparent;\n"
+"                                                    ")
         self.separator.setObjectName("separator")
         self.horizontalLayout_7.addWidget(self.separator)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
@@ -481,18 +468,18 @@ class Ui_MainWindow(object):
         self.pushButton_crop.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_crop.setToolTipDuration(3000)
         self.pushButton_crop.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           "")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_crop.setText("")
         icon10 = QtGui.QIcon()
         icon10.addPixmap(QtGui.QPixmap(":/images/icon/crop_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -509,18 +496,18 @@ class Ui_MainWindow(object):
         self.pushButton_rotate.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_rotate.setToolTipDuration(3000)
         self.pushButton_rotate.setStyleSheet(".QPushButton:hover{\n"
-                                             "    background-color:rgb(75, 75, 75);\n"
-                                             "    border-radius:10px;\n"
-                                             "}\n"
-                                             ".QPushButton:pressed{\n"
-                                             "    background-color:rgb(50, 50, 50);\n"
-                                             "    border-radius:10px;\n"
-                                             "}\n"
-                                             ".QPushButton:normal{\n"
-                                             "    background-color:transparent;\n"
-                                             "    border-radius:10px;\n"
-                                             "}\n"
-                                             "")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_rotate.setText("")
         icon11 = QtGui.QIcon()
         icon11.addPixmap(QtGui.QPixmap(":/images/icon/rotate_cw_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -537,18 +524,18 @@ class Ui_MainWindow(object):
         self.pushButton_chart.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_chart.setToolTipDuration(3000)
         self.pushButton_chart.setStyleSheet(".QPushButton:hover{\n"
-                                            "    background-color:rgb(75, 75, 75);\n"
-                                            "    border-radius:10px;\n"
-                                            "}\n"
-                                            ".QPushButton:pressed{\n"
-                                            "    background-color:rgb(50, 50, 50);\n"
-                                            "    border-radius:10px;\n"
-                                            "}\n"
-                                            ".QPushButton:normal{\n"
-                                            "    background-color:transparent;\n"
-                                            "    border-radius:10px;\n"
-                                            "}\n"
-                                            "")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_chart.setText("")
         icon12 = QtGui.QIcon()
         icon12.addPixmap(QtGui.QPixmap(":/images/icon/curve_adjustment_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -565,18 +552,18 @@ class Ui_MainWindow(object):
         self.pushButton_face.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_face.setToolTipDuration(3000)
         self.pushButton_face.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           "")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_face.setText("")
         icon13 = QtGui.QIcon()
         icon13.addPixmap(QtGui.QPixmap(":/images/icon/face_smile_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -593,18 +580,18 @@ class Ui_MainWindow(object):
         self.pushButton_text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_text.setToolTipDuration(3000)
         self.pushButton_text.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(75, 75, 75);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:pressed{\n"
-                                           "    background-color:rgb(50, 50, 50);\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           ".QPushButton:normal{\n"
-                                           "    background-color:transparent;\n"
-                                           "    border-radius:10px;\n"
-                                           "}\n"
-                                           "")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_text.setText("")
         icon14 = QtGui.QIcon()
         icon14.addPixmap(QtGui.QPixmap(":/images/icon/type_text_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -621,18 +608,18 @@ class Ui_MainWindow(object):
         self.pushButton_adjust.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_adjust.setToolTipDuration(3000)
         self.pushButton_adjust.setStyleSheet(".QPushButton:hover{\n"
-                                             "    background-color:rgb(75, 75, 75);\n"
-                                             "    border-radius:10px;\n"
-                                             "}\n"
-                                             ".QPushButton:pressed{\n"
-                                             "    background-color:rgb(50, 50, 50);\n"
-                                             "    border-radius:10px;\n"
-                                             "}\n"
-                                             ".QPushButton:normal{\n"
-                                             "    background-color:transparent;\n"
-                                             "    border-radius:10px;\n"
-                                             "}\n"
-                                             "")
+"                                                                background-color:rgb(75, 75, 75);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:pressed{\n"
+"                                                                background-color:rgb(50, 50, 50);\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                                .QPushButton:normal{\n"
+"                                                                background-color:transparent;\n"
+"                                                                border-radius:10px;\n"
+"                                                                }\n"
+"                                                            ")
         self.pushButton_adjust.setText("")
         icon15 = QtGui.QIcon()
         icon15.addPixmap(QtGui.QPixmap(":/images/icon/adjust_control_con.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -677,3 +664,4 @@ class Ui_MainWindow(object):
         self.pushButton_face.setToolTip(_translate("MainWindow", "人脸"))
         self.pushButton_text.setToolTip(_translate("MainWindow", "文字"))
         self.pushButton_adjust.setToolTip(_translate("MainWindow", "调节"))
+import resources_rc

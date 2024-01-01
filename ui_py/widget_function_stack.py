@@ -20,8 +20,9 @@ class Ui_Form(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.function_stack = QtWidgets.QStackedWidget(Form)
         self.function_stack.setStyleSheet("QStackedWidget{\n"
-                                          "    background-color:transparent;\n"
-                                          "}")
+"                            background-color:transparent;\n"
+"                            }\n"
+"                        ")
         self.function_stack.setObjectName("function_stack")
         self.page_crop = QtWidgets.QWidget()
         self.page_crop.setObjectName("page_crop")
@@ -33,9 +34,10 @@ class Ui_Form(object):
         self.widget_crop = QtWidgets.QWidget(self.page_crop)
         self.widget_crop.setMinimumSize(QtCore.QSize(150, 0))
         self.widget_crop.setStyleSheet("QWidget{\n"
-                                       "    background-color: rgb(32, 32, 32);\n"
-                                       "    border-radius:25px;\n"
-                                       "}")
+"                                            background-color: rgb(32, 32, 32);\n"
+"                                            border-radius:25px;\n"
+"                                            }\n"
+"                                        ")
         self.widget_crop.setObjectName("widget_crop")
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.widget_crop)
         self.horizontalLayout_15.setContentsMargins(10, 10, 10, 10)
@@ -51,9 +53,10 @@ class Ui_Form(object):
         self.pushButton_apply.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_apply.setToolTipDuration(3000)
         self.pushButton_apply.setStyleSheet(".QPushButton:hover{\n"
-                                            "    background-color:rgb(58, 58, 58);\n"
-                                            "    border-radius:10px;\n"
-                                            "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_apply.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/images/icon/apply_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -68,9 +71,10 @@ class Ui_Form(object):
         self.pushButton_cancel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_cancel.setToolTipDuration(3000)
         self.pushButton_cancel.setStyleSheet(".QPushButton:hover{\n"
-                                             "    background-color:rgb(58, 58, 58);\n"
-                                             "    border-radius:10px;\n"
-                                             "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_cancel.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/images/icon/cancel_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -82,38 +86,30 @@ class Ui_Form(object):
         self.separator_crop = QtWidgets.QWidget(self.widget_crop)
         self.separator_crop.setMinimumSize(QtCore.QSize(41, 0))
         self.separator_crop.setStyleSheet("image:url(:/images/icon/vertical_line_icon.svg);\n"
-                                          "background-color: transparent;")
+"                                                        background-color: transparent;\n"
+"                                                    ")
         self.separator_crop.setObjectName("separator_crop")
         self.horizontalLayout_15.addWidget(self.separator_crop)
         self.slider_rotate = QtWidgets.QSlider(self.widget_crop)
         self.slider_rotate.setMinimumSize(QtCore.QSize(140, 0))
-        self.slider_rotate.setStyleSheet("QSlider::add-page:horizontal {\n"
-                                         "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-                                         "                                      stop: 0 rgb(100, 100, 100),\n"
-                                         "                                      stop: 1 rgb(255, 78, 0,));\n"
-                                         "    border-radius: 4px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QSlider::sub-page:horizontal {\n"
-                                         "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-                                         "                                      stop: 0 rgb(51, 151, 255),\n"
-                                         "                                      stop: 1 rgb(100, 100, 100));\n"
-                                         "    border-radius: 4px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QSlider::groove:horizontal {\n"
-                                         "    background: transparent;\n"
-                                         "    height: 8px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QSlider::handle:horizontal {\n"
-                                         "    width: 16px;\n"
-                                         "    height: 18px;\n"
-                                         "    margin: -4px 0px -4px 0px;\n"
-                                         "    border-radius: 8px;\n"
-                                         "    background: white;\n"
-                                         "}\n"
-                                         "")
+        self.slider_rotate.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"                                                    ")
         self.slider_rotate.setMinimum(-45)
         self.slider_rotate.setMaximum(45)
         self.slider_rotate.setOrientation(QtCore.Qt.Horizontal)
@@ -125,9 +121,10 @@ class Ui_Form(object):
         font.setFamily("Microsoft JhengHei UI")
         self.label_rotate.setFont(font)
         self.label_rotate.setStyleSheet("QLabel{\n"
-                                        "    color: rgb(255, 255, 255);\n"
-                                        "    background-color: transparent;\n"
-                                        "}")
+"                                                        color: rgb(255, 255, 255);\n"
+"                                                        background-color: transparent;\n"
+"                                                        }\n"
+"                                                    ")
         self.label_rotate.setObjectName("label_rotate")
         self.horizontalLayout_15.addWidget(self.label_rotate)
         self.horizontalLayout_13.addWidget(self.widget_crop)
@@ -145,9 +142,10 @@ class Ui_Form(object):
         self.widget_rotate = QtWidgets.QWidget(self.page_rotate)
         self.widget_rotate.setMinimumSize(QtCore.QSize(150, 0))
         self.widget_rotate.setStyleSheet("QWidget{\n"
-                                         "    background-color: rgb(32, 32, 32);\n"
-                                         "    border-radius:25px;\n"
-                                         "}")
+"                                            background-color: rgb(32, 32, 32);\n"
+"                                            border-radius:25px;\n"
+"                                            }\n"
+"                                        ")
         self.widget_rotate.setObjectName("widget_rotate")
         self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.widget_rotate)
         self.horizontalLayout_14.setContentsMargins(10, 10, 10, 10)
@@ -163,13 +161,13 @@ class Ui_Form(object):
         self.pushButton_left_90.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_left_90.setToolTipDuration(3000)
         self.pushButton_left_90.setStyleSheet(".QPushButton:hover{\n"
-                                              "    background-color:rgb(58, 58, 58);\n"
-                                              "    border-radius:10px;\n"
-                                              "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_left_90.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/images/icon/rotate_counterclockwise_icon.svg"), QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/images/icon/rotate_counterclockwise_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_left_90.setIcon(icon2)
         self.pushButton_left_90.setIconSize(QtCore.QSize(35, 35))
         self.pushButton_left_90.setFlat(True)
@@ -181,9 +179,10 @@ class Ui_Form(object):
         self.pushButton_right_90.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_right_90.setToolTipDuration(3000)
         self.pushButton_right_90.setStyleSheet(".QPushButton:hover{\n"
-                                               "    background-color:rgb(58, 58, 58);\n"
-                                               "    border-radius:10px;\n"
-                                               "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_right_90.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap(":/images/icon/rotate_clockwise_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -198,9 +197,10 @@ class Ui_Form(object):
         self.pushButton_flip_y.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_flip_y.setToolTipDuration(3000)
         self.pushButton_flip_y.setStyleSheet(".QPushButton:hover{\n"
-                                             "    background-color:rgb(58, 58, 58);\n"
-                                             "    border-radius:10px;\n"
-                                             "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_flip_y.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap(":/images/icon/ic-flip-y.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -215,9 +215,10 @@ class Ui_Form(object):
         self.pushButton_flip_x.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_flip_x.setToolTipDuration(3000)
         self.pushButton_flip_x.setStyleSheet(".QPushButton:hover{\n"
-                                             "    background-color:rgb(58, 58, 58);\n"
-                                             "    border-radius:10px;\n"
-                                             "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_flip_x.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap(":/images/icon/ic-flip-x.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -239,9 +240,10 @@ class Ui_Form(object):
         self.widget_text = QtWidgets.QWidget(self.page_text)
         self.widget_text.setMinimumSize(QtCore.QSize(150, 0))
         self.widget_text.setStyleSheet("QWidget{\n"
-                                       "    background-color: rgb(32, 32, 32);\n"
-                                       "    border-radius:25px;\n"
-                                       "}")
+"                                            background-color: rgb(32, 32, 32);\n"
+"                                            border-radius:25px;\n"
+"                                            }\n"
+"                                        ")
         self.widget_text.setObjectName("widget_text")
         self.horizontalLayout_18 = QtWidgets.QHBoxLayout(self.widget_text)
         self.horizontalLayout_18.setContentsMargins(10, 10, 10, 10)
@@ -251,26 +253,27 @@ class Ui_Form(object):
         self.spinBox.setMaximumSize(QtCore.QSize(94, 44))
         self.spinBox.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.spinBox.setStyleSheet("QSpinBox {\n"
-                                   "    font-size: 18px;\n"
-                                   "    font-weight: bold;\n"
-                                   "    padding:0px;\n"
-                                   "    font-family: \"黑体\";\n"
-                                   "    color:rgb(255, 255, 255);\n"
-                                   "}\n"
-                                   "QSpinBox::up-button {\n"
-                                   "    subcontrol-position: right;\n"
-                                   "    image: url(:/images/icon/font_increase_icon.svg);\n"
-                                   "}\n"
-                                   "QSpinBox::down-button {\n"
-                                   "    subcontrol-position: left;\n"
-                                   "    margin:0px;\n"
-                                   "    image: url(:/images/icon/font_decrease_icon.svg);\n"
-                                   "}\n"
-                                   "QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
-                                   "    background-color:rgb(58, 58, 58);\n"
-                                   "    margin:0px;\n"
-                                   "    border-radius:10px;\n"
-                                   "}")
+"                                                        font-size: 18px;\n"
+"                                                        font-weight: bold;\n"
+"                                                        padding:0px;\n"
+"                                                        font-family: \"黑体\";\n"
+"                                                        color:rgb(255, 255, 255);\n"
+"                                                        }\n"
+"                                                        QSpinBox::up-button {\n"
+"                                                        subcontrol-position: right;\n"
+"                                                        image: url(:/images/icon/font_increase_icon.svg);\n"
+"                                                        }\n"
+"                                                        QSpinBox::down-button {\n"
+"                                                        subcontrol-position: left;\n"
+"                                                        margin:0px;\n"
+"                                                        image: url(:/images/icon/font_decrease_icon.svg);\n"
+"                                                        }\n"
+"                                                        QSpinBox::up-button:hover, QSpinBox::down-button:hover {\n"
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        margin:0px;\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.spinBox.setAccelerated(True)
         self.spinBox.setMinimum(10)
         self.spinBox.setMaximum(96)
@@ -282,9 +285,10 @@ class Ui_Form(object):
         self.pushButton_text_color.setMaximumSize(QtCore.QSize(30, 30))
         self.pushButton_text_color.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_text_color.setStyleSheet(".QPushButton{\n"
-                                                 "    background-color:#FFFFFF;\n"
-                                                 "    border-radius:15px;\n"
-                                                 "}")
+"                                                        background-color:#FFFFFF;\n"
+"                                                        border-radius:15px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_text_color.setFlat(True)
         self.pushButton_text_color.setObjectName("pushButton_text_color")
         self.horizontalLayout_18.addWidget(self.pushButton_text_color)
@@ -294,9 +298,10 @@ class Ui_Form(object):
         self.pushButton_font.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_font.setToolTipDuration(3000)
         self.pushButton_font.setStyleSheet(".QPushButton:hover{\n"
-                                           "    background-color:rgb(58, 58, 58);\n"
-                                           "    border-radius:10px;\n"
-                                           "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_font.setText("")
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/images/icon/font_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -308,7 +313,8 @@ class Ui_Form(object):
         self.separator_text = QtWidgets.QWidget(self.widget_text)
         self.separator_text.setMinimumSize(QtCore.QSize(41, 0))
         self.separator_text.setStyleSheet("image:url(:/images/icon/vertical_line_icon.svg);\n"
-                                          "background-color: transparent;")
+"                                                        background-color: transparent;\n"
+"                                                    ")
         self.separator_text.setObjectName("separator_text")
         self.horizontalLayout_18.addWidget(self.separator_text)
         self.pushButton_apply_text = QtWidgets.QPushButton(self.widget_text)
@@ -322,9 +328,10 @@ class Ui_Form(object):
         self.pushButton_apply_text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_apply_text.setToolTipDuration(3000)
         self.pushButton_apply_text.setStyleSheet(".QPushButton:hover{\n"
-                                                 "    background-color:rgb(58, 58, 58);\n"
-                                                 "    border-radius:10px;\n"
-                                                 "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_apply_text.setText("")
         self.pushButton_apply_text.setIcon(icon)
         self.pushButton_apply_text.setIconSize(QtCore.QSize(35, 35))
@@ -337,9 +344,10 @@ class Ui_Form(object):
         self.pushButton_cancel_text.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_cancel_text.setToolTipDuration(3000)
         self.pushButton_cancel_text.setStyleSheet(".QPushButton:hover{\n"
-                                                  "    background-color:rgb(58, 58, 58);\n"
-                                                  "    border-radius:10px;\n"
-                                                  "}")
+"                                                        background-color:rgb(58, 58, 58);\n"
+"                                                        border-radius:10px;\n"
+"                                                        }\n"
+"                                                    ")
         self.pushButton_cancel_text.setText("")
         self.pushButton_cancel_text.setIcon(icon1)
         self.pushButton_cancel_text.setIconSize(QtCore.QSize(35, 35))
@@ -369,3 +377,4 @@ class Ui_Form(object):
         self.pushButton_font.setToolTip(_translate("Form", "字体"))
         self.pushButton_apply_text.setToolTip(_translate("Form", "应用"))
         self.pushButton_cancel_text.setToolTip(_translate("Form", "取消"))
+import resources_rc

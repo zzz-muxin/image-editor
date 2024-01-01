@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>Form</class>
-    <widget class="QWidget" name="Form">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>331</width>
-                <height>514</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>Form</string>
-        </property>
-        <property name="styleSheet">
-            <string notr="true">background-color: transparent;;</string>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-            <property name="leftMargin">
-                <number>0</number>
-            </property>
-            <property name="topMargin">
-                <number>0</number>
-            </property>
-            <property name="rightMargin">
-                <number>0</number>
-            </property>
-            <property name="bottomMargin">
-                <number>0</number>
-            </property>
-            <item>
-                <widget class="QWidget" name="widget_adjust" native="true">
-                    <property name="styleSheet">
-                        <string notr="true">QWidget{
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>331</width>
+    <height>514</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: transparent;;</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget_adjust" native="true">
+     <property name="styleSheet">
+      <string notr="true">QWidget{
                             border-radius:20px;
                             background-color: rgb(32, 32, 32);
                             }
@@ -108,1223 +108,1730 @@
                             {
                             background:rgba(0,0,0,10%);
                             border-radius:4px;
-                            }
-
-
-                            QSlider::add-page:horizontal {
-                            background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
-                            stop: 0 rgb(100, 100, 100),
-                            stop: 1 rgb(255, 78, 0,));
-                            border-radius: 4px;
-                            }
-
-                            QSlider::sub-page:horizontal {
-                            background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
-                            stop: 0 rgb(51, 151, 255),
-                            stop: 1 rgb(100, 100, 100));
-                            border-radius: 4px;
-                            }
-
-                            QSlider::groove:horizontal {
-                            background: transparent;
-                            height: 8px;
-                            }
-
-                            QSlider::handle:horizontal {
-                            width: 16px;
-                            height: 18px;
-                            margin: -4px 0px -4px 0px;
-                            border-radius: 8px;
-                            background: white;
-                            }
-                        </string>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_18">
-                        <item>
-                            <widget class="QScrollArea" name="scrollArea">
-                                <property name="styleSheet">
-                                    <string notr="true">QScrollArea{
+                            }</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_18">
+      <item>
+       <widget class="QScrollArea" name="scrollArea">
+        <property name="styleSheet">
+         <string notr="true">QScrollArea{
                                         background-color: transparent;
                                         }
                                     </string>
-                                </property>
-                                <property name="verticalScrollBarPolicy">
-                                    <enum>Qt::ScrollBarAsNeeded</enum>
-                                </property>
-                                <property name="widgetResizable">
-                                    <bool>true</bool>
-                                </property>
-                                <widget class="QWidget" name="scrollAreaWidgetContents">
-                                    <property name="geometry">
-                                        <rect>
-                                            <x>0</x>
-                                            <y>0</y>
-                                            <width>301</width>
-                                            <height>870</height>
-                                        </rect>
-                                    </property>
-                                    <layout class="QVBoxLayout" name="verticalLayout_15">
-                                        <item>
-                                            <widget class="QWidget" name="widget_light" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_4">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_light"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_light">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
+        <property name="widgetResizable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>-700</y>
+           <width>301</width>
+           <height>1192</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <item>
+           <widget class="QWidget" name="widget_light" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_light" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_light">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
                                                                             image:url(:/images/icon/light_control_icon.svg)
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_light">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_light">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>光感</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_light_perception">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>0</width>
-                                                                            <height>0</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string>光感</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_light_perception">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_light_perception">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_brightness" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_5">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_brightness"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_brightness">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_light_perception">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+                                                   </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_brightness" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_brightness" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_brightness">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
                                                                             image:url(:/images/icon/brightness_light_icon.svg)
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_brightness">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_brightness">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>亮度</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_brightness">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string>亮度</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_brightness">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_brightness">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_exposure" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_14">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_exposure"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_exposure">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_brightness">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+         
+                                                    </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_exposure" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_14">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_exposure" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_exposure">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
                                                                             image:url(:/images/icon/exposure_icon.svg)
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_exposure">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_exposure">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>曝光</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_exposure">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string>曝光</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_exposure">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_exposure">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_contrast" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_13">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_contrast"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_contrast">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_exposure">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+         </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_contrast" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_contrast" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_contrast">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
                                                                             image:url(:/images/icon/contrast_brightness_setting_icon.svg)
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_contrast">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_contrast">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>对比度</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_contrast">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string>对比度</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_contrast">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_contrast">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_saturation" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_12">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_saturation"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_saturation">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_contrast">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+         </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_saturation" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_saturation" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_saturation">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
                                                                             image:url(:/images/icon/bx_tone_icon.svg)
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_saturation">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_saturation">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>饱和度</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_saturation">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
+                 </property>
+                 <property name="text">
+                  <string>饱和度</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_saturation">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
                                                                             color:rgb(255, 255, 255);
                                                                             }
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_saturation">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_sharp" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_11">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_sharp"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_sharp">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
-                                                                            image:url(:/images/icon/triangle_outline_icon.svg)
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_sharp">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>锐化</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_sharp">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_sharp">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_smooth" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_10">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_smooth"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_smooth">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
-                                                                            image:url(:/images/icon/curve_auto_colon_icon.svg)
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_smooth">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>平滑</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_smooth">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_smooth">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_temperature" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_9">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_temperature"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_temperature">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_saturation">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+         </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_temperature" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_temperature" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_temperature">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
                                                                             image:url(:/images/icon/thermometer_high_icon.svg)
                                                                         </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_temperature">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>色温</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_temperature">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_temperature">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="widget_hue" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>0</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <property name="maximumSize">
-                                                    <size>
-                                                        <width>16777215</width>
-                                                        <height>88</height>
-                                                    </size>
-                                                </property>
-                                                <layout class="QVBoxLayout" name="verticalLayout_8">
-                                                    <item>
-                                                        <layout class="QHBoxLayout" name="horizontalLayout_hue"
-                                                                stretch="1,4,1">
-                                                            <item>
-                                                                <widget class="QLabel" name="label_image_hue">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>30</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">
-                                                                            image:url(:/images/icon/bx_color_fill_icon.svg)
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string/>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_text_hue">
-                                                                    <property name="minimumSize">
-                                                                        <size>
-                                                                            <width>90</width>
-                                                                            <height>30</height>
-                                                                        </size>
-                                                                    </property>
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>色调</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                            <item>
-                                                                <widget class="QLabel" name="label_hue">
-                                                                    <property name="font">
-                                                                        <font>
-                                                                            <family>黑体</family>
-                                                                            <pointsize>12</pointsize>
-                                                                            <weight>50</weight>
-                                                                            <italic>false</italic>
-                                                                            <bold>false</bold>
-                                                                            <stylestrategy>PreferAntialias
-                                                                            </stylestrategy>
-                                                                        </font>
-                                                                    </property>
-                                                                    <property name="styleSheet">
-                                                                        <string notr="true">QLabel{
-                                                                            color:rgb(255, 255, 255);
-                                                                            }
-                                                                        </string>
-                                                                    </property>
-                                                                    <property name="text">
-                                                                        <string>0</string>
-                                                                    </property>
-                                                                </widget>
-                                                            </item>
-                                                        </layout>
-                                                    </item>
-                                                    <item>
-                                                        <widget class="QSlider" name="slider_hue">
-                                                            <property name="styleSheet">
-                                                                <string notr="true"/>
-                                                            </property>
-                                                            <property name="minimum">
-                                                                <number>-100</number>
-                                                            </property>
-                                                            <property name="maximum">
-                                                                <number>100</number>
-                                                            </property>
-                                                            <property name="orientation">
-                                                                <enum>Qt::Horizontal</enum>
-                                                            </property>
-                                                        </widget>
-                                                    </item>
-                                                </layout>
-                                            </widget>
-                                        </item>
-                                    </layout>
-                                </widget>
-                            </widget>
-                        </item>
-                    </layout>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
                 </widget>
-            </item>
-        </layout>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_temperature">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>色温</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_temperature">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_temperature">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+                                                    </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_hue" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_hue" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_hue">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
+                                                                            image:url(:/images/icon/tone_icon.svg)
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_hue">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>色调</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_hue">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_hue">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+         </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_sharp" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_sharp" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_sharp">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
+                                                                            image:url(:/images/icon/triangle_outline_icon.svg)
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_sharp">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>锐化</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_sharp">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_sharp">
+               <property name="styleSheet">
+                <string notr="true">QSlider::add-page:horizontal {
+background-color: rgb(147, 147, 147);
+border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal {
+background-color: rgb(0, 159, 170);
+border-radius: 4px;
+}
+
+QSlider::groove:horizontal {
+background: transparent;
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}</string>
+               </property>
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_smooth" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_smooth" stretch="1,4,1">
+               <item>
+                <widget class="QLabel" name="label_image_smooth">
+                 <property name="minimumSize">
+                  <size>
+                   <width>30</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">
+                                                                            image:url(:/images/icon/curve_auto_colon_icon.svg)
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_text_smooth">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>平滑</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_smooth">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_smooth">
+               <property name="styleSheet">
+                <string notr="true">QSlider::add-page:horizontal {
+background-color: rgb(147, 147, 147);
+border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal {
+background-color: rgb(0, 159, 170);
+border-radius: 4px;
+}
+
+QSlider::groove:horizontal {
+background: transparent;
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}</string>
+               </property>
+               <property name="minimum">
+                <number>0</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_hsl">
+            <property name="minimumSize">
+             <size>
+              <width>140</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>12</pointsize>
+              <stylestrategy>PreferAntialias</stylestrategy>
+              <kerning>true</kerning>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel{
+                                                                    color:rgb(255, 255, 255);
+                                                                    }
+                                                                </string>
+            </property>
+            <property name="text">
+             <string>HSL</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_H" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_H" stretch="4,1">
+               <item>
+                <widget class="QLabel" name="label_text_H">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>色相(H)</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_H">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_H">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+            </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_S" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_S" stretch="4,1">
+               <item>
+                <widget class="QLabel" name="label_text_S">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>饱和度(S)</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_S">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_S">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+            </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_L" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>88</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>88</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_18">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_L" stretch="4,1">
+               <item>
+                <widget class="QLabel" name="label_text_L">
+                 <property name="minimumSize">
+                  <size>
+                   <width>90</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>明度(L)</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_L">
+                 <property name="font">
+                  <font>
+                   <family>黑体</family>
+                   <pointsize>12</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                   <stylestrategy>PreferDefault</stylestrategy>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+                                                                            color:rgb(255, 255, 255);
+                                                                            }
+                                                                        </string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSlider" name="slider_L">
+               <property name="styleSheet">
+                <string notr="true">
+QSlider::groove:horizontal {
+background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
+stop: 0 rgb(51, 151, 255),
+stop: 0.5 rgb(100, 100, 100),
+stop: 1 rgb(255, 78, 0,));
+height: 8px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+width: 16px;
+height: 18px;
+margin: -4px 0px -4px 0px;
+border-radius: 8px;
+background: white;
+}
+            </string>
+               </property>
+               <property name="minimum">
+                <number>-100</number>
+               </property>
+               <property name="maximum">
+                <number>100</number>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
     </widget>
-    <resources>
-        <include location="../resources.qrc"/>
-    </resources>
-    <connections>
-        <connection>
-            <sender>slider_brightness</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_brightness</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>312</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>276</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_contrast</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_contrast</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>502</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>466</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_exposure</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_exposure</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>407</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>371</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_light_perception</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_light_perception</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>217</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>181</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_saturation</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_saturation</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>597</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>561</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_sharp</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_sharp</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>314</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>278</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_smooth</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_smooth</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>409</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>373</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_temperature</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_temperature</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>504</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>468</y>
-                </hint>
-            </hints>
-        </connection>
-        <connection>
-            <sender>slider_hue</sender>
-            <signal>valueChanged(int)</signal>
-            <receiver>label_hue</receiver>
-            <slot>setNum(int)</slot>
-            <hints>
-                <hint type="sourcelabel">
-                    <x>301</x>
-                    <y>599</y>
-                </hint>
-                <hint type="destinationlabel">
-                    <x>411</x>
-                    <y>563</y>
-                </hint>
-            </hints>
-        </connection>
-    </connections>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>slider_brightness</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_brightness</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>312</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>276</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_contrast</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_contrast</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>502</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>466</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_exposure</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_exposure</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_light_perception</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_light_perception</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_saturation</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_saturation</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>597</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_sharp</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_sharp</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_smooth</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_smooth</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>373</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_temperature</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_temperature</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>504</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>468</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_hue</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_hue</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>301</x>
+     <y>599</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>411</x>
+     <y>563</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_H</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_H</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_S</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_S</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>366</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_L</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_L</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>300</x>
+     <y>425</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

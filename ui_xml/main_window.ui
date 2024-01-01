@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>MainWindow</class>
-    <widget class="QMainWindow" name="MainWindow">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>1020</width>
-                <height>680</height>
-            </rect>
-        </property>
-        <property name="minimumSize">
-            <size>
-                <width>1020</width>
-                <height>680</height>
-            </size>
-        </property>
-        <property name="windowTitle">
-            <string>MainWindow</string>
-        </property>
-        <property name="styleSheet">
-            <string notr="true">QScrollBar:horizontal{
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1020</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1020</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QScrollBar:horizontal{
                 height:8px;
                 background:rgba(0,0,0,0%);
                 border-radius:4px;
@@ -92,174 +92,145 @@
                 {
                 background:rgba(0,0,0,10%);
                 border-radius:4px;
-                }
-
-
-                QSlider::add-page:horizontal {
-                background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
-                stop: 0 rgb(100, 100, 100),
-                stop: 1 rgb(255, 78, 0,));
-                border-radius: 4px;
-                }
-
-                QSlider::sub-page:horizontal {
-                background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,
-                stop: 0 rgb(51, 151, 255),
-                stop: 1 rgb(100, 100, 100));
-                border-radius: 4px;
-                }
-
-                QSlider::groove:horizontal {
-                background: transparent;
-                height: 8px;
-                }
-
-                QSlider::handle:horizontal {
-                width: 16px;
-                height: 18px;
-                margin: -4px 0px -4px 0px;
-                border-radius: 8px;
-                background: white;
-                }
-            </string>
-        </property>
-        <widget class="QWidget" name="centralwidget">
-            <property name="mouseTracking">
-                <bool>true</bool>
-            </property>
-            <property name="acceptDrops">
-                <bool>true</bool>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <property name="leftMargin">
-                    <number>0</number>
-                </property>
-                <property name="topMargin">
-                    <number>0</number>
-                </property>
-                <property name="rightMargin">
-                    <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                    <number>0</number>
-                </property>
-                <item>
-                    <widget class="QFrame" name="frame">
-                        <property name="styleSheet">
-                            <string notr="true">QFrame{
+                }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">QFrame{
                                 background-color: rgba(112, 112, 112, 255);
                                 border:none;
                                 }
                             </string>
-                        </property>
-                        <property name="frameShape">
-                            <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                            <enum>QFrame::Raised</enum>
-                        </property>
-                        <layout class="QVBoxLayout" name="verticalLayout" stretch="1,15,2">
-                            <property name="spacing">
-                                <number>7</number>
-                            </property>
-                            <property name="leftMargin">
-                                <number>0</number>
-                            </property>
-                            <property name="topMargin">
-                                <number>0</number>
-                            </property>
-                            <property name="rightMargin">
-                                <number>0</number>
-                            </property>
-                            <property name="bottomMargin">
-                                <number>0</number>
-                            </property>
-                            <item>
-                                <widget class="QFrame" name="frame_menu">
-                                    <property name="styleSheet">
-                                        <string notr="true">.QFrame#frame_menu{
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,15,2">
+       <property name="spacing">
+        <number>7</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_menu">
+         <property name="styleSheet">
+          <string notr="true">.QFrame#frame_menu{
                                             background-color:rgb(32, 32, 32);
                                             }
                                         </string>
-                                    </property>
-                                    <property name="frameShape">
-                                        <enum>QFrame::StyledPanel</enum>
-                                    </property>
-                                    <property name="frameShadow">
-                                        <enum>QFrame::Raised</enum>
-                                    </property>
-                                    <layout class="QHBoxLayout" name="horizontalLayout">
-                                        <item>
-                                            <layout class="QHBoxLayout" name="horizontalLayout_logo">
-                                                <item>
-                                                    <widget class="QWidget" name="widget_logo" native="true">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>0</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_logo">
+            <item>
+             <widget class="QWidget" name="widget_logo" native="true">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">
                                                                 image:url(:/images/icon/image_photo_picture_gallery_icon.png)
                                                             </string>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <widget class="QLabel" name="label_logo">
-                                                        <property name="font">
-                                                            <font>
-                                                                <family>Tw Cen MT</family>
-                                                                <pointsize>16</pointsize>
-                                                                <weight>75</weight>
-                                                                <italic>true</italic>
-                                                                <bold>true</bold>
-                                                            </font>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">QLabel{
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_logo">
+              <property name="font">
+               <font>
+                <family>Tw Cen MT</family>
+                <pointsize>16</pointsize>
+                <weight>75</weight>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel{
                                                                 background-color:transparent;
                                                                 color:rgb(255, 255, 255);
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string>image-editor</string>
-                                                        </property>
-                                                        <property name="wordWrap">
-                                                            <bool>false</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                            </layout>
-                                        </item>
-                                        <item>
-                                            <spacer name="horizontalSpacer">
-                                                <property name="orientation">
-                                                    <enum>Qt::Horizontal</enum>
-                                                </property>
-                                                <property name="sizeHint" stdset="0">
-                                                    <size>
-                                                        <width>40</width>
-                                                        <height>20</height>
-                                                    </size>
-                                                </property>
-                                            </spacer>
-                                        </item>
-                                        <item>
-                                            <widget class="QPushButton" name="pushButton_home">
-                                                <property name="cursor">
-                                                    <cursorShape>PointingHandCursor</cursorShape>
-                                                </property>
-                                                <property name="toolTip">
-                                                    <string>主页</string>
-                                                </property>
-                                                <property name="toolTipDuration">
-                                                    <number>3000</number>
-                                                </property>
-                                                <property name="styleSheet">
-                                                    <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string>image-editor</string>
+              </property>
+              <property name="wordWrap">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_home">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>主页</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>3000</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">.QPushButton:hover{
                                                         background-color:rgb(75, 75, 75);
                                                         border-radius:10px;
                                                         }
@@ -272,55 +243,53 @@
                                                         border-radius:10px;
                                                         }
                                                     </string>
-                                                </property>
-                                                <property name="text">
-                                                    <string/>
-                                                </property>
-                                                <property name="icon">
-                                                    <iconset resource="../resources.qrc">
-                                                        <normaloff>:/images/icon/home_icon.svg</normaloff>
-                                                        :/images/icon/home_icon.svg
-                                                    </iconset>
-                                                </property>
-                                                <property name="iconSize">
-                                                    <size>
-                                                        <width>35</width>
-                                                        <height>35</height>
-                                                    </size>
-                                                </property>
-                                                <property name="flat">
-                                                    <bool>true</bool>
-                                                </property>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <spacer name="horizontalSpacer_9">
-                                                <property name="orientation">
-                                                    <enum>Qt::Horizontal</enum>
-                                                </property>
-                                                <property name="sizeHint" stdset="0">
-                                                    <size>
-                                                        <width>40</width>
-                                                        <height>20</height>
-                                                    </size>
-                                                </property>
-                                            </spacer>
-                                        </item>
-                                        <item>
-                                            <layout class="QHBoxLayout" name="horizontalLayout_scale">
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_zoom_in">
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>放大</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/images/icon/home_icon.svg</normaloff>:/images/icon/home_icon.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_scale">
+            <item>
+             <widget class="QPushButton" name="pushButton_zoom_in">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>放大</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -333,40 +302,38 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/zoom_in_icon.svg</normaloff>
-                                                                :/images/icon/zoom_in_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>35</width>
-                                                                <height>35</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_zoom_out">
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>缩小</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/zoom_in_icon.svg</normaloff>:/images/icon/zoom_in_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_zoom_out">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>缩小</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -379,72 +346,70 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/zoom_out_icon.svg</normaloff>
-                                                                :/images/icon/zoom_out_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>35</width>
-                                                                <height>35</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <widget class="QLabel" name="label_scale">
-                                                        <property name="font">
-                                                            <font>
-                                                                <family>Microsoft YaHei</family>
-                                                                <pointsize>9</pointsize>
-                                                            </font>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">QLabel{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/zoom_out_icon.svg</normaloff>:/images/icon/zoom_out_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_scale">
+              <property name="font">
+               <font>
+                <family>Microsoft YaHei</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel{
                                                                 background-color:transparent;
                                                                 color:rgb(255, 255, 255);
                                                                 }
                                                             </string>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                            </layout>
-                                        </item>
-                                        <item>
-                                            <spacer name="horizontalSpacer_8">
-                                                <property name="orientation">
-                                                    <enum>Qt::Horizontal</enum>
-                                                </property>
-                                                <property name="sizeHint" stdset="0">
-                                                    <size>
-                                                        <width>40</width>
-                                                        <height>20</height>
-                                                    </size>
-                                                </property>
-                                            </spacer>
-                                        </item>
-                                        <item>
-                                            <widget class="QPushButton" name="pushButton_save">
-                                                <property name="cursor">
-                                                    <cursorShape>PointingHandCursor</cursorShape>
-                                                </property>
-                                                <property name="toolTip">
-                                                    <string>保存</string>
-                                                </property>
-                                                <property name="toolTipDuration">
-                                                    <number>3000</number>
-                                                </property>
-                                                <property name="styleSheet">
-                                                    <string notr="true">.QPushButton:hover{
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_save">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>保存</string>
+            </property>
+            <property name="toolTipDuration">
+             <number>3000</number>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">.QPushButton:hover{
                                                         background-color:rgb(75, 75, 75);
                                                         border-radius:10px;
                                                         }
@@ -457,52 +422,50 @@
                                                         border-radius:10px;
                                                         }
                                                     </string>
-                                                </property>
-                                                <property name="text">
-                                                    <string/>
-                                                </property>
-                                                <property name="icon">
-                                                    <iconset resource="../resources.qrc">
-                                                        <normaloff>:/images/icon/save_icon.svg</normaloff>
-                                                        :/images/icon/save_icon.svg
-                                                    </iconset>
-                                                </property>
-                                                <property name="iconSize">
-                                                    <size>
-                                                        <width>35</width>
-                                                        <height>35</height>
-                                                    </size>
-                                                </property>
-                                                <property name="flat">
-                                                    <bool>true</bool>
-                                                </property>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <spacer name="horizontalSpacer_10">
-                                                <property name="orientation">
-                                                    <enum>Qt::Horizontal</enum>
-                                                </property>
-                                                <property name="sizeHint" stdset="0">
-                                                    <size>
-                                                        <width>40</width>
-                                                        <height>20</height>
-                                                    </size>
-                                                </property>
-                                            </spacer>
-                                        </item>
-                                        <item>
-                                            <layout class="QHBoxLayout" name="horizontalLayout_control_window">
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_min">
-                                                        <property name="toolTip">
-                                                            <string>最小化</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources.qrc">
+              <normaloff>:/images/icon/save_icon.svg</normaloff>:/images/icon/save_icon.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_control_window">
+            <item>
+             <widget class="QPushButton" name="pushButton_min">
+              <property name="toolTip">
+               <string>最小化</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -515,42 +478,38 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>
-                                                                    :/images/icon/minus_delete_remove_icon.svg
-                                                                </normaloff>
-                                                                :/images/icon/minus_delete_remove_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>35</width>
-                                                                <height>35</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="default">
-                                                            <bool>false</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_max_and_reduction">
-                                                        <property name="toolTip">
-                                                            <string>最大化</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/minus_delete_remove_icon.svg</normaloff>:/images/icon/minus_delete_remove_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_max_and_reduction">
+              <property name="toolTip">
+               <string>最大化</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -563,47 +522,41 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/maximize_expand_icon.svg
-                                                                </normaloff>
-                                                                <normalon>
-                                                                    :/images/icon/minimize_2_reduce_icon.svg
-                                                                </normalon>
-                                                                :/images/icon/maximize_expand_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>35</width>
-                                                                <height>35</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_close">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>0</width>
-                                                                <height>0</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>关闭</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/maximize_expand_icon.svg</normaloff>:/images/icon/maximize_expand_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_close">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>关闭</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(255, 0, 0);
                                                                 border-radius:10px;
                                                                 }
@@ -612,125 +565,123 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/close_icon.svg</normaloff>
-                                                                :/images/icon/close_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>35</width>
-                                                                <height>35</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                            </layout>
-                                        </item>
-                                    </layout>
-                                </widget>
-                            </item>
-                            <item>
-                                <widget class="QWidget" name="widget_view" native="true">
-                                    <layout class="QHBoxLayout" name="horizontalLayout_8">
-                                        <property name="leftMargin">
-                                            <number>10</number>
-                                        </property>
-                                        <property name="topMargin">
-                                            <number>0</number>
-                                        </property>
-                                        <property name="rightMargin">
-                                            <number>10</number>
-                                        </property>
-                                        <property name="bottomMargin">
-                                            <number>0</number>
-                                        </property>
-                                        <item>
-                                            <widget class="QStackedWidget" name="main_stacked_widget">
-                                                <property name="styleSheet">
-                                                    <string notr="true">QWidget{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/close_icon.svg</normaloff>:/images/icon/close_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>35</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_view" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>10</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QStackedWidget" name="main_stacked_widget">
+            <property name="styleSheet">
+             <string notr="true">QWidget{
                                                         background-color: transparent;
                                                         }
                                                     </string>
-                                                </property>
-                                                <property name="currentIndex">
-                                                    <number>0</number>
-                                                </property>
-                                                <widget class="QWidget" name="page_upload">
-                                                    <layout class="QHBoxLayout" name="horizontalLayout_upload">
-                                                        <property name="leftMargin">
-                                                            <number>0</number>
-                                                        </property>
-                                                        <property name="topMargin">
-                                                            <number>0</number>
-                                                        </property>
-                                                        <property name="rightMargin">
-                                                            <number>0</number>
-                                                        </property>
-                                                        <property name="bottomMargin">
-                                                            <number>0</number>
-                                                        </property>
-                                                    </layout>
-                                                </widget>
-                                                <widget class="QWidget" name="page_image_view"/>
-                                            </widget>
-                                        </item>
-                                    </layout>
-                                </widget>
-                            </item>
-                            <item>
-                                <widget class="QFrame" name="frame_function">
-                                    <property name="minimumSize">
-                                        <size>
-                                            <width>0</width>
-                                            <height>84</height>
-                                        </size>
-                                    </property>
-                                    <property name="styleSheet">
-                                        <string notr="true">.QFrame#frame_function{
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="page_upload">
+             <layout class="QHBoxLayout" name="horizontalLayout_upload">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="page_image_view"/>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_function">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>84</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">.QFrame#frame_function{
                                             background-color: rgb(32, 32, 32);
                                             }
                                         </string>
-                                    </property>
-                                    <property name="frameShape">
-                                        <enum>QFrame::StyledPanel</enum>
-                                    </property>
-                                    <property name="frameShadow">
-                                        <enum>QFrame::Raised</enum>
-                                    </property>
-                                    <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="4,1,12">
-                                        <item>
-                                            <layout class="QHBoxLayout" name="horizontalLayout_4">
-                                                <property name="spacing">
-                                                    <number>7</number>
-                                                </property>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_undo">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>61</width>
-                                                                <height>61</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>撤销</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="4,1,12">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="spacing">
+             <number>7</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushButton_undo">
+              <property name="minimumSize">
+               <size>
+                <width>61</width>
+                <height>61</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>撤销</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -743,62 +694,58 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/undo_icon.svg</normaloff>
-                                                                <disabledoff>
-                                                                    :/images/icon/undo_disable_icon.svg
-                                                                </disabledoff>
-                                                                :/images/icon/undo_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_2">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_redo">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>61</width>
-                                                                <height>61</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>恢复</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/undo_icon.svg</normaloff>
+                <disabledoff>:/images/icon/undo_disable_icon.svg</disabledoff>:/images/icon/undo_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_redo">
+              <property name="minimumSize">
+               <size>
+                <width>61</width>
+                <height>61</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>恢复</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -811,62 +758,58 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/redo_icon.svg</normaloff>
-                                                                <disabledoff>
-                                                                    :/images/icon/redo_disable_icon.svg
-                                                                </disabledoff>
-                                                                :/images/icon/redo_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_3">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_reset">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>61</width>
-                                                                <height>61</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>重置</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/redo_icon.svg</normaloff>
+                <disabledoff>:/images/icon/redo_disable_icon.svg</disabledoff>:/images/icon/redo_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_reset">
+              <property name="minimumSize">
+               <size>
+                <width>61</width>
+                <height>61</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>重置</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -879,68 +822,64 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/reset_icon.svg</normaloff>
-                                                                <disabledoff>
-                                                                    :/images/icon/reset_disable_icon.svg
-                                                                </disabledoff>
-                                                                :/images/icon/reset_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                            </layout>
-                                        </item>
-                                        <item>
-                                            <widget class="QWidget" name="separator" native="true">
-                                                <property name="minimumSize">
-                                                    <size>
-                                                        <width>60</width>
-                                                        <height>65</height>
-                                                    </size>
-                                                </property>
-                                                <property name="styleSheet">
-                                                    <string notr="true">image:url(:/images/icon/vertical_line_icon.svg);
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/reset_icon.svg</normaloff>
+                <disabledoff>:/images/icon/reset_disable_icon.svg</disabledoff>:/images/icon/reset_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QWidget" name="separator" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>60</width>
+              <height>65</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">image:url(:/images/icon/vertical_line_icon.svg);
                                                         background-color: transparent;
                                                     </string>
-                                                </property>
-                                            </widget>
-                                        </item>
-                                        <item>
-                                            <layout class="QHBoxLayout" name="horizontalLayout_6">
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_crop">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>50</width>
-                                                                <height>50</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>裁剪</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QPushButton" name="pushButton_crop">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>裁剪</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -953,62 +892,60 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/crop_icon.svg</normaloff>
-                                                                :/images/icon/crop_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="autoExclusive">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_4">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_rotate">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>61</width>
-                                                                <height>57</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>旋转</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/crop_icon.svg</normaloff>:/images/icon/crop_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_rotate">
+              <property name="minimumSize">
+               <size>
+                <width>61</width>
+                <height>57</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>旋转</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -1021,62 +958,60 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/rotate_cw_icon.svg</normaloff>
-                                                                :/images/icon/rotate_cw_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="autoExclusive">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_5">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_chart">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>61</width>
-                                                                <height>57</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>图表</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/rotate_cw_icon.svg</normaloff>:/images/icon/rotate_cw_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_chart">
+              <property name="minimumSize">
+               <size>
+                <width>61</width>
+                <height>57</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>图表</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -1089,64 +1024,60 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>
-                                                                    :/images/icon/curve_adjustment_icon.svg
-                                                                </normaloff>
-                                                                :/images/icon/curve_adjustment_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>43</width>
-                                                                <height>43</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="autoExclusive">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_6">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_face">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>50</width>
-                                                                <height>50</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>人脸</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/curve_adjustment_icon.svg</normaloff>:/images/icon/curve_adjustment_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>43</width>
+                <height>43</height>
+               </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_face">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>人脸</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -1159,62 +1090,60 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/face_smile_icon.svg</normaloff>
-                                                                :/images/icon/face_smile_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="autoExclusive">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_11">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_text">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>50</width>
-                                                                <height>50</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>文字</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/face_smile_icon.svg</normaloff>:/images/icon/face_smile_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_11">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_text">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>文字</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -1227,62 +1156,60 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>:/images/icon/type_text_icon.svg</normaloff>
-                                                                :/images/icon/type_text_icon.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="autoExclusive">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                                <item>
-                                                    <spacer name="horizontalSpacer_7">
-                                                        <property name="orientation">
-                                                            <enum>Qt::Horizontal</enum>
-                                                        </property>
-                                                        <property name="sizeHint" stdset="0">
-                                                            <size>
-                                                                <width>40</width>
-                                                                <height>20</height>
-                                                            </size>
-                                                        </property>
-                                                    </spacer>
-                                                </item>
-                                                <item>
-                                                    <widget class="QPushButton" name="pushButton_adjust">
-                                                        <property name="minimumSize">
-                                                            <size>
-                                                                <width>50</width>
-                                                                <height>50</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="cursor">
-                                                            <cursorShape>PointingHandCursor</cursorShape>
-                                                        </property>
-                                                        <property name="toolTip">
-                                                            <string>调节</string>
-                                                        </property>
-                                                        <property name="toolTipDuration">
-                                                            <number>3000</number>
-                                                        </property>
-                                                        <property name="styleSheet">
-                                                            <string notr="true">.QPushButton:hover{
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/type_text_icon.svg</normaloff>:/images/icon/type_text_icon.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_adjust">
+              <property name="minimumSize">
+               <size>
+                <width>50</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>调节</string>
+              </property>
+              <property name="toolTipDuration">
+               <number>3000</number>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">.QPushButton:hover{
                                                                 background-color:rgb(75, 75, 75);
                                                                 border-radius:10px;
                                                                 }
@@ -1295,45 +1222,41 @@
                                                                 border-radius:10px;
                                                                 }
                                                             </string>
-                                                        </property>
-                                                        <property name="text">
-                                                            <string/>
-                                                        </property>
-                                                        <property name="icon">
-                                                            <iconset resource="../resources.qrc">
-                                                                <normaloff>
-                                                                    :/images/icon/adjust_control_con.svg
-                                                                </normaloff>
-                                                                :/images/icon/adjust_control_con.svg
-                                                            </iconset>
-                                                        </property>
-                                                        <property name="iconSize">
-                                                            <size>
-                                                                <width>48</width>
-                                                                <height>48</height>
-                                                            </size>
-                                                        </property>
-                                                        <property name="autoExclusive">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                        <property name="flat">
-                                                            <bool>true</bool>
-                                                        </property>
-                                                    </widget>
-                                                </item>
-                                            </layout>
-                                        </item>
-                                    </layout>
-                                </widget>
-                            </item>
-                        </layout>
-                    </widget>
-                </item>
-            </layout>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources.qrc">
+                <normaloff>:/images/icon/adjust_control_con.svg</normaloff>:/images/icon/adjust_control_con.svg</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>48</width>
+                <height>48</height>
+               </size>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
-    </widget>
-    <resources>
-        <include location="../resources.qrc"/>
-    </resources>
-    <connections/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
 </ui>

@@ -21,124 +21,95 @@ class Ui_Form(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.widget_adjust = QtWidgets.QWidget(Form)
         self.widget_adjust.setStyleSheet("QWidget{\n"
-                                         "    border-radius:20px;\n"
-                                         "    background-color: rgb(32, 32, 32);\n"
-                                         "}\n"
-                                         "QScrollBar:horizontal{\n"
-                                         "    height:8px;\n"
-                                         "    background:rgba(0,0,0,0%);\n"
-                                         "border-radius:4px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::handle:horizontal{\n"
-                                         "    background:rgba(255,255,255,50%);\n"
-                                         "border-radius:4px;\n"
-                                         "}\n"
-                                         "QScrollBar::handle:horizontal:hover{\n"
-                                         "    background:rgba(255,255,255,100%);\n"
-                                         "    min-width:0;\n"
-                                         "}\n"
-                                         "QScrollBar::add-line:horizontal{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::sub-line:horizontal{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::add-line:horizontal:hover{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::sub-line:horizontal:hover{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal\n"
-                                         "{\n"
-                                         "    background:rgba(0,0,0,10%);\n"
-                                         "    border-radius:4px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QScrollBar:vertical{\n"
-                                         "    width:8px;\n"
-                                         "    background:rgba(0,0,0,0%);\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::handle:vertical{\n"
-                                         "    width:0px;\n"
-                                         "    background:rgba(255,255,255,50%);\n"
-                                         "    border-radius:4px;\n"
-                                         "}\n"
-                                         "QScrollBar::handle:vertical:hover{\n"
-                                         "    width:0px;\n"
-                                         "    background:rgba(255,255,255,100%);\n"
-                                         "    border-radius:4px;\n"
-                                         "    min-width:20;\n"
-                                         "}\n"
-                                         "QScrollBar::add-line:vertical{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::sub-line:vertical{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::add-line:vertical:hover{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::sub-line:vertical:hover{\n"
-                                         "    height:0px;width:0px;\n"
-                                         "\n"
-                                         "}\n"
-                                         "QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical\n"
-                                         "{\n"
-                                         "    background:rgba(0,0,0,10%);\n"
-                                         "    border-radius:4px;\n"
-                                         "}\n"
-                                         "\n"
-                                         " \n"
-                                         " \n"
-                                         "QSlider::add-page:horizontal {\n"
-                                         "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-                                         "                                      stop: 0 rgb(100, 100, 100),\n"
-                                         "                                      stop: 1 rgb(255, 78, 0,));\n"
-                                         "    border-radius: 4px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QSlider::sub-page:horizontal {\n"
-                                         "    background-color: qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
-                                         "                                      stop: 0 rgb(51, 151, 255),\n"
-                                         "                                      stop: 1 rgb(100, 100, 100));\n"
-                                         "    border-radius: 4px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QSlider::groove:horizontal {\n"
-                                         "    background: transparent;\n"
-                                         "    height: 8px;\n"
-                                         "}\n"
-                                         "\n"
-                                         "QSlider::handle:horizontal {\n"
-                                         "    width: 16px;\n"
-                                         "    height: 18px;\n"
-                                         "    margin: -4px 0px -4px 0px;\n"
-                                         "    border-radius: 8px;\n"
-                                         "    background: white;\n"
-                                         "}\n"
-                                         "")
+"                            border-radius:20px;\n"
+"                            background-color: rgb(32, 32, 32);\n"
+"                            }\n"
+"                            QScrollBar:horizontal{\n"
+"                            height:8px;\n"
+"                            background:rgba(0,0,0,0%);\n"
+"                            border-radius:4px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::handle:horizontal{\n"
+"                            background:rgba(255,255,255,50%);\n"
+"                            border-radius:4px;\n"
+"                            }\n"
+"                            QScrollBar::handle:horizontal:hover{\n"
+"                            background:rgba(255,255,255,100%);\n"
+"                            min-width:0;\n"
+"                            }\n"
+"                            QScrollBar::add-line:horizontal{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::sub-line:horizontal{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::add-line:horizontal:hover{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::sub-line:horizontal:hover{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal\n"
+"                            {\n"
+"                            background:rgba(0,0,0,10%);\n"
+"                            border-radius:4px;\n"
+"                            }\n"
+"\n"
+"                            QScrollBar:vertical{\n"
+"                            width:8px;\n"
+"                            background:rgba(0,0,0,0%);\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::handle:vertical{\n"
+"                            width:0px;\n"
+"                            background:rgba(255,255,255,50%);\n"
+"                            border-radius:4px;\n"
+"                            }\n"
+"                            QScrollBar::handle:vertical:hover{\n"
+"                            width:0px;\n"
+"                            background:rgba(255,255,255,100%);\n"
+"                            border-radius:4px;\n"
+"                            min-width:20;\n"
+"                            }\n"
+"                            QScrollBar::add-line:vertical{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::sub-line:vertical{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::add-line:vertical:hover{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::sub-line:vertical:hover{\n"
+"                            height:0px;width:0px;\n"
+"\n"
+"                            }\n"
+"                            QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical\n"
+"                            {\n"
+"                            background:rgba(0,0,0,10%);\n"
+"                            border-radius:4px;\n"
+"                            }")
         self.widget_adjust.setObjectName("widget_adjust")
         self.horizontalLayout_18 = QtWidgets.QHBoxLayout(self.widget_adjust)
         self.horizontalLayout_18.setObjectName("horizontalLayout_18")
         self.scrollArea = QtWidgets.QScrollArea(self.widget_adjust)
         self.scrollArea.setStyleSheet("QScrollArea{\n"
-                                      "    background-color: transparent;\n"
-                                      "}")
+"                                        background-color: transparent;\n"
+"                                        }\n"
+"                                    ")
         self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 301, 870))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -700, 301, 1192))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
@@ -152,7 +123,9 @@ class Ui_Form(object):
         self.horizontalLayout_light.setObjectName("horizontalLayout_light")
         self.label_image_light = QtWidgets.QLabel(self.widget_light)
         self.label_image_light.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_light.setStyleSheet("image:url(:/images/icon/light_control_icon.svg)")
+        self.label_image_light.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/light_control_icon.svg)\n"
+"                                                                        ")
         self.label_image_light.setText("")
         self.label_image_light.setObjectName("label_image_light")
         self.horizontalLayout_light.addWidget(self.label_image_light)
@@ -164,11 +137,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_light.setFont(font)
         self.label_text_light.setStyleSheet("QLabel{\n"
-                                            "    color:rgb(255, 255, 255);\n"
-                                            "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_light.setObjectName("label_text_light")
         self.horizontalLayout_light.addWidget(self.label_text_light)
         self.label_light_perception = QtWidgets.QLabel(self.widget_light)
@@ -179,11 +153,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_light_perception.setFont(font)
         self.label_light_perception.setStyleSheet("QLabel{\n"
-                                                  "    color:rgb(255, 255, 255);\n"
-                                                  "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_light_perception.setObjectName("label_light_perception")
         self.horizontalLayout_light.addWidget(self.label_light_perception)
         self.horizontalLayout_light.setStretch(0, 1)
@@ -191,7 +166,24 @@ class Ui_Form(object):
         self.horizontalLayout_light.setStretch(2, 1)
         self.verticalLayout_4.addLayout(self.horizontalLayout_light)
         self.slider_light_perception = QtWidgets.QSlider(self.widget_light)
-        self.slider_light_perception.setStyleSheet("")
+        self.slider_light_perception.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"                                                   ")
         self.slider_light_perception.setMinimum(-100)
         self.slider_light_perception.setMaximum(100)
         self.slider_light_perception.setOrientation(QtCore.Qt.Horizontal)
@@ -208,7 +200,9 @@ class Ui_Form(object):
         self.horizontalLayout_brightness.setObjectName("horizontalLayout_brightness")
         self.label_image_brightness = QtWidgets.QLabel(self.widget_brightness)
         self.label_image_brightness.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_brightness.setStyleSheet("image:url(:/images/icon/brightness_light_icon.svg)")
+        self.label_image_brightness.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/brightness_light_icon.svg)\n"
+"                                                                        ")
         self.label_image_brightness.setText("")
         self.label_image_brightness.setObjectName("label_image_brightness")
         self.horizontalLayout_brightness.addWidget(self.label_image_brightness)
@@ -220,11 +214,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_brightness.setFont(font)
         self.label_text_brightness.setStyleSheet("QLabel{\n"
-                                                 "    color:rgb(255, 255, 255);\n"
-                                                 "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_brightness.setObjectName("label_text_brightness")
         self.horizontalLayout_brightness.addWidget(self.label_text_brightness)
         self.label_brightness = QtWidgets.QLabel(self.widget_brightness)
@@ -234,11 +229,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_brightness.setFont(font)
         self.label_brightness.setStyleSheet("QLabel{\n"
-                                            "    color:rgb(255, 255, 255);\n"
-                                            "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_brightness.setObjectName("label_brightness")
         self.horizontalLayout_brightness.addWidget(self.label_brightness)
         self.horizontalLayout_brightness.setStretch(0, 1)
@@ -246,7 +242,25 @@ class Ui_Form(object):
         self.horizontalLayout_brightness.setStretch(2, 1)
         self.verticalLayout_5.addLayout(self.horizontalLayout_brightness)
         self.slider_brightness = QtWidgets.QSlider(self.widget_brightness)
-        self.slider_brightness.setStyleSheet("")
+        self.slider_brightness.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"         \n"
+"                                                    ")
         self.slider_brightness.setMinimum(-100)
         self.slider_brightness.setMaximum(100)
         self.slider_brightness.setOrientation(QtCore.Qt.Horizontal)
@@ -263,7 +277,9 @@ class Ui_Form(object):
         self.horizontalLayout_exposure.setObjectName("horizontalLayout_exposure")
         self.label_image_exposure = QtWidgets.QLabel(self.widget_exposure)
         self.label_image_exposure.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_exposure.setStyleSheet("image:url(:/images/icon/exposure_icon.svg)")
+        self.label_image_exposure.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/exposure_icon.svg)\n"
+"                                                                        ")
         self.label_image_exposure.setText("")
         self.label_image_exposure.setObjectName("label_image_exposure")
         self.horizontalLayout_exposure.addWidget(self.label_image_exposure)
@@ -275,11 +291,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_exposure.setFont(font)
         self.label_text_exposure.setStyleSheet("QLabel{\n"
-                                               "    color:rgb(255, 255, 255);\n"
-                                               "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_exposure.setObjectName("label_text_exposure")
         self.horizontalLayout_exposure.addWidget(self.label_text_exposure)
         self.label_exposure = QtWidgets.QLabel(self.widget_exposure)
@@ -289,11 +306,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_exposure.setFont(font)
         self.label_exposure.setStyleSheet("QLabel{\n"
-                                          "    color:rgb(255, 255, 255);\n"
-                                          "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_exposure.setObjectName("label_exposure")
         self.horizontalLayout_exposure.addWidget(self.label_exposure)
         self.horizontalLayout_exposure.setStretch(0, 1)
@@ -301,7 +319,24 @@ class Ui_Form(object):
         self.horizontalLayout_exposure.setStretch(2, 1)
         self.verticalLayout_14.addLayout(self.horizontalLayout_exposure)
         self.slider_exposure = QtWidgets.QSlider(self.widget_exposure)
-        self.slider_exposure.setStyleSheet("")
+        self.slider_exposure.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"         ")
         self.slider_exposure.setMinimum(-100)
         self.slider_exposure.setMaximum(100)
         self.slider_exposure.setOrientation(QtCore.Qt.Horizontal)
@@ -318,7 +353,9 @@ class Ui_Form(object):
         self.horizontalLayout_contrast.setObjectName("horizontalLayout_contrast")
         self.label_image_contrast = QtWidgets.QLabel(self.widget_contrast)
         self.label_image_contrast.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_contrast.setStyleSheet("image:url(:/images/icon/contrast_brightness_setting_icon.svg)")
+        self.label_image_contrast.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/contrast_brightness_setting_icon.svg)\n"
+"                                                                        ")
         self.label_image_contrast.setText("")
         self.label_image_contrast.setObjectName("label_image_contrast")
         self.horizontalLayout_contrast.addWidget(self.label_image_contrast)
@@ -330,11 +367,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_contrast.setFont(font)
         self.label_text_contrast.setStyleSheet("QLabel{\n"
-                                               "    color:rgb(255, 255, 255);\n"
-                                               "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_contrast.setObjectName("label_text_contrast")
         self.horizontalLayout_contrast.addWidget(self.label_text_contrast)
         self.label_contrast = QtWidgets.QLabel(self.widget_contrast)
@@ -344,11 +382,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_contrast.setFont(font)
         self.label_contrast.setStyleSheet("QLabel{\n"
-                                          "    color:rgb(255, 255, 255);\n"
-                                          "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_contrast.setObjectName("label_contrast")
         self.horizontalLayout_contrast.addWidget(self.label_contrast)
         self.horizontalLayout_contrast.setStretch(0, 1)
@@ -356,7 +395,24 @@ class Ui_Form(object):
         self.horizontalLayout_contrast.setStretch(2, 1)
         self.verticalLayout_13.addLayout(self.horizontalLayout_contrast)
         self.slider_contrast = QtWidgets.QSlider(self.widget_contrast)
-        self.slider_contrast.setStyleSheet("")
+        self.slider_contrast.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"         ")
         self.slider_contrast.setMinimum(-100)
         self.slider_contrast.setMaximum(100)
         self.slider_contrast.setOrientation(QtCore.Qt.Horizontal)
@@ -373,7 +429,9 @@ class Ui_Form(object):
         self.horizontalLayout_saturation.setObjectName("horizontalLayout_saturation")
         self.label_image_saturation = QtWidgets.QLabel(self.widget_saturation)
         self.label_image_saturation.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_saturation.setStyleSheet("image:url(:/images/icon/bx_tone_icon.svg)")
+        self.label_image_saturation.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/bx_tone_icon.svg)\n"
+"                                                                        ")
         self.label_image_saturation.setText("")
         self.label_image_saturation.setObjectName("label_image_saturation")
         self.horizontalLayout_saturation.addWidget(self.label_image_saturation)
@@ -385,11 +443,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_saturation.setFont(font)
         self.label_text_saturation.setStyleSheet("QLabel{\n"
-                                                 "    color:rgb(255, 255, 255);\n"
-                                                 "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_saturation.setObjectName("label_text_saturation")
         self.horizontalLayout_saturation.addWidget(self.label_text_saturation)
         self.label_saturation = QtWidgets.QLabel(self.widget_saturation)
@@ -399,11 +458,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_saturation.setFont(font)
         self.label_saturation.setStyleSheet("QLabel{\n"
-                                            "    color:rgb(255, 255, 255);\n"
-                                            "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_saturation.setObjectName("label_saturation")
         self.horizontalLayout_saturation.addWidget(self.label_saturation)
         self.horizontalLayout_saturation.setStretch(0, 1)
@@ -411,123 +471,30 @@ class Ui_Form(object):
         self.horizontalLayout_saturation.setStretch(2, 1)
         self.verticalLayout_12.addLayout(self.horizontalLayout_saturation)
         self.slider_saturation = QtWidgets.QSlider(self.widget_saturation)
-        self.slider_saturation.setStyleSheet("")
+        self.slider_saturation.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"         ")
         self.slider_saturation.setMinimum(-100)
         self.slider_saturation.setMaximum(100)
         self.slider_saturation.setOrientation(QtCore.Qt.Horizontal)
         self.slider_saturation.setObjectName("slider_saturation")
         self.verticalLayout_12.addWidget(self.slider_saturation)
         self.verticalLayout_15.addWidget(self.widget_saturation)
-        self.widget_sharp = QtWidgets.QWidget(self.scrollAreaWidgetContents)
-        self.widget_sharp.setMinimumSize(QtCore.QSize(0, 88))
-        self.widget_sharp.setMaximumSize(QtCore.QSize(16777215, 88))
-        self.widget_sharp.setObjectName("widget_sharp")
-        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.widget_sharp)
-        self.verticalLayout_11.setObjectName("verticalLayout_11")
-        self.horizontalLayout_sharp = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_sharp.setObjectName("horizontalLayout_sharp")
-        self.label_image_sharp = QtWidgets.QLabel(self.widget_sharp)
-        self.label_image_sharp.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_sharp.setStyleSheet("image:url(:/images/icon/triangle_outline_icon.svg)")
-        self.label_image_sharp.setText("")
-        self.label_image_sharp.setObjectName("label_image_sharp")
-        self.horizontalLayout_sharp.addWidget(self.label_image_sharp)
-        self.label_text_sharp = QtWidgets.QLabel(self.widget_sharp)
-        self.label_text_sharp.setMinimumSize(QtCore.QSize(90, 30))
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.label_text_sharp.setFont(font)
-        self.label_text_sharp.setStyleSheet("QLabel{\n"
-                                            "    color:rgb(255, 255, 255);\n"
-                                            "}")
-        self.label_text_sharp.setObjectName("label_text_sharp")
-        self.horizontalLayout_sharp.addWidget(self.label_text_sharp)
-        self.label_sharp = QtWidgets.QLabel(self.widget_sharp)
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.label_sharp.setFont(font)
-        self.label_sharp.setStyleSheet("QLabel{\n"
-                                       "    color:rgb(255, 255, 255);\n"
-                                       "}")
-        self.label_sharp.setObjectName("label_sharp")
-        self.horizontalLayout_sharp.addWidget(self.label_sharp)
-        self.horizontalLayout_sharp.setStretch(0, 1)
-        self.horizontalLayout_sharp.setStretch(1, 4)
-        self.horizontalLayout_sharp.setStretch(2, 1)
-        self.verticalLayout_11.addLayout(self.horizontalLayout_sharp)
-        self.slider_sharp = QtWidgets.QSlider(self.widget_sharp)
-        self.slider_sharp.setStyleSheet("")
-        self.slider_sharp.setMinimum(-100)
-        self.slider_sharp.setMaximum(100)
-        self.slider_sharp.setOrientation(QtCore.Qt.Horizontal)
-        self.slider_sharp.setObjectName("slider_sharp")
-        self.verticalLayout_11.addWidget(self.slider_sharp)
-        self.verticalLayout_15.addWidget(self.widget_sharp)
-        self.widget_smooth = QtWidgets.QWidget(self.scrollAreaWidgetContents)
-        self.widget_smooth.setMinimumSize(QtCore.QSize(0, 88))
-        self.widget_smooth.setMaximumSize(QtCore.QSize(16777215, 88))
-        self.widget_smooth.setObjectName("widget_smooth")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.widget_smooth)
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.horizontalLayout_smooth = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_smooth.setObjectName("horizontalLayout_smooth")
-        self.label_image_smooth = QtWidgets.QLabel(self.widget_smooth)
-        self.label_image_smooth.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_smooth.setStyleSheet("image:url(:/images/icon/curve_auto_colon_icon.svg)")
-        self.label_image_smooth.setText("")
-        self.label_image_smooth.setObjectName("label_image_smooth")
-        self.horizontalLayout_smooth.addWidget(self.label_image_smooth)
-        self.label_text_smooth = QtWidgets.QLabel(self.widget_smooth)
-        self.label_text_smooth.setMinimumSize(QtCore.QSize(90, 30))
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.label_text_smooth.setFont(font)
-        self.label_text_smooth.setStyleSheet("QLabel{\n"
-                                             "    color:rgb(255, 255, 255);\n"
-                                             "}")
-        self.label_text_smooth.setObjectName("label_text_smooth")
-        self.horizontalLayout_smooth.addWidget(self.label_text_smooth)
-        self.label_smooth = QtWidgets.QLabel(self.widget_smooth)
-        font = QtGui.QFont()
-        font.setFamily("黑体")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.label_smooth.setFont(font)
-        self.label_smooth.setStyleSheet("QLabel{\n"
-                                        "    color:rgb(255, 255, 255);\n"
-                                        "}")
-        self.label_smooth.setObjectName("label_smooth")
-        self.horizontalLayout_smooth.addWidget(self.label_smooth)
-        self.horizontalLayout_smooth.setStretch(0, 1)
-        self.horizontalLayout_smooth.setStretch(1, 4)
-        self.horizontalLayout_smooth.setStretch(2, 1)
-        self.verticalLayout_10.addLayout(self.horizontalLayout_smooth)
-        self.slider_smooth = QtWidgets.QSlider(self.widget_smooth)
-        self.slider_smooth.setStyleSheet("")
-        self.slider_smooth.setMinimum(-100)
-        self.slider_smooth.setMaximum(100)
-        self.slider_smooth.setOrientation(QtCore.Qt.Horizontal)
-        self.slider_smooth.setObjectName("slider_smooth")
-        self.verticalLayout_10.addWidget(self.slider_smooth)
-        self.verticalLayout_15.addWidget(self.widget_smooth)
         self.widget_temperature = QtWidgets.QWidget(self.scrollAreaWidgetContents)
         self.widget_temperature.setMinimumSize(QtCore.QSize(0, 88))
         self.widget_temperature.setMaximumSize(QtCore.QSize(16777215, 88))
@@ -538,7 +505,9 @@ class Ui_Form(object):
         self.horizontalLayout_temperature.setObjectName("horizontalLayout_temperature")
         self.label_image_temperature = QtWidgets.QLabel(self.widget_temperature)
         self.label_image_temperature.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_temperature.setStyleSheet("image:url(:/images/icon/thermometer_high_icon.svg)")
+        self.label_image_temperature.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/thermometer_high_icon.svg)\n"
+"                                                                        ")
         self.label_image_temperature.setText("")
         self.label_image_temperature.setObjectName("label_image_temperature")
         self.horizontalLayout_temperature.addWidget(self.label_image_temperature)
@@ -550,11 +519,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_temperature.setFont(font)
         self.label_text_temperature.setStyleSheet("QLabel{\n"
-                                                  "    color:rgb(255, 255, 255);\n"
-                                                  "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_temperature.setObjectName("label_text_temperature")
         self.horizontalLayout_temperature.addWidget(self.label_text_temperature)
         self.label_temperature = QtWidgets.QLabel(self.widget_temperature)
@@ -564,11 +534,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_temperature.setFont(font)
         self.label_temperature.setStyleSheet("QLabel{\n"
-                                             "    color:rgb(255, 255, 255);\n"
-                                             "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_temperature.setObjectName("label_temperature")
         self.horizontalLayout_temperature.addWidget(self.label_temperature)
         self.horizontalLayout_temperature.setStretch(0, 1)
@@ -576,7 +547,24 @@ class Ui_Form(object):
         self.horizontalLayout_temperature.setStretch(2, 1)
         self.verticalLayout_9.addLayout(self.horizontalLayout_temperature)
         self.slider_temperature = QtWidgets.QSlider(self.widget_temperature)
-        self.slider_temperature.setStyleSheet("")
+        self.slider_temperature.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"                                                    ")
         self.slider_temperature.setMinimum(-100)
         self.slider_temperature.setMaximum(100)
         self.slider_temperature.setOrientation(QtCore.Qt.Horizontal)
@@ -593,7 +581,9 @@ class Ui_Form(object):
         self.horizontalLayout_hue.setObjectName("horizontalLayout_hue")
         self.label_image_hue = QtWidgets.QLabel(self.widget_hue)
         self.label_image_hue.setMinimumSize(QtCore.QSize(30, 30))
-        self.label_image_hue.setStyleSheet("image:url(:/images/icon/bx_color_fill_icon.svg)")
+        self.label_image_hue.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/tone_icon.svg)\n"
+"                                                                        ")
         self.label_image_hue.setText("")
         self.label_image_hue.setObjectName("label_image_hue")
         self.horizontalLayout_hue.addWidget(self.label_image_hue)
@@ -605,11 +595,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_text_hue.setFont(font)
         self.label_text_hue.setStyleSheet("QLabel{\n"
-                                          "    color:rgb(255, 255, 255);\n"
-                                          "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_text_hue.setObjectName("label_text_hue")
         self.horizontalLayout_hue.addWidget(self.label_text_hue)
         self.label_hue = QtWidgets.QLabel(self.widget_hue)
@@ -619,11 +610,12 @@ class Ui_Form(object):
         font.setBold(False)
         font.setItalic(False)
         font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.label_hue.setFont(font)
         self.label_hue.setStyleSheet("QLabel{\n"
-                                     "    color:rgb(255, 255, 255);\n"
-                                     "}")
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
         self.label_hue.setObjectName("label_hue")
         self.horizontalLayout_hue.addWidget(self.label_hue)
         self.horizontalLayout_hue.setStretch(0, 1)
@@ -631,27 +623,425 @@ class Ui_Form(object):
         self.horizontalLayout_hue.setStretch(2, 1)
         self.verticalLayout_8.addLayout(self.horizontalLayout_hue)
         self.slider_hue = QtWidgets.QSlider(self.widget_hue)
-        self.slider_hue.setStyleSheet("")
+        self.slider_hue.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"         ")
         self.slider_hue.setMinimum(-100)
         self.slider_hue.setMaximum(100)
         self.slider_hue.setOrientation(QtCore.Qt.Horizontal)
         self.slider_hue.setObjectName("slider_hue")
         self.verticalLayout_8.addWidget(self.slider_hue)
         self.verticalLayout_15.addWidget(self.widget_hue)
+        self.widget_sharp = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.widget_sharp.setMinimumSize(QtCore.QSize(0, 88))
+        self.widget_sharp.setMaximumSize(QtCore.QSize(16777215, 88))
+        self.widget_sharp.setObjectName("widget_sharp")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.widget_sharp)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.horizontalLayout_sharp = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_sharp.setObjectName("horizontalLayout_sharp")
+        self.label_image_sharp = QtWidgets.QLabel(self.widget_sharp)
+        self.label_image_sharp.setMinimumSize(QtCore.QSize(30, 30))
+        self.label_image_sharp.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/triangle_outline_icon.svg)\n"
+"                                                                        ")
+        self.label_image_sharp.setText("")
+        self.label_image_sharp.setObjectName("label_image_sharp")
+        self.horizontalLayout_sharp.addWidget(self.label_image_sharp)
+        self.label_text_sharp = QtWidgets.QLabel(self.widget_sharp)
+        self.label_text_sharp.setMinimumSize(QtCore.QSize(90, 30))
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_text_sharp.setFont(font)
+        self.label_text_sharp.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_text_sharp.setObjectName("label_text_sharp")
+        self.horizontalLayout_sharp.addWidget(self.label_text_sharp)
+        self.label_sharp = QtWidgets.QLabel(self.widget_sharp)
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_sharp.setFont(font)
+        self.label_sharp.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_sharp.setObjectName("label_sharp")
+        self.horizontalLayout_sharp.addWidget(self.label_sharp)
+        self.horizontalLayout_sharp.setStretch(0, 1)
+        self.horizontalLayout_sharp.setStretch(1, 4)
+        self.horizontalLayout_sharp.setStretch(2, 1)
+        self.verticalLayout_11.addLayout(self.horizontalLayout_sharp)
+        self.slider_sharp = QtWidgets.QSlider(self.widget_sharp)
+        self.slider_sharp.setStyleSheet("QSlider::add-page:horizontal {\n"
+"background-color: rgb(147, 147, 147);\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"background-color: rgb(0, 159, 170);\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::groove:horizontal {\n"
+"background: transparent;\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}")
+        self.slider_sharp.setMinimum(0)
+        self.slider_sharp.setMaximum(100)
+        self.slider_sharp.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_sharp.setObjectName("slider_sharp")
+        self.verticalLayout_11.addWidget(self.slider_sharp)
+        self.verticalLayout_15.addWidget(self.widget_sharp)
+        self.widget_smooth = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.widget_smooth.setMinimumSize(QtCore.QSize(0, 88))
+        self.widget_smooth.setMaximumSize(QtCore.QSize(16777215, 88))
+        self.widget_smooth.setObjectName("widget_smooth")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.widget_smooth)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.horizontalLayout_smooth = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_smooth.setObjectName("horizontalLayout_smooth")
+        self.label_image_smooth = QtWidgets.QLabel(self.widget_smooth)
+        self.label_image_smooth.setMinimumSize(QtCore.QSize(30, 30))
+        self.label_image_smooth.setStyleSheet("\n"
+"                                                                            image:url(:/images/icon/curve_auto_colon_icon.svg)\n"
+"                                                                        ")
+        self.label_image_smooth.setText("")
+        self.label_image_smooth.setObjectName("label_image_smooth")
+        self.horizontalLayout_smooth.addWidget(self.label_image_smooth)
+        self.label_text_smooth = QtWidgets.QLabel(self.widget_smooth)
+        self.label_text_smooth.setMinimumSize(QtCore.QSize(90, 30))
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_text_smooth.setFont(font)
+        self.label_text_smooth.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_text_smooth.setObjectName("label_text_smooth")
+        self.horizontalLayout_smooth.addWidget(self.label_text_smooth)
+        self.label_smooth = QtWidgets.QLabel(self.widget_smooth)
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_smooth.setFont(font)
+        self.label_smooth.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_smooth.setObjectName("label_smooth")
+        self.horizontalLayout_smooth.addWidget(self.label_smooth)
+        self.horizontalLayout_smooth.setStretch(0, 1)
+        self.horizontalLayout_smooth.setStretch(1, 4)
+        self.horizontalLayout_smooth.setStretch(2, 1)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_smooth)
+        self.slider_smooth = QtWidgets.QSlider(self.widget_smooth)
+        self.slider_smooth.setStyleSheet("QSlider::add-page:horizontal {\n"
+"background-color: rgb(147, 147, 147);\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"background-color: rgb(0, 159, 170);\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::groove:horizontal {\n"
+"background: transparent;\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}")
+        self.slider_smooth.setMinimum(0)
+        self.slider_smooth.setMaximum(100)
+        self.slider_smooth.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_smooth.setObjectName("slider_smooth")
+        self.verticalLayout_10.addWidget(self.slider_smooth)
+        self.verticalLayout_15.addWidget(self.widget_smooth)
+        self.label_hsl = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_hsl.setMinimumSize(QtCore.QSize(140, 30))
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.label_hsl.setFont(font)
+        self.label_hsl.setStyleSheet("QLabel{\n"
+"                                                                    color:rgb(255, 255, 255);\n"
+"                                                                    }\n"
+"                                                                ")
+        self.label_hsl.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_hsl.setObjectName("label_hsl")
+        self.verticalLayout_15.addWidget(self.label_hsl)
+        self.widget_H = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.widget_H.setMinimumSize(QtCore.QSize(0, 88))
+        self.widget_H.setMaximumSize(QtCore.QSize(16777215, 88))
+        self.widget_H.setObjectName("widget_H")
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.widget_H)
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
+        self.horizontalLayout_H = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_H.setObjectName("horizontalLayout_H")
+        self.label_text_H = QtWidgets.QLabel(self.widget_H)
+        self.label_text_H.setMinimumSize(QtCore.QSize(90, 30))
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_text_H.setFont(font)
+        self.label_text_H.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_text_H.setObjectName("label_text_H")
+        self.horizontalLayout_H.addWidget(self.label_text_H)
+        self.label_H = QtWidgets.QLabel(self.widget_H)
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_H.setFont(font)
+        self.label_H.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_H.setObjectName("label_H")
+        self.horizontalLayout_H.addWidget(self.label_H)
+        self.horizontalLayout_H.setStretch(0, 4)
+        self.horizontalLayout_H.setStretch(1, 1)
+        self.verticalLayout_16.addLayout(self.horizontalLayout_H)
+        self.slider_H = QtWidgets.QSlider(self.widget_H)
+        self.slider_H.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"            ")
+        self.slider_H.setMinimum(-100)
+        self.slider_H.setMaximum(100)
+        self.slider_H.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_H.setObjectName("slider_H")
+        self.verticalLayout_16.addWidget(self.slider_H)
+        self.verticalLayout_15.addWidget(self.widget_H)
+        self.widget_S = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.widget_S.setMinimumSize(QtCore.QSize(0, 88))
+        self.widget_S.setMaximumSize(QtCore.QSize(16777215, 88))
+        self.widget_S.setObjectName("widget_S")
+        self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.widget_S)
+        self.verticalLayout_17.setObjectName("verticalLayout_17")
+        self.horizontalLayout_S = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_S.setObjectName("horizontalLayout_S")
+        self.label_text_S = QtWidgets.QLabel(self.widget_S)
+        self.label_text_S.setMinimumSize(QtCore.QSize(90, 30))
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_text_S.setFont(font)
+        self.label_text_S.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_text_S.setObjectName("label_text_S")
+        self.horizontalLayout_S.addWidget(self.label_text_S)
+        self.label_S = QtWidgets.QLabel(self.widget_S)
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_S.setFont(font)
+        self.label_S.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_S.setObjectName("label_S")
+        self.horizontalLayout_S.addWidget(self.label_S)
+        self.horizontalLayout_S.setStretch(0, 4)
+        self.horizontalLayout_S.setStretch(1, 1)
+        self.verticalLayout_17.addLayout(self.horizontalLayout_S)
+        self.slider_S = QtWidgets.QSlider(self.widget_S)
+        self.slider_S.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"            ")
+        self.slider_S.setMinimum(-100)
+        self.slider_S.setMaximum(100)
+        self.slider_S.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_S.setObjectName("slider_S")
+        self.verticalLayout_17.addWidget(self.slider_S)
+        self.verticalLayout_15.addWidget(self.widget_S)
+        self.widget_L = QtWidgets.QWidget(self.scrollAreaWidgetContents)
+        self.widget_L.setMinimumSize(QtCore.QSize(0, 88))
+        self.widget_L.setMaximumSize(QtCore.QSize(16777215, 88))
+        self.widget_L.setObjectName("widget_L")
+        self.verticalLayout_18 = QtWidgets.QVBoxLayout(self.widget_L)
+        self.verticalLayout_18.setObjectName("verticalLayout_18")
+        self.horizontalLayout_L = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_L.setObjectName("horizontalLayout_L")
+        self.label_text_L = QtWidgets.QLabel(self.widget_L)
+        self.label_text_L.setMinimumSize(QtCore.QSize(90, 30))
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_text_L.setFont(font)
+        self.label_text_L.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_text_L.setObjectName("label_text_L")
+        self.horizontalLayout_L.addWidget(self.label_text_L)
+        self.label_L = QtWidgets.QLabel(self.widget_L)
+        font = QtGui.QFont()
+        font.setFamily("黑体")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.label_L.setFont(font)
+        self.label_L.setStyleSheet("QLabel{\n"
+"                                                                            color:rgb(255, 255, 255);\n"
+"                                                                            }\n"
+"                                                                        ")
+        self.label_L.setObjectName("label_L")
+        self.horizontalLayout_L.addWidget(self.label_L)
+        self.horizontalLayout_L.setStretch(0, 4)
+        self.horizontalLayout_L.setStretch(1, 1)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_L)
+        self.slider_L = QtWidgets.QSlider(self.widget_L)
+        self.slider_L.setStyleSheet("\n"
+"QSlider::groove:horizontal {\n"
+"background:  qlineargradient(spread: pad, x1: 0, y1: 1, x2: 1, y2: 1,\n"
+"stop: 0 rgb(51, 151, 255),\n"
+"stop: 0.5 rgb(100, 100, 100),\n"
+"stop: 1 rgb(255, 78, 0,));\n"
+"height: 8px;\n"
+"border-radius: 4px;\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"width: 16px;\n"
+"height: 18px;\n"
+"margin: -4px 0px -4px 0px;\n"
+"border-radius: 8px;\n"
+"background: white;\n"
+"}\n"
+"            ")
+        self.slider_L.setMinimum(-100)
+        self.slider_L.setMaximum(100)
+        self.slider_L.setOrientation(QtCore.Qt.Horizontal)
+        self.slider_L.setObjectName("slider_L")
+        self.verticalLayout_18.addWidget(self.slider_L)
+        self.verticalLayout_15.addWidget(self.widget_L)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_18.addWidget(self.scrollArea)
         self.horizontalLayout.addWidget(self.widget_adjust)
 
         self.retranslateUi(Form)
-        self.slider_brightness.valueChanged['int'].connect(self.label_brightness.setNum)  # type: ignore
-        self.slider_contrast.valueChanged['int'].connect(self.label_contrast.setNum)  # type: ignore
-        self.slider_exposure.valueChanged['int'].connect(self.label_exposure.setNum)  # type: ignore
-        self.slider_light_perception.valueChanged['int'].connect(self.label_light_perception.setNum)  # type: ignore
-        self.slider_saturation.valueChanged['int'].connect(self.label_saturation.setNum)  # type: ignore
-        self.slider_sharp.valueChanged['int'].connect(self.label_sharp.setNum)  # type: ignore
-        self.slider_smooth.valueChanged['int'].connect(self.label_smooth.setNum)  # type: ignore
-        self.slider_temperature.valueChanged['int'].connect(self.label_temperature.setNum)  # type: ignore
-        self.slider_hue.valueChanged['int'].connect(self.label_hue.setNum)  # type: ignore
+        self.slider_brightness.valueChanged['int'].connect(self.label_brightness.setNum) # type: ignore
+        self.slider_contrast.valueChanged['int'].connect(self.label_contrast.setNum) # type: ignore
+        self.slider_exposure.valueChanged['int'].connect(self.label_exposure.setNum) # type: ignore
+        self.slider_light_perception.valueChanged['int'].connect(self.label_light_perception.setNum) # type: ignore
+        self.slider_saturation.valueChanged['int'].connect(self.label_saturation.setNum) # type: ignore
+        self.slider_sharp.valueChanged['int'].connect(self.label_sharp.setNum) # type: ignore
+        self.slider_smooth.valueChanged['int'].connect(self.label_smooth.setNum) # type: ignore
+        self.slider_temperature.valueChanged['int'].connect(self.label_temperature.setNum) # type: ignore
+        self.slider_hue.valueChanged['int'].connect(self.label_hue.setNum) # type: ignore
+        self.slider_H.valueChanged['int'].connect(self.label_H.setNum) # type: ignore
+        self.slider_S.valueChanged['int'].connect(self.label_S.setNum) # type: ignore
+        self.slider_L.valueChanged['int'].connect(self.label_L.setNum) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -667,11 +1057,19 @@ class Ui_Form(object):
         self.label_contrast.setText(_translate("Form", "0"))
         self.label_text_saturation.setText(_translate("Form", "饱和度"))
         self.label_saturation.setText(_translate("Form", "0"))
-        self.label_text_sharp.setText(_translate("Form", "锐化"))
-        self.label_sharp.setText(_translate("Form", "0"))
-        self.label_text_smooth.setText(_translate("Form", "平滑"))
-        self.label_smooth.setText(_translate("Form", "0"))
         self.label_text_temperature.setText(_translate("Form", "色温"))
         self.label_temperature.setText(_translate("Form", "0"))
         self.label_text_hue.setText(_translate("Form", "色调"))
         self.label_hue.setText(_translate("Form", "0"))
+        self.label_text_sharp.setText(_translate("Form", "锐化"))
+        self.label_sharp.setText(_translate("Form", "0"))
+        self.label_text_smooth.setText(_translate("Form", "平滑"))
+        self.label_smooth.setText(_translate("Form", "0"))
+        self.label_hsl.setText(_translate("Form", "HSL"))
+        self.label_text_H.setText(_translate("Form", "色相(H)"))
+        self.label_H.setText(_translate("Form", "0"))
+        self.label_text_S.setText(_translate("Form", "饱和度(S)"))
+        self.label_S.setText(_translate("Form", "0"))
+        self.label_text_L.setText(_translate("Form", "明度(L)"))
+        self.label_L.setText(_translate("Form", "0"))
+import resources_rc

@@ -20,11 +20,6 @@
         <file>images/icon/HSL_edit_color_icon.svg</file>
         <file>images/icon/ic-flip-x.svg</file>
         <file>images/icon/ic-flip-y.svg</file>
-        <file>images/icon/ic-history-flip.svg</file>
-        <file>images/icon/ic-history-shape.svg</file>
-        <file>images/icon/ic-icon-arrow-3.svg</file>
-        <file>images/icon/ic-icon-bubble.svg</file>
-        <file>images/icon/ic-icon-load.svg</file>
         <file>images/icon/image_icon.svg</file>
         <file>images/icon/image_photo_picture_gallery_icon.png</file>
         <file>images/icon/image_photo_picture_gallery_icon.svg</file>
@@ -55,9 +50,13 @@
         <file>images/icon/text_italic_icon.svg</file>
         <file>images/icon/rotate_clockwise_icon.svg</file>
         <file>images/icon/rotate_counterclockwise_icon.svg</file>
-        <file>images/icon/bx_color_fill_icon.svg</file>
+        <file>images/icon/tone_icon.svg</file>
         <file>images/icon/red_circle.svg</file>
         <file>images/icon/green_circle.svg</file>
+        <file>images/icon/orange_circle.svg</file>
+        <file>images/icon/yellow_circle.svg</file>
+        <file>images/icon/green_circle.svg</file>
+        <file>images/icon/purple_circle.svg</file>
         <file>images/icon/font_icon.svg</file>
         <file>images/icon/colorful.png</file>
         <file>images/icon/skin_smooth.svg</file>

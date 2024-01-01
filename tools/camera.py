@@ -1,5 +1,4 @@
 import cv2
-import dlib
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
 from PyQt5.QtWidgets import QLabel, QMessageBox
 
@@ -16,7 +15,7 @@ class Worker(QThread):
         self.cv_image = cv_image
 
     def run(self):
-        detected_faces, cv_image = FaceDetect.detect(self.cv_image)
+        detected_faces, cv_image, faces = FaceDetect.cv_face_detect(self.cv_image)
         self.image.emit((detected_faces, cv_image))
 
 
@@ -79,7 +78,6 @@ class Camera(QLabel):
         #     detected_faces += 1
         # cv2.imshow(winname="human face test", mat=cv_image)
 
-
         # 开一个线程进行人脸检测
         if self.worker is None or not self.worker.isRunning():
             self.worker = Worker(cv_image)
@@ -92,10 +90,6 @@ class Camera(QLabel):
         pixmap = ImageFormat.cv_to_pixmap(cv_image)
         self.face_num.emit(detected_faces)
         self.setPixmap(pixmap)
-
-
-
-
 
 # import cv2
 # from PyQt5.QtCore import QTimer, QThread, pyqtSignal

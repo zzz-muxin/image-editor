@@ -26,7 +26,6 @@ class UploadImageWidget(QWidget, Ui_Form):
                 try:
                     self.pixmap = QPixmap(file_name)
                     self.image_exist.emit(self.pixmap)  # 发射信号，传递加载的图片
-                    print("image size:", self.pixmap.width(), self.pixmap.height())
                 except Exception as e:
                     print("Error:", e)
 
@@ -66,6 +65,5 @@ class UploadImageWidget(QWidget, Ui_Form):
                 pixmap = QPixmap(file_name)
                 self.pixmap = pixmap
                 self.image_exist.emit(pixmap)  # 发射信号，传递加载的图片
-                print("image size:", pixmap.width(), pixmap.height())
             except Exception as e:
                 print("Error:", e)

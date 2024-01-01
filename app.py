@@ -68,7 +68,6 @@ class AppWindow(QMainWindow, Ui_MainWindow):
         self.frame_function.installEventFilter(self)
         self.widget_view.installEventFilter(self)
         self.main_stacked_widget.installEventFilter(self)
-        print("main window size:", self.width(), self.height())
 
         self.setAttribute(QtCore.Qt.WidgetAttribute.WA_TranslucentBackground)  # 透明背景
         self.setWindowFlags(Qt.FramelessWindowHint)  # 隐藏系统边框
@@ -729,12 +728,6 @@ class AppWindow(QMainWindow, Ui_MainWindow):
 
     # 鼠标移动事件
     def mouseMoveEvent(self, event):
-        # x, y = event.x(), event.y()
-        # child_widget = self.childAt(x, y)
-        # if child_widget is None:
-        #     print("No child widget at ({}, {})".format(x, y))
-        # else:
-        #     print("Child widget at ({}, {}): {}".format(x, y, child_widget))
         # 鼠标没点击时，根据光标位置设置光标样式
         if not self.left_button_clicked:
             self._set_cursor(event.pos())

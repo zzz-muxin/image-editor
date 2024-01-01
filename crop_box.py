@@ -14,7 +14,6 @@ class CropBox(QGraphicsItem):
         self.limitRect = QRectF(parent.pixmap().rect())  # 限制大小在pixmap中
         self.PEN_RATIO = 1 / 100  # 设置裁剪框笔的大小为图片大小的1/100
         self.pen_size = self.update_pen_size()
-        print("pen size:", self.pen_size)
 
         self.centerPen = QPen(Qt.gray, self.pen_size)  # 中心矩形区域的笔
         self.cornerPen = QPen(Qt.black, self.pen_size)  # 四个顶点的笔
@@ -125,11 +124,6 @@ class CropBox(QGraphicsItem):
             painter.drawRoundedRect(self.topRightCornerRect(), cornerXRadius, cornerYRadius)  # top right
             painter.drawRoundedRect(self.bottomLeftCornerRect(), cornerXRadius, cornerYRadius)  # bottom left
             painter.drawRoundedRect(self.bottomRightCornerRect(), cornerXRadius, cornerYRadius)  # bottom right
-
-            # 绘制阴影遮罩
-            # painter.setPen(Qt.NoPen)
-            # painter.setBrush(QColor(0, 0, 0, 155))
-            # todo
         except Exception as e:
             print("Error:", e)
 

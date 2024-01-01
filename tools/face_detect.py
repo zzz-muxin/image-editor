@@ -59,7 +59,6 @@ class FaceDetect(QThread):
                 # 绘制检测结果和置信度
                 text = "{:.3f}%".format(confidence * 100)
                 y = startY - 10 if startY - 10 > 10 else startY + 10
-                print(detected_faces, confidence)
                 image = image.astype(np.uint8)  # 改为uint8格式
                 cv2.rectangle(image, (startX, startY), (endX, endY), (255, 0, 0), 3)
                 cv2.putText(image,

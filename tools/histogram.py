@@ -49,7 +49,6 @@ class GrayChart(QChartView):
 
         self.axis_y.setLabelFormat("%d")  # y轴使用整数格式显示刻度标签
         self.axis_y.setRange(0, max(self.gray_hist)[0])  # y轴限制显示范围
-        print(min(self.gray_hist)[0], max(self.gray_hist)[0])
         self.chart.addAxis(self.axis_y, Qt.AlignLeft)  # 添加y轴到chart左部
         self.line_series.attachAxis(self.axis_y)  # 关联折线
 

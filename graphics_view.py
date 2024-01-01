@@ -194,7 +194,6 @@ class GraphicsView(QGraphicsView):
         self.scale(scale_ratio, scale_ratio)
         # self.min_ratio = round(scale_ratio, 2)  # 保留2位小数
         self.cur_scale_ratio = round(scale_ratio, 2)
-        print("image scale:", self.cur_scale_ratio)
 
     # 获取pixmap
     def get_pixmap(self):

@@ -35,8 +35,6 @@ class History(QObject):
 
     # 重置为初始图像
     def reset(self):
-        # print("撤销栈", self.undo_stack)
-        # print("重做栈", self.redo_stack)
         self.undo_stack.clear()  # 清空撤销栈
         self.redo_stack.clear()  # 清空重做栈
         self.undo_stack.append(self.orig_pixmap)  # 添加原始图像到撤销栈

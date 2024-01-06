@@ -2,14 +2,14 @@ import cv2
 import dlib
 import numpy as np
 from PIL import ImageEnhance, Image, ImageFilter
-from PyQt5.QtCore import pyqtSignal, QThread
+from PyQt5.QtCore import pyqtSignal, QObject
 from PyQt5.QtGui import QPixmap
 from scipy.interpolate import CubicSpline
 
 from tools.image_format import ImageFormat
 
 
-class FaceDetect(QThread):
+class FaceDetect(QObject):
     image_updated = pyqtSignal(QPixmap)  # 图片更新信号
     face_num = pyqtSignal(int)  # 人脸数量信号
 
@@ -49,7 +49,7 @@ class FaceDetect(QThread):
             # 获取当前检测结果的置信度
             confidence = detections[0, 0, i, 2]
             # 如果置信大于最小置信度，则将其可视化
-            if confidence > 0.7:
+            if confidence > 0.5:
                 detected_faces += 1
                 # 获取当前检测结果的坐标
                 box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])

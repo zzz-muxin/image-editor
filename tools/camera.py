@@ -55,29 +55,6 @@ class Camera(QLabel):
         _, cv_image = self.cap.read()  # 从视频流中读取
         cv_image = cv2.resize(cv_image, (640, 480))  # 读到的帧的大小重新设置为 640x480
         cv_image = cv2.flip(cv_image, flipCode=1)  # 镜像显示
-
-        # # 使用dlib的人脸检测器
-        # detector = dlib.get_frontal_face_detector()
-        # # 使用dlib的人脸关键点检测器
-        # predictor = dlib.shape_predictor("tools/shape_predictor_68_face_landmarks.dat")
-        #
-        # # 将图像转换为灰度图
-        # gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
-        # faces = detector(gray)
-        # detected_faces = 0
-        # for face in faces:
-        #     print(face)
-        #     # 检测关键点
-        #     landmarks = predictor(gray, face)
-        #
-        #     # 绘制关键点
-        #     for i in range(0, 67):
-        #         x, y = landmarks.part(i).x, landmarks.part(i).y
-        #         cv2.circle(cv_image, (x, y), 2, (0, 255, 0), -1)
-        #
-        #     detected_faces += 1
-        # cv2.imshow(winname="human face test", mat=cv_image)
-
         # 开一个线程进行人脸检测
         if self.worker is None or not self.worker.isRunning():
             self.worker = Worker(cv_image)
